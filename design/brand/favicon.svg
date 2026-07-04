@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A4A"/>
+      <stop offset="100%" stop-color="#F1641E"/>
+    </linearGradient>
+  </defs>
+  <!-- Background: rounded square with Etsy orange gradient -->
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="url(#bg)"/>
+
+  <!-- "b" letter (bestaietsy brand) - serif, bold -->
+  <text x="32" y="44" text-anchor="middle"
+        font-family="Georgia, 'Playfair Display', serif"
+        font-size="42" font-weight="900" fill="#FFFFFF"
+        font-style="italic">b</text>
+
+  <!-- AI sparkle (top-right, white) -->
+  <g transform="translate(50, 14)" fill="#FFFFFF">
+    <path d="M 0 -6 L 1.5 -1.5 L 6 0 L 1.5 1.5 L 0 6 L -1.5 1.5 L -6 0 L -1.5 -1.5 Z"/>
+  </g>
+  <g transform="translate(42, 22)" fill="#FFF8EC">
+    <path d="M 0 -3 L 0.7 -0.7 L 3 0 L 0.7 0.7 L 0 3 L -0.7 0.7 L -3 0 L -0.7 -0.7 Z"/>
+  </g>
+</svg>

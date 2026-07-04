@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>bestaietsy.com — Complete Design Overview</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: { 50:'#FFF4ED',100:'#FFE5D4',200:'#FFC9A8',300:'#FFA171',400:'#F18C4A',500:'#F1641E',600:'#D8500F',700:'#B23E0C',800:'#8C310A',900:'#662407' },
+          brown:  { 50:'#FAF5F0',100:'#F2E7DA',200:'#E4CDB4',300:'#D2AE89',400:'#BC8F5E',500:'#A37545',600:'#8B5E36',700:'#6F4827',800:'#55371E',900:'#3E2815' },
+          cream:  { 50:'#FFFCF7',100:'#FFF8EC',200:'#FFF1D9',300:'#FFE4B5',400:'#FCD9A0',500:'#F4C97D' },
+        },
+        fontFamily: {
+          display: ['"Playfair Display"', 'Georgia', 'serif'],
+          sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  /* Mock browser chrome for wireframes */
+  .browser-chrome {
+    background: linear-gradient(to bottom, #f5f5f4, #e7e5e4);
+    border-radius: 12px 12px 0 0;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+  /* Tree lines for sitemap */
+  .tree li { position: relative; padding-left: 1.5rem; }
+  .tree li::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: #d6d3d1;
+  }
+  .tree li::after {
+    content: '';
+    position: absolute; left: 0; top: 0.7rem;
+    width: 1rem; height: 1px;
+    background: #d6d3d1;
+  }
+  .tree ul { margin-left: 0.5rem; border-left: 1px dashed #e7e5e4; }
+  /* Wireframe shaded boxes */
+  .wf-box { background: #FFF1D9; border: 1.5px dashed #BC8F5E; border-radius: 8px; }
+  .wf-dark { background: #FFE5D4; border: 1.5px dashed #F1641E; border-radius: 8px; }
+  .wf-cta { background: #F1641E; color: white; border-radius: 6px; text-align: center; padding: 8px 12px; font-weight: 600; font-size: 13px;}
+  .wf-text { background: #FAF5F0; height: 8px; border-radius: 4px; margin: 4px 0; }
+  /* Email mock */
+  .email-mock { background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; max-width: 600px; margin: 0 auto; }
+</style>
+</head>
+
+<body class="bg-cream-50 text-neutral-900">
+
+<!-- ==================== HERO ==================== -->
+<header class="bg-gradient-to-br from-primary-50 via-cream-100 to-cream-200 border-b-4 border-primary-500">
+  <div class="max-w-6xl mx-auto px-6 py-16">
+
+    <!-- Logo (inline SVG, brand-faithful) -->
+    <div class="mb-8">
+      <svg viewBox="0 0 320 80" width="320" height="80" class="drop-shadow-sm">
+        <g font-family="'Playfair Display', Georgia, serif" font-weight="900">
+          <text x="0" y="58" font-size="48" fill="#1C1917">best</text>
+          <text x="100" y="58" font-size="48" fill="#F1641E" font-style="italic">ai</text>
+          <text x="148" y="58" font-size="48" fill="#1C1917">etsy</text>
+          <g transform="translate(135, 8)" fill="#F1641E">
+            <path d="M 0 -10 L 2 -2 L 10 0 L 2 2 L 0 10 L -2 2 L -10 0 L -2 -2 Z"/>
+          </g>
+        </g>
+        <text x="0" y="76" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#78716C" letter-spacing="1.5">
+          THE AI TOOLKIT FOR ETSY SELLERS
+        </text>
+      </svg>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-sm font-mono text-primary-700 uppercase tracking-widest mb-3">design overview · v1 · 2026-07-04</p>
+        <h1 class="font-display text-5xl lg:text-6xl font-black leading-tight mb-6">
+          The AI co-pilot for <span class="text-primary-500 italic">Etsy sellers</span> who want to grow without burning out.
+        </h1>
+        <p class="text-lg text-neutral-700 mb-8 leading-relaxed">
+          Pure-frontend, content-as-code, warm Etsy-orange brand.
+          7 content types. Email-driven growth. Zero database, zero auth, zero subscription fees.
+        </p>
+        <div class="flex gap-3">
+          <span class="inline-flex items-center gap-2 bg-white border border-primary-200 rounded-full px-4 py-2 text-sm font-medium text-primary-700">
+            <span class="w-2 h-2 bg-primary-500 rounded-full"></span> Next.js 15
+          </span>
+          <span class="inline-flex items-center gap-2 bg-white border border-primary-200 rounded-full px-4 py-2 text-sm font-medium text-primary-700">
+            <span class="w-2 h-2 bg-primary-500 rounded-full"></span> MDX content
+          </span>
+          <span class="inline-flex items-center gap-2 bg-white border border-primary-200 rounded-full px-4 py-2 text-sm font-medium text-primary-700">
+            <span class="w-2 h-2 bg-primary-500 rounded-full"></span> Vercel + Buttondown
+          </span>
+        </div>
+      </div>
+
+      <!-- Hero mock: Email signup form (most-converting widget) -->
+      <div class="bg-white rounded-2xl p-8 shadow-xl border-2 border-primary-200">
+        <p class="text-xs font-mono text-primary-700 uppercase tracking-wider mb-2">↑ homepage hero</p>
+        <h2 class="font-display text-3xl font-bold mb-3">Get the weekly Etsy AI digest</h2>
+        <p class="text-neutral-600 mb-5">Free. 1 curated article + 1 actionable tip + 1 policy alert every Tuesday. No spam, unsubscribe anytime.</p>
+        <form class="space-y-3">
+          <input type="email" placeholder="your@email.com" class="w-full px-4 py-3 border-2 border-cream-300 rounded-lg focus:border-primary-500 focus:outline-none text-base" />
+          <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white font-bold py-3 rounded-lg transition">
+            Subscribe — it's free →
+          </button>
+        </form>
+        <p class="text-xs text-neutral-500 mt-3 text-center">📧 Powered by Buttondown · 1-click unsubscribe</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ==================== SECTION 1: BRAND ==================== -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <p class="text-sm font-mono text-primary-700 uppercase tracking-widest mb-2">§ 1</p>
+  <h2 class="font-display text-4xl font-bold mb-10">Brand kit</h2>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- Logo -->
+    <div class="md:col-span-2 bg-white rounded-2xl p-8 border border-cream-300">
+      <p class="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-wider">logo · wordmark + favicon</p>
+
+      <div class="bg-cream-50 rounded-xl p-8 mb-6 flex items-center justify-center">
+        <svg viewBox="0 0 320 80" width="320" height="80">
+          <g font-family="'Playfair Display', Georgia, serif" font-weight="900">
+            <text x="0" y="58" font-size="48" fill="#1C1917">best</text>
+            <text x="100" y="58" font-size="48" fill="#F1641E" font-style="italic">ai</text>
+            <text x="148" y="58" font-size="48" fill="#1C1917">etsy</text>
+            <g transform="translate(135, 8)" fill="#F1641E">
+              <path d="M 0 -10 L 2 -2 L 10 0 L 2 2 L 0 10 L -2 2 L -10 0 L -2 -2 Z"/>
+            </g>
+          </g>
+          <text x="0" y="76" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#78716C" letter-spacing="1.5">THE AI TOOLKIT FOR ETSY SELLERS</text>
+        </svg>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <div class="text-center">
+          <svg viewBox="0 0 64 64" width="64" height="64">
+            <defs><linearGradient id="b1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF8A4A"/><stop offset="100%" stop-color="#F1641E"/></linearGradient></defs>
+            <rect width="64" height="64" rx="14" fill="url(#b1)"/>
+            <text x="32" y="46" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="900" fill="white" font-style="italic">b</text>
+            <g transform="translate(50, 14)" fill="white"><path d="M 0 -6 L 1.5 -1.5 L 6 0 L 1.5 1.5 L 0 6 L -1.5 1.5 L -6 0 L -1.5 -1.5 Z"/></g>
+            <g transform="translate(42, 22)" fill="#FFF8EC"><path d="M 0 -3 L 0.7 -0.7 L 3 0 L 0.7 0.7 L 0 3 L -0.7 0.7 L -3 0 L -0.7 -0.7 Z"/></g>
+          </svg>
+          <p class="text-xs text-neutral-500 mt-2">favicon · 64×64</p>
+        </div>
+        <div class="text-center">
+          <svg viewBox="0 0 180 60" width="180" height="60">
+            <text x="90" y="40" text-anchor="middle" font-family="'Playfair Display', serif" font-size="36" font-weight="900" fill="#F1641E">bestaietsy</text>
+          </svg>
+          <p class="text-xs text-neutral-500 mt-2">compact · 180×60</p>
+        </div>
+        <div class="text-center">
+          <svg viewBox="0 0 64 64" width="64" height="64">
+            <rect width="64" height="64" rx="14" fill="#F1641E"/>
+            <text x="32" y="46" text-anchor="middle" font-family="'Playfair Display', serif" font-size="40" font-weight="900" fill="white" font-style="italic">b</text>
+          </svg>
+          <p class="text-xs text-neutral-500 mt-2">app icon · 64×64</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="bg-white rounded-2xl p-8 border border-cream-300">
+      <p class="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-wider">typography</p>
+      <p class="font-display text-2xl font-bold mb-1">Playfair Display</p>
+      <p class="text-xs text-neutral-500 mb-6">display · serif · headlines</p>
+
+      <p class="font-sans text-base font-semibold mb-1">Inter</p>
+      <p class="text-xs text-neutral-500 mb-6">body · UI · sans-serif</p>
+
+      <p class="font-mono text-sm font-semibold mb-1">JetBrains Mono</p>
+      <p class="text-xs text-neutral-500 mb-6">code · technical</p>
+
+      <p class="text-xs font-mono text-neutral-500 mt-8 mb-3 uppercase tracking-wider">example</p>
+      <p class="font-display text-3xl font-bold text-neutral-900 leading-tight">Cut your Etsy listing time in half.</p>
+      <p class="font-display text-3xl italic text-primary-500 leading-tight">AI tools that actually work.</p>
+    </div>
+  </div>
+
+  <!-- Color palette -->
+  <div class="mt-8 bg-white rounded-2xl p-8 border border-cream-300">
+    <p class="text-xs font-mono text-neutral-500 mb-6 uppercase tracking-wider">color palette · warm Etsy-orange family</p>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+
+      <div>
+        <p class="text-xs font-semibold mb-2 text-neutral-600">PRIMARY · Etsy Orange</p>
+        <div class="space-y-1">
+          <div class="h-9 rounded bg-primary-50 flex items-center px-2 text-xs font-mono text-primary-900">50</div>
+          <div class="h-9 rounded bg-primary-100 flex items-center px-2 text-xs font-mono text-primary-900">100</div>
+          <div class="h-9 rounded bg-primary-200 flex items-center px-2 text-xs font-mono text-primary-900">200</div>
+          <div class="h-9 rounded bg-primary-300 flex items-center px-2 text-xs font-mono text-white">300</div>
+          <div class="h-9 rounded bg-primary-400 flex items-center px-2 text-xs font-mono text-white">400</div>
+          <div class="h-9 rounded bg-primary-500 flex items-center px-2 text-xs font-mono text-white font-bold">500 ★</div>
+          <div class="h-9 rounded bg-primary-600 flex items-center px-2 text-xs font-mono text-white">600</div>
+          <div class="h-9 rounded bg-primary-700 flex items-center px-2 text-xs font-mono text-white">700</div>
+          <div class="h-9 rounded bg-primary-800 flex items-center px-2 text-xs font-mono text-white">800</div>
+          <div class="h-9 rounded bg-primary-900 flex items-center px-2 text-xs font-mono text-white">900</div>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold mb-2 text-neutral-600">SECONDARY · Brown</p>
+        <div class="space-y-1">
+          <div class="h-9 rounded bg-brown-50 flex items-center px-2 text-xs font-mono text-brown-900">50</div>
+          <div class="h-9 rounded bg-brown-100 flex items-center px-2 text-xs font-mono text-brown-900">100</div>
+          <div class="h-9 rounded bg-brown-200 flex items-center px-2 text-xs font-mono text-brown-900">200</div>
+          <div class="h-9 rounded bg-brown-300 flex items-center px-2 text-xs font-mono text-brown-900">300</div>
+          <div class="h-9 rounded bg-brown-400 flex items-center px-2 text-xs font-mono text-white">400</div>
+          <div class="h-9 rounded bg-brown-500 flex items-center px-2 text-xs font-mono text-white">500</div>
+          <div class="h-9 rounded bg-brown-600 flex items-center px-2 text-xs font-mono text-white">600</div>
+          <div class="h-9 rounded bg-brown-700 flex items-center px-2 text-xs font-mono text-white">700</div>
+          <div class="h-9 rounded bg-brown-800 flex items-center px-2 text-xs font-mono text-white">800</div>
+          <div class="h-9 rounded bg-brown-900 flex items-center px-2 text-xs font-mono text-white">900</div>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold mb-2 text-neutral-600">CREAM · Background</p>
+        <div class="space-y-1">
+          <div class="h-9 rounded bg-cream-50 border border-cream-200 flex items-center px-2 text-xs font-mono">50</div>
+          <div class="h-9 rounded bg-cream-100 flex items-center px-2 text-xs font-mono">100</div>
+          <div class="h-9 rounded bg-cream-200 flex items-center px-2 text-xs font-mono">200</div>
+          <div class="h-9 rounded bg-cream-300 flex items-center px-2 text-xs font-mono">300</div>
+          <div class="h-9 rounded bg-cream-400 flex items-center px-2 text-xs font-mono">400</div>
+          <div class="h-9 rounded bg-cream-500 flex items-center px-2 text-xs font-mono">500</div>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold mb-2 text-neutral-600">ACCENT · Red (alerts)</p>
+        <div class="space-y-1">
+          <div class="h-9 rounded bg-red-500 flex items-center px-2 text-xs font-mono text-white">D32F2F</div>
+          <div class="h-9 rounded bg-red-600 flex items-center px-2 text-xs font-mono text-white">B71C1C</div>
+          <div class="h-9 rounded bg-red-700 flex items-center px-2 text-xs font-mono text-white">931414</div>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold mb-2 text-neutral-600">NEUTRAL · Text</p>
+        <div class="space-y-1">
+          <div class="h-9 rounded bg-neutral-50 border border-neutral-200 flex items-center px-2 text-xs font-mono">50</div>
+          <div class="h-9 rounded bg-neutral-200 flex items-center px-2 text-xs font-mono">200</div>
+          <div class="h-9 rounded bg-neutral-400 flex items-center px-2 text-xs font-mono text-white">400</div>
+          <div class="h-9 rounded bg-neutral-600 flex items-center px-2 text-xs font-mono text-white">600</div>
+          <div class="h-9 rounded bg-neutral-800 flex items-center px-2 text-xs font-mono text-white">800</div>
+          <div class="h-9 rounded bg-neutral-900 flex items-center px-2 text-xs font-mono text-white">900</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== SECTION 2: IA ==================== -->
+<section class="bg-gradient-to-br from-cream-100 to-cream-50 border-y-2 border-primary-200">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <p class="text-sm font-mono text-primary-700 uppercase tracking-widest mb-2">§ 2</p>
+    <h2 class="font-display text-4xl font-bold mb-10">Information Architecture</h2>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+
+      <!-- Sitemap tree -->
+      <div class="bg-white rounded-2xl p-8 border border-cream-300">
+        <p class="text-xs font-mono text-neutral-500 mb-6 uppercase tracking-wider">sitemap · 5 content entry points</p>
+        <ul class="tree text-sm space-y-2">
+          <li><strong class="font-display text-base">/</strong> &nbsp; Homepage</li>
+          <li>
+            <strong class="font-display text-base">/blog</strong> &nbsp; Blog hub
+            <ul>
+              <li><strong>/blog/[slug]</strong> &nbsp; Article (T1-T7 MDX)</li>
+              <li><strong>/blog?type=T1</strong> &nbsp; Filter by content type</li>
+              <li><strong>/blog?topic=fur</strong> &nbsp; Filter by topic</li>
+              <li><strong>/blog?tag=roketfy</strong> &nbsp; Filter by tool</li>
+            </ul>
+          </li>
+          <li>
+            <strong class="font-display text-base">/tools</strong> &nbsp; AI tool directory
+            <ul>
+              <li><strong>/tools/[slug]</strong> &nbsp; Tool review (T2)</li>
+              <li><strong>/tools/compare/[a-vs-b]</strong> &nbsp; Comparison (T3)</li>
+            </ul>
+          </li>
+          <li>
+            <strong class="font-display text-base">/policies</strong> &nbsp; Etsy 2026 policy index
+            <ul>
+              <li><strong>/policies/[slug]</strong> &nbsp; Policy interpretation (T1)</li>
+            </ul>
+          </li>
+          <li>
+            <strong class="font-display text-base">/best-for</strong> &nbsp; Audience-targeted
+            <ul>
+              <li><strong>/best-for/[slug]</strong> &nbsp; "Best AI for X" (T4)</li>
+            </ul>
+          </li>
+          <li>
+            <strong class="font-display text-base">/guides</strong> &nbsp; Pillar guides (T6)
+            <ul>
+              <li><strong>/guides/[slug]</strong> &nbsp; Long-form comprehensive guide</li>
+            </ul>
+          </li>
+          <li><strong class="font-display text-base">/faq</strong> &nbsp; FAQ hub (T7)</li>
+          <li><strong class="font-display text-base">/about</strong>, <strong>/privacy</strong>, <strong>/affiliate-disclosure</strong></li>
+        </ul>
+      </div>
+
+      <!-- Pillar-Cluster diagram -->
+      <div class="bg-white rounded-2xl p-8 border border-cream-300">
+        <p class="text-xs font-mono text-neutral-500 mb-6 uppercase tracking-wider">SEO pillar-cluster model</p>
+        <svg viewBox="0 0 400 360" class="w-full">
+          <!-- 5 Pillar circles -->
+          <g>
+            <!-- Pillar 1 -->
+            <circle cx="200" cy="60" r="42" fill="#F1641E" />
+            <text x="200" y="58" text-anchor="middle" fill="white" font-size="11" font-weight="700">Etsy 2026</text>
+            <text x="200" y="72" text-anchor="middle" fill="white" font-size="11" font-weight="700">AI Compliance</text>
+
+            <!-- Pillar 2 -->
+            <circle cx="80" cy="180" r="42" fill="#F1641E" />
+            <text x="80" y="178" text-anchor="middle" fill="white" font-size="10" font-weight="700">Best AI Tools</text>
+            <text x="80" y="192" text-anchor="middle" fill="white" font-size="10" font-weight="700">2026</text>
+
+            <!-- Pillar 3 -->
+            <circle cx="320" cy="180" r="42" fill="#F1641E" />
+            <text x="320" y="178" text-anchor="middle" fill="white" font-size="10" font-weight="700">Listing</text>
+            <text x="320" y="192" text-anchor="middle" fill="white" font-size="10" font-weight="700">Optimization</text>
+
+            <!-- Pillar 4 -->
+            <circle cx="80" cy="300" r="42" fill="#F1641E" />
+            <text x="80" y="298" text-anchor="middle" fill="white" font-size="10" font-weight="700">Vintage Seller</text>
+            <text x="80" y="312" text-anchor="middle" fill="white" font-size="10" font-weight="700">Guide</text>
+
+            <!-- Pillar 5 -->
+            <circle cx="320" cy="300" r="42" fill="#F1641E" />
+            <text x="320" y="298" text-anchor="middle" fill="white" font-size="10" font-weight="700">Policy Changes</text>
+            <text x="320" y="312" text-anchor="middle" fill="white" font-size="10" font-weight="700">2026</text>
+
+            <!-- Cluster articles (small circles around pillars) -->
+            <g fill="#FFE5D4" stroke="#F1641E" stroke-width="1.5">
+              <!-- Cluster 1 (policy) -->
+              <circle cx="120" cy="40" r="14"/><text x="120" y="44" text-anchor="middle" font-size="8" fill="#F1641E">fur ban</text>
+              <circle cx="280" cy="40" r="14"/><text x="280" y="44" text-anchor="middle" font-size="8" fill="#F1641E">children</text>
+              <circle cx="200" cy="120" r="14"/><text x="200" y="124" text-anchor="middle" font-size="8" fill="#F1641E">China</text>
+
+              <!-- Cluster 2 (tools) -->
+              <circle cx="20" cy="120" r="14"/><text x="20" y="124" text-anchor="middle" font-size="8" fill="#F1641E">Roketfy</text>
+              <circle cx="20" cy="240" r="14"/><text x="20" y="244" text-anchor="middle" font-size="8" fill="#F1641E">eRank</text>
+
+              <!-- Cluster 3 (listing) -->
+              <circle cx="380" cy="120" r="14"/><text x="380" y="124" text-anchor="middle" font-size="8" fill="#F1641E">titles</text>
+              <circle cx="380" cy="240" r="14"/><text x="380" y="244" text-anchor="middle" font-size="8" fill="#F1641E">tags</text>
+
+              <!-- Cluster 4 (vintage) -->
+              <circle cx="20" cy="350" r="14"/><text x="20" y="354" text-anchor="middle" font-size="8" fill="#F1641E">coat</text>
+              <circle cx="140" cy="350" r="14"/><text x="140" y="354" text-anchor="middle" font-size="8" fill="#F1641E">hat</text>
+
+              <!-- Cluster 5 (changes) -->
+              <circle cx="380" cy="350" r="14"/><text x="380" y="354" text-anchor="middle" font-size="8" fill="#F1641E">Q1 cleanup</text>
+              <circle cx="260" cy="350" r="14"/><text x="260" y="354" text-anchor="middle" font-size="8" fill="#F1641E">UK fee</text>
+            </g>
+          </g>
+
+          <!-- Center "BESTAIETSY" hub -->
+          <circle cx="200" cy="180" r="20" fill="#1C1917" />
+          <text x="200" y="184" text-anchor="middle" fill="#F1641E" font-size="9" font-weight="700">HUB</text>
+        </svg>
+        <p class="text-xs text-neutral-600 mt-4 text-center">5 pillar pages → ~10 cluster articles each → ~50 articles total in Year 1</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== SECTION 3: WIREFRAMES ==================== -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <p class="text-sm font-mono text-primary-700 uppercase tracking-widest mb-2">§ 3</p>
+  <h2 class="font-display text-4xl font-bold mb-10">Wireframes · 4 key pages</h2>
+
+  <!-- Wireframe 1: Homepage -->
+  <div class="mb-16">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-primary-500 text-white text-sm font-bold px-3 py-1 rounded">Page 1</span>
+      <h3 class="font-display text-2xl font-bold">Homepage · bestaietsy.com/</h3>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 border-2 border-cream-300 shadow-sm">
+      <div class="browser-chrome">
+        <span class="browser-dot bg-red-500"></span>
+        <span class="browser-dot bg-yellow-500"></span>
+        <span class="browser-dot bg-green-500"></span>
+        <span class="ml-3 text-xs text-neutral-500 font-mono">bestaietsy.com</span>
+      </div>
+
+      <div class="border-2 border-t-0 border-cream-200 rounded-b-xl p-6 space-y-4 bg-cream-50">
+
+        <!-- Policy alert bar -->
+        <div class="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2">
+          ⚠️ <span>Etsy's 8/11 Animal Fur Policy — 6 weeks left. Read the seller action plan →</span>
+        </div>
+
+        <!-- Nav -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <svg width="24" height="24" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#F1641E"/><text x="32" y="46" text-anchor="middle" font-family="Georgia, serif" font-size="40" font-weight="900" fill="white" font-style="italic">b</text></svg>
+            <span class="font-display font-bold text-sm">bestaietsy</span>
+          </div>
+          <div class="flex gap-4 text-sm text-neutral-600">
+            <span>Blog</span><span>Tools</span><span>Policies</span><span>Best for</span><span>Guides</span>
+          </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <div class="wf-text w-3/4 !h-10 !bg-cream-300"></div>
+            <div class="wf-text w-3/4 !h-10 !bg-cream-300"></div>
+            <div class="wf-text w-full !h-4 mt-4"></div>
+            <div class="wf-text w-2/3 !h-4"></div>
+          </div>
+          <div class="wf-box p-4">
+            <div class="wf-text !h-3 !w-1/2 !bg-primary-200"></div>
+            <div class="wf-text !h-6 !w-3/4 !bg-primary-300 mt-2"></div>
+            <div class="wf-text !h-3 w-full mt-3"></div>
+            <div class="wf-text !h-3 w-5/6"></div>
+            <div class="h-10 mt-4 bg-white border-2 border-cream-300 rounded"></div>
+            <div class="wf-cta mt-3">SUBSCRIBE — IT'S FREE →</div>
+          </div>
+        </div>
+
+        <!-- 3 value cards -->
+        <div class="grid grid-cols-3 gap-3 mt-6">
+          <div class="wf-box p-4 text-center">
+            <div class="text-2xl">📋</div>
+            <div class="wf-text !h-4 !bg-primary-400 mt-2 !w-3/4 mx-auto"></div>
+            <div class="wf-text !h-2 mt-1"></div>
+          </div>
+          <div class="wf-box p-4 text-center">
+            <div class="text-2xl">🛠️</div>
+            <div class="wf-text !h-4 !bg-primary-400 mt-2 !w-3/4 mx-auto"></div>
+            <div class="wf-text !h-2 mt-1"></div>
+          </div>
+          <div class="wf-box p-4 text-center">
+            <div class="text-2xl">📚</div>
+            <div class="wf-text !h-4 !bg-primary-400 mt-2 !w-3/4 mx-auto"></div>
+            <div class="wf-text !h-2 mt-1"></div>
+          </div>
+        </div>
+
+        <!-- Latest articles (6 cards) -->
+        <div class="mt-8">
+          <p class="text-xs font-mono text-neutral-500 uppercase tracking-wider mb-3">latest articles</p>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="wf-box p-3"><div class="h-24 bg-primary-100 rounded mb-2"></div><div class="wf-text !h-3 !bg-primary-300"></div><div class="wf-text !h-2 mt-1"></div></div>
+            <div class="wf-box p-3"><div class="h-24 bg-primary-100 rounded mb-2"></div><div class="wf-text !h-3 !bg-primary-300"></div><div class="wf-text !h-2 mt-1"></div></div>
+            <div class="wf-box p-3"><div class="h-24 bg-primary-100 rounded mb-2"></div><div class="wf-text !h-3 !bg-primary-300"></div><div class="wf-text !h-2 mt-1"></div></div>
+            <div class="wf-box p-3"><div class="h-24 bg-primary-100 rounded mb-2"></div><div class="wf-text !h-3 !bg-primary-300"></div><div class="wf-text !h-2 mt-1"></div></div>
+            <div class="wf-box p-3"><div class="h-24 bg-primary-100 rounded mb-2"></div><div class="wf-text !h-3 !bg-primary-300"></div><div class="wf-text !h-2 mt-1"></div></div>
+            <div class="wf-box p-3"><div class="h-24 bg-primary-100 rounded mb-2"></div><div class="wf-text !h-3 !bg-primary-300"></div><div class="wf-text !h-2 mt-1"></div></div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 pt-6 border-t-2 border-cream-300 text-xs text-neutral-500 flex justify-between">
+          <span>© 2026 bestaietsy.com · Privacy · Affiliate Disclosure · Terms</span>
+          <span>Best AI tools for Etsy sellers · Made with ❤️ + AI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wireframe 2: Article page (T1 Policy Interpretation) -->
+  <div class="mb-16">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-primary-500 text-white text-sm font-bold px-3 py-1 rounded">Page 2</span>
+      <h3 class="font-display text-2xl font-bold">Article · T1 Policy Interpretation</h3>
+      <span class="bg-primary-100 text-primary-700 text-xs px-2 py-1 rounded font-mono">/blog/[slug]</span>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 border-2 border-cream-300 shadow-sm">
+      <div class="browser-chrome">
+        <span class="browser-dot bg-red-500"></span>
+        <span class="browser-dot bg-yellow-500"></span>
+        <span class="browser-dot bg-green-500"></span>
+        <span class="ml-3 text-xs text-neutral-500 font-mono">bestaietsy.com/policies/etsy-8-11-fur-policy</span>
+      </div>
+
+      <div class="border-2 border-t-0 border-cream-200 rounded-b-xl p-6 bg-cream-50 space-y-4">
+
+        <!-- Breadcrumb -->
+        <div class="text-xs text-neutral-500 font-mono">Home › Policies › <span class="text-primary-600">Etsy 8/11 Fur Policy</span></div>
+
+        <!-- Article header -->
+        <div class="text-center max-w-3xl mx-auto py-6">
+          <span class="inline-block bg-primary-100 text-primary-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Policy Update</span>
+          <h1 class="font-display text-3xl lg:text-4xl font-black leading-tight mb-3">Etsy 8/11 Animal Fur Policy: 5 AI Alternatives for Vintage</h1>
+          <p class="text-neutral-600 text-sm mb-3">Updated: July 4, 2026 · 6 min read · by bestaietsy team</p>
+          <div class="flex items-center justify-center gap-2 text-xs">
+            <span class="bg-white border border-cream-300 rounded-full px-3 py-1">fur policy</span>
+            <span class="bg-white border border-cream-300 rounded-full px-3 py-1">vintage</span>
+            <span class="bg-white border border-cream-300 rounded-full px-3 py-1">AI tools</span>
+          </div>
+        </div>
+
+        <!-- Hero image -->
+        <div class="h-40 bg-gradient-to-br from-primary-200 to-primary-400 rounded-lg flex items-center justify-center text-white font-display text-lg">
+          [Hero image · 1200×630 · Etsy orange theme]
+        </div>
+
+        <!-- Article body (T1 structure mock) -->
+        <div class="grid md:grid-cols-3 gap-4 mt-6">
+          <div class="md:col-span-2 space-y-4">
+            <div>
+              <h2 class="font-display text-xl font-bold mb-2 text-primary-700">What changed</h2>
+              <div class="wf-text"></div><div class="wf-text"></div><div class="wf-text w-2/3"></div>
+            </div>
+            <div>
+              <h2 class="font-display text-xl font-bold mb-2 text-primary-700">Who's affected</h2>
+              <div class="wf-text"></div><div class="wf-text"></div><div class="wf-text w-1/2"></div>
+            </div>
+            <div>
+              <h2 class="font-display text-xl font-bold mb-2 text-primary-700">What's allowed vs banned</h2>
+              <div class="bg-white border-2 border-cream-300 rounded-lg p-3">
+                <table class="w-full text-xs">
+                  <thead><tr class="border-b border-cream-200"><th class="text-left py-1 text-green-700">✅ Allowed</th><th class="text-left py-1 text-red-700">❌ Banned</th></tr></thead>
+                  <tbody>
+                    <tr><td>Leather (cow, pig, suede)</td><td>Raw animal fur</td></tr>
+                    <tr><td>Wool, sheepskin, mohair</td><td>Vintage animal fur</td></tr>
+                    <tr><td>Faux fur</td><td>Fur garments</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div>
+              <h2 class="font-display text-xl font-bold mb-2 text-primary-700">What to do (4-week plan)</h2>
+              <div class="wf-text"></div><div class="wf-text"></div>
+            </div>
+            <div class="wf-dark p-3">
+              <p class="text-xs font-bold text-primary-700 mb-2">📧 Get next week's article first</p>
+              <p class="text-xs text-neutral-700 mb-2">Weekly Etsy AI digest. Free.</p>
+              <div class="flex gap-2">
+                <div class="flex-1 h-8 bg-white border border-cream-300 rounded"></div>
+                <div class="wf-cta px-4">Subscribe</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar (sticky TOC + CTA) -->
+          <aside class="space-y-3">
+            <div class="wf-box p-3">
+              <p class="text-xs font-bold text-neutral-700 mb-2">ON THIS PAGE</p>
+              <div class="space-y-1 text-xs text-primary-700">
+                <div>› What changed</div>
+                <div>› Who's affected</div>
+                <div>› What's allowed</div>
+                <div>› 4-week action plan</div>
+                <div>› AI tools help</div>
+                <div>› Timeline</div>
+                <div>› Real voices</div>
+                <div>› FAQ</div>
+              </div>
+            </div>
+            <div class="wf-dark p-3">
+              <p class="text-xs font-bold mb-2">⭐ Editor's pick</p>
+              <div class="wf-text !h-3"></div>
+              <div class="wf-text !h-2 mt-1 w-2/3"></div>
+              <div class="wf-cta mt-3 !bg-brown-600">Try Roketfy →</div>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Wireframe 3: Tool review (T2) -->
+  <div class="mb-16">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-primary-500 text-white text-sm font-bold px-3 py-1 rounded">Page 3</span>
+      <h3 class="font-display text-2xl font-bold">Tool Review · T2</h3>
+      <span class="bg-primary-100 text-primary-700 text-xs px-2 py-1 rounded font-mono">/tools/[slug]</span>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 border-2 border-cream-300 shadow-sm">
+      <div class="browser-chrome">
+        <span class="browser-dot bg-red-500"></span>
+        <span class="browser-dot bg-yellow-500"></span>
+        <span class="browser-dot bg-green-500"></span>
+        <span class="ml-3 text-xs text-neutral-500 font-mono">bestaietsy.com/tools/roketfy</span>
+      </div>
+
+      <div class="border-2 border-t-0 border-cream-200 rounded-b-xl p-6 bg-cream-50 space-y-4">
+
+        <div class="text-xs text-neutral-500 font-mono">Home › Tools › <span class="text-primary-600">Roketfy</span></div>
+
+        <!-- Tool hero -->
+        <div class="grid md:grid-cols-3 gap-6 items-start">
+          <div class="md:col-span-2">
+            <div class="flex items-start gap-4">
+              <div class="w-20 h-20 bg-primary-500 rounded-2xl flex items-center justify-center text-white text-3xl font-bold">R</div>
+              <div>
+                <h1 class="font-display text-3xl font-bold mb-1">Roketfy Review</h1>
+                <p class="text-sm text-neutral-600 mb-2">AI-powered Etsy listing optimizer with built-in policy compliance checker.</p>
+                <div class="flex gap-1 text-yellow-500 text-sm">★★★★★ <span class="text-neutral-500 ml-2">4.8/5 · 1,240 reviews</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white border-2 border-primary-300 rounded-xl p-4">
+            <p class="text-xs font-bold text-neutral-700 mb-2">QUICK STATS</p>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div><div class="text-neutral-500">Pricing</div><div class="font-bold">$4.99-$49/mo</div></div>
+              <div><div class="text-neutral-500">Free trial</div><div class="font-bold">7 days</div></div>
+              <div><div class="text-neutral-500">Best for</div><div class="font-bold">50+ listings</div></div>
+              <div><div class="text-neutral-500">Commission</div><div class="font-bold text-primary-600">30% lifetime</div></div>
+            </div>
+            <div class="wf-cta mt-3 !bg-primary-600">Try Roketfy Free →</div>
+          </div>
+        </div>
+
+        <!-- Sections -->
+        <div class="grid md:grid-cols-3 gap-4 mt-6">
+          <div class="md:col-span-2 space-y-3">
+            <div>
+              <h2 class="font-display text-lg font-bold mb-2 text-primary-700">What is Roketfy?</h2>
+              <div class="wf-text"></div><div class="wf-text"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-green-50 border border-green-200 rounded p-3">
+                <p class="text-xs font-bold text-green-700 mb-1">👍 Pros</p>
+                <div class="wf-text !h-2 !bg-green-200"></div>
+                <div class="wf-text !h-2 !bg-green-200 mt-1"></div>
+                <div class="wf-text !h-2 !bg-green-200 mt-1 w-3/4"></div>
+              </div>
+              <div class="bg-red-50 border border-red-200 rounded p-3">
+                <p class="text-xs font-bold text-red-700 mb-1">👎 Cons</p>
+                <div class="wf-text !h-2 !bg-red-200"></div>
+                <div class="wf-text !h-2 !bg-red-200 mt-1"></div>
+              </div>
+            </div>
+            <div>
+              <h2 class="font-display text-lg font-bold mb-2 text-primary-700">Pricing breakdown</h2>
+              <div class="bg-white border border-cream-300 rounded p-3">
+                <table class="w-full text-xs">
+                  <thead><tr class="border-b"><th class="text-left py-1">Plan</th><th>Price</th><th>Listings</th></tr></thead>
+                  <tbody>
+                    <tr><td class="py-1">Starter</td><td>$4.99/mo</td><td>50</td></tr>
+                    <tr><td class="py-1">Pro</td><td>$19.99/mo</td><td>500</td></tr>
+                    <tr><td class="py-1">Business</td><td>$49/mo</td><td>Unlimited</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky sidebar CTA -->
+          <aside class="space-y-3">
+            <div class="bg-primary-500 text-white rounded-xl p-4">
+              <p class="text-xs font-bold mb-1">READY TO TRY?</p>
+              <p class="text-2xl font-display font-black mb-2">30% OFF</p>
+              <p class="text-xs mb-3">Lifetime discount via our link</p>
+              <button class="w-full bg-white text-primary-700 font-bold py-2 rounded">Get Roketfy →</button>
+            </div>
+            <div class="wf-box p-3 text-xs">
+              <p class="font-bold mb-2">Alternatives</p>
+              <div>eRank</div>
+              <div>Alura</div>
+              <div>EtsyHunt</div>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Wireframe 4: Email popup + newsletter page -->
+  <div class="mb-16">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-primary-500 text-white text-sm font-bold px-3 py-1 rounded">Page 4</span>
+      <h3 class="font-display text-2xl font-bold">Email Capture · Floating widget</h3>
+      <span class="bg-primary-100 text-primary-700 text-xs px-2 py-1 rounded font-mono">all pages · bottom-right</span>
+    </div>
+
+    <div class="bg-gradient-to-br from-cream-50 to-cream-200 rounded-2xl p-12 border-2 border-cream-300 relative overflow-hidden min-h-[400px]">
+      <!-- Simulated page background -->
+      <div class="space-y-2 opacity-30">
+        <div class="wf-text w-3/4 !h-6 !bg-cream-300"></div>
+        <div class="wf-text"></div><div class="wf-text"></div><div class="wf-text w-5/6"></div>
+        <div class="wf-text"></div><div class="wf-text w-2/3"></div>
+        <div class="wf-text"></div><div class="wf-text w-3/4"></div>
+      </div>
+
+      <!-- Floating widget -->
+      <div class="absolute bottom-8 right-8 w-80 bg-white rounded-2xl shadow-2xl border-2 border-primary-300 p-5">
+        <button class="absolute top-3 right-3 text-neutral-400 hover:text-neutral-700">✕</button>
+        <p class="text-xs font-mono text-primary-700 uppercase tracking-wider mb-1">📩 weekly digest</p>
+        <h3 class="font-display text-lg font-bold mb-1">Don't miss next week's article</h3>
+        <p class="text-xs text-neutral-600 mb-3">1 curated article + 1 policy alert every Tuesday.</p>
+        <input type="email" placeholder="your@email.com" class="w-full px-3 py-2 border border-cream-300 rounded text-sm mb-2" />
+        <button class="w-full bg-primary-500 hover:bg-primary-600 text-white text-sm font-bold py-2 rounded">Subscribe — Free →</button>
+        <p class="text-xs text-neutral-400 text-center mt-2">🔒 1-click unsubscribe · Powered by Buttondown</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ==================== SECTION 4: EMAIL TEMPLATES ==================== -->
+<section class="bg-gradient-to-br from-brown-50 to-cream-100 border-y-2 border-primary-200">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+
+    <p class="text-sm font-mono text-primary-700 uppercase tracking-widest mb-2">§ 4</p>
+    <h2 class="font-display text-4xl font-bold mb-4">Email Templates · Auto-send pipeline</h2>
+    <p class="text-neutral-700 mb-12 max-w-3xl">Two transactional emails + one broadcast sequence. All sent via Buttondown. New articles auto-distribute to subscribers when published.</p>
+
+    <!-- Pipeline diagram -->
+    <div class="bg-white rounded-2xl p-8 border border-cream-300 mb-12">
+      <p class="text-xs font-mono text-neutral-500 mb-6 uppercase tracking-wider">automatic send pipeline</p>
+      <div class="flex items-center justify-between gap-3 text-sm">
+
+        <div class="flex-1 text-center">
+          <div class="h-16 w-16 mx-auto bg-primary-500 text-white rounded-full flex items-center justify-center text-2xl">📝</div>
+          <p class="font-bold mt-2">Author publishes MDX</p>
+          <p class="text-xs text-neutral-500 mt-1">git push → Vercel build</p>
+        </div>
+        <div class="text-primary-500 text-2xl">→</div>
+        <div class="flex-1 text-center">
+          <div class="h-16 w-16 mx-auto bg-primary-500 text-white rounded-full flex items-center justify-center text-2xl">⚙️</div>
+          <p class="font-bold mt-2">GitHub Action triggers</p>
+          <p class="text-xs text-neutral-500 mt-1">.github/workflows/notify.yml</p>
+        </div>
+        <div class="text-primary-500 text-2xl">→</div>
+        <div class="flex-1 text-center">
+          <div class="h-16 w-16 mx-auto bg-primary-500 text-white rounded-full flex items-center justify-center text-2xl">📡</div>
+          <p class="font-bold mt-2">Buttondown API call</p>
+          <p class="text-xs text-neutral-500 mt-1">POST /api/subscribers/email</p>
+        </div>
+        <div class="text-primary-500 text-2xl">→</div>
+        <div class="flex-1 text-center">
+          <div class="h-16 w-16 mx-auto bg-primary-500 text-white rounded-full flex items-center justify-center text-2xl">📧</div>
+          <p class="font-bold mt-2">Auto-broadcast sent</p>
+          <p class="text-xs text-neutral-500 mt-1">All subscribers · ~30 sec</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email template 1: Welcome -->
+    <div class="mb-12">
+      <p class="text-sm font-bold text-primary-700 mb-3">① Welcome email · on subscribe</p>
+      <div class="email-mock">
+        <div style="background:linear-gradient(135deg,#F1641E 0%,#D8500F 100%);padding:32px 24px;text-align:center;">
+          <svg viewBox="0 0 320 60" width="240" style="margin:0 auto;display:block;">
+            <g font-family="'Playfair Display', Georgia, serif" font-weight="900">
+              <text x="160" y="38" text-anchor="middle" font-size="32" fill="white">bestaietsy</text>
+            </g>
+          </svg>
+        </div>
+        <div style="padding:32px;">
+          <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:#1C1917;margin:0 0 16px;">Welcome to the Etsy AI digest 👋</h2>
+          <p style="color:#44403C;line-height:1.6;margin:0 0 16px;">You're in! Every Tuesday morning, you'll get:</p>
+          <ul style="color:#44403C;line-height:1.8;margin:0 0 16px;padding-left:20px;">
+            <li>1 curated article on the latest Etsy AI tools</li>
+            <li>1 actionable tip you can use this week</li>
+            <li>1 policy alert (only when Etsy's policy changes)</li>
+          </ul>
+          <div style="background:#FFF8EC;border-left:4px solid #F1641E;padding:16px;margin:24px 0;border-radius:8px;">
+            <p style="margin:0 0 8px;font-weight:600;color:#1C1917;">📌 This week's pick (in case you missed it):</p>
+            <p style="margin:0;color:#44403C;">Etsy's 8/11 Animal Fur Policy — 6 weeks left for vintage sellers. <a href="#" style="color:#F1641E;font-weight:600;">Read the action plan →</a></p>
+          </div>
+          <p style="color:#44403C;line-height:1.6;margin:24px 0 8px;">Talk soon,</p>
+          <p style="color:#1C1917;font-weight:600;margin:0;">The bestaietsy team</p>
+        </div>
+        <div style="background:#FAF5F0;padding:20px 24px;text-align:center;font-size:12px;color:#78716C;border-top:1px solid #E4CDB4;">
+          You're getting this because you signed up at bestaietsy.com.<br>
+          <a href="#" style="color:#F1641E;">Unsubscribe</a> · <a href="#" style="color:#F1641E;">View in browser</a> · <a href="#" style="color:#F1641E;">Privacy</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email template 2: New article auto-broadcast -->
+    <div class="mb-12">
+      <p class="text-sm font-bold text-primary-700 mb-3">② New article auto-broadcast · triggered on publish</p>
+      <div class="email-mock">
+        <div style="background:linear-gradient(135deg,#FFF8EC 0%,#FFE5D4 100%);padding:32px 24px;text-align:center;border-bottom:3px solid #F1641E;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B23E0C;letter-spacing:1.5px;margin:0 0 8px;">NEW ON BESTAIETSY</p>
+          <h2 style="font-family:'Playfair Display',serif;font-size:22px;color:#1C1917;margin:0 0 8px;">This week on Etsy AI</h2>
+        </div>
+        <div style="padding:32px;">
+          <p style="color:#44403C;line-height:1.6;margin:0 0 16px;font-size:14px;">Tuesday, July 7, 2026</p>
+
+          <div style="border:2px solid #FFE5D4;border-radius:12px;padding:20px;margin:0 0 20px;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#F1641E;letter-spacing:1px;margin:0 0 8px;">POLICY ALERT</p>
+            <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:#1C1917;margin:0 0 8px;">Etsy 8/11 Animal Fur Policy: 5 AI Alternatives for Vintage</h3>
+            <p style="color:#44403C;line-height:1.6;margin:0 0 16px;">Vintage sellers face the biggest hit. Here's your 4-week action plan, plus 5 AI tools to pivot your shop fast.</p>
+            <a href="#" style="display:inline-block;background:#F1641E;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">Read the full article →</a>
+          </div>
+
+          <p style="color:#44403C;line-height:1.6;margin:24px 0 8px;">💡 This week's tip:</p>
+          <div style="background:#FAF5F0;border-radius:8px;padding:16px;margin:0 0 16px;">
+            <p style="margin:0;color:#44403C;"><strong>Audit your listings</strong> for any animal fur keywords (mink, fox, rabbit, raccoon). Use Roketfy's free Listing Checker to bulk-scan 100+ listings in 5 minutes.</p>
+          </div>
+
+          <p style="color:#44403C;line-height:1.6;margin:24px 0 8px;">Thanks for reading,</p>
+          <p style="color:#1C1917;font-weight:600;margin:0;">The bestaietsy team</p>
+        </div>
+        <div style="background:#FAF5F0;padding:20px 24px;text-align:center;font-size:12px;color:#78716C;border-top:1px solid #E4CDB4;">
+          <a href="#" style="color:#F1641E;">Unsubscribe</a> · <a href="#" style="color:#F1641E;">View in browser</a> · <a href="#" style="color:#F1641E;">Forward to a friend</a><br>
+          bestaietsy.com · Making Etsy sellers smarter with AI
+        </div>
+      </div>
+    </div>
+
+    <!-- Email template 3: Monthly recap -->
+    <div>
+      <p class="text-sm font-bold text-primary-700 mb-3">③ Monthly recap · first Sunday of month</p>
+      <div class="email-mock">
+        <div style="background:#1C1917;padding:32px 24px;text-align:center;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFA171;letter-spacing:1.5px;margin:0 0 8px;">JULY 2026 · MONTHLY WRAP</p>
+          <h2 style="font-family:'Playfair Display',serif;font-size:28px;color:#F1641E;margin:0;">5 things Etsy sellers missed this month</h2>
+        </div>
+        <div style="padding:32px;">
+          <div style="margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid #E4CDB4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716C;margin:0;">01</p>
+            <p style="color:#1C1917;font-weight:600;margin:4px 0;">⚠️ 8/11 Fur Policy takes effect — 30% of vintage shops affected</p>
+          </div>
+          <div style="margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid #E4CDB4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716C;margin:0;">02</p>
+            <p style="color:#1C1917;font-weight:600;margin:4px 0;">🛠️ Roketfy launched bulk policy checker — saves 10+ hours/week</p>
+          </div>
+          <div style="margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid #E4CDB4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716C;margin:0;">03</p>
+            <p style="color:#1C1917;font-weight:600;margin:4px 0;">📊 Etsy Q1 2026: $6.31B revenue, GMV +5.5% YoY</p>
+          </div>
+          <div style="margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid #E4CDB4;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716C;margin:0;">04</p>
+            <p style="color:#1C1917;font-weight:600;margin:4px 0;">🎨 Midjourney v7 released — new POD design possibilities</p>
+          </div>
+          <div style="margin:0 0 16px;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#78716C;margin:0;">05</p>
+            <p style="color:#1C1917;font-weight:600;margin:4px 0;">🇬🇧 UK regulatory fee starts 6/22 — sellers report 15% fee increase</p>
+          </div>
+        </div>
+        <div style="background:#FAF5F0;padding:20px 24px;text-align:center;font-size:12px;color:#78716C;border-top:1px solid #E4CDB4;">
+          <a href="#" style="color:#F1641E;">Unsubscribe</a> · <a href="#" style="color:#F1641E;">View all past issues</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== SECTION 5: TECH STACK ==================== -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <p class="text-sm font-mono text-primary-700 uppercase tracking-widest mb-2">§ 5</p>
+  <h2 class="font-display text-4xl font-bold mb-10">Tech stack · 0 backend, 0 database</h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="bg-white rounded-2xl p-6 border border-cream-300">
+      <p class="text-2xl mb-3">⚡</p>
+      <h3 class="font-display text-xl font-bold mb-2">Frontend</h3>
+      <ul class="text-sm space-y-2 text-neutral-700">
+        <li><strong>Next.js 15</strong> · App Router, RSC</li>
+        <li><strong>React 19</strong></li>
+        <li><strong>Tailwind CSS</strong> + shadcn/ui</li>
+        <li><strong>MDX</strong> · content-as-code</li>
+        <li><strong>Fuse.js</strong> · client-side search</li>
+        <li><strong>Next/Image</strong> · auto-optimize</li>
+      </ul>
+    </div>
+    <div class="bg-white rounded-2xl p-6 border border-cream-300">
+      <p class="text-2xl mb-3">🚀</p>
+      <h3 class="font-display text-xl font-bold mb-2">Deploy</h3>
+      <ul class="text-sm space-y-2 text-neutral-700">
+        <li><strong>Vercel</strong> · GitHub auto-deploy</li>
+        <li><strong>GitHub Actions</strong> · email webhook trigger</li>
+        <li><strong>GA4 + Search Console</strong></li>
+        <li><strong>Cloudflare</strong> · DNS + CDN</li>
+        <li><strong>Static + ISR</strong> · ~50ms TTFB</li>
+      </ul>
+    </div>
+    <div class="bg-white rounded-2xl p-6 border border-cream-300">
+      <p class="text-2xl mb-3">📧</p>
+      <h3 class="font-display text-xl font-bold mb-2">Email + integrations</h3>
+      <ul class="text-sm space-y-2 text-neutral-700">
+        <li><strong>Buttondown</strong> · newsletter (free 100)</li>
+        <li><strong>React Email</strong> · templates</li>
+        <li><strong>GitHub Action</strong> · auto-trigger on push</li>
+        <li><strong>Aliyun DNS</strong> · TXT verification</li>
+        <li><strong>Giscus</strong> · comments (optional)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Cost -->
+  <div class="mt-8 bg-primary-50 border-2 border-primary-200 rounded-2xl p-8">
+    <h3 class="font-display text-2xl font-bold mb-4">Operating cost · Year 1 estimate</h3>
+    <div class="grid md:grid-cols-4 gap-4 text-sm">
+      <div><div class="text-neutral-500">Domain</div><div class="font-bold text-lg">$12/year</div></div>
+      <div><div class="text-neutral-500">Vercel</div><div class="font-bold text-lg">$0 (free tier)</div></div>
+      <div><div class="text-neutral-500">Buttondown</div><div class="font-bold text-lg">$0 (&lt;100 subs)</div></div>
+      <div><div class="text-neutral-500">TOTAL</div><div class="font-bold text-2xl text-primary-600">~$1/month</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== SECTION 6: LAUNCH PLAN ==================== -->
+<section class="bg-gradient-to-br from-primary-500 to-primary-700 text-white">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <p class="text-sm font-mono text-primary-200 uppercase tracking-widest mb-2">§ 6</p>
+    <h2 class="font-display text-4xl font-bold mb-10">Launch plan · Week 1 → Day 7</h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/20">
+        <p class="text-primary-200 font-mono text-xs">DAY 1</p>
+        <h3 class="font-display text-lg font-bold mb-2">Bootstrap</h3>
+        <ul class="text-xs space-y-1 text-primary-50">
+          <li>Vercel + Next.js init</li>
+          <li>Tailwind config</li>
+          <li>Brand tokens wired</li>
+          <li>Favicon + logo set</li>
+        </ul>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/20">
+        <p class="text-primary-200 font-mono text-xs">DAY 2-3</p>
+        <h3 class="font-display text-lg font-bold mb-2">Content pipeline</h3>
+        <ul class="text-xs space-y-1 text-primary-50">
+          <li>MDX loader + 7 templates</li>
+          <li>Frontmatter schema</li>
+          <li>Article layout component</li>
+          <li>T1 sample deployed</li>
+        </ul>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/20">
+        <p class="text-primary-200 font-mono text-xs">DAY 4-5</p>
+        <h3 class="font-display text-lg font-bold mb-2">Pages + nav</h3>
+        <ul class="text-xs space-y-1 text-primary-50">
+          <li>Homepage hero + sections</li>
+          <li>Tools index + detail</li>
+          <li>Policies index</li>
+          <li>Newsletter form widget</li>
+        </ul>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/20">
+        <p class="text-primary-200 font-mono text-xs">DAY 6-7</p>
+        <h3 class="font-display text-lg font-bold mb-2">SEO + email</h3>
+        <ul class="text-xs space-y-1 text-primary-50">
+          <li>sitemap.xml + robots.txt</li>
+          <li>Article + FAQPage schema</li>
+          <li>Buttondown integration</li>
+          <li>GitHub Action webhook</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 bg-white text-neutral-900 rounded-2xl p-8">
+      <p class="text-sm font-mono text-primary-700 uppercase tracking-wider mb-3">end of week 1 deliverable</p>
+      <h3 class="font-display text-2xl font-bold mb-3">A live bestaietsy.com with:</h3>
+      <ul class="grid md:grid-cols-2 gap-2 text-sm">
+        <li>✅ 2 published articles (1 T1 + 1 T2)</li>
+        <li>✅ 5 tool review pages</li>
+        <li>✅ Working email subscription</li>
+        <li>✅ Auto-send pipeline (publish → email)</li>
+        <li>✅ SEO ready (sitemap + schema)</li>
+        <li>✅ 1 affiliate link generating revenue</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="bg-neutral-900 text-cream-200 py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="text-sm">bestaietsy.com · Design Overview v1 · 2026-07-04 · Made with ❤️ + AI</p>
+    <p class="text-xs text-neutral-500 mt-2">For internal review before development kickoff</p>
+  </div>
+</footer>
+
+</body>
+</html>

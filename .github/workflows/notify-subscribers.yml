@@ -1,0 +1,66 @@
+name: Auto-send new article to subscribers
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/articles/**.mdx'
+      - '.github/workflows/notify-subscribers.yml'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect newly added/modified articles
+        id: detect
+        run: |
+          # Get the list of changed MDX files in this push
+          CHANGED=$(git diff --name-only HEAD~1 HEAD | grep '^content/articles/.*\.mdx$' || true)
+
+          if [ -z "$CHANGED" ]; then
+            echo "No new articles in this push."
+            echo "changed=" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "changed=$CHANGED" >> $GITHUB_OUTPUT
+
+      - name: Send to Buttondown subscribers
+        if: steps.detect.outputs.changed != ''
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          ARTICLES=$(echo "${{ steps.detect.outputs.changed }}")
+
+          for article in $ARTICLES; do
+            # Extract frontmatter: title, slug, description
+            TITLE=$(grep -m1 '^title:' "$article" | sed 's/^title: *//; s/^["'\'']//; s/["'\'']$//')
+            SLUG=$(grep -m1 '^slug:' "$article" | sed 's/^slug: *//; s/^["'\'']//; s/["'\'']$//')
+            DESCRIPTION=$(grep -m1 '^description:' "$article" | sed 's/^description: *//; s/^["'\'']//; s/["'\'']$//')
+
+            # Build email body
+            EMAIL_BODY=$(cat <<EOF
+          {
+            "subject": "📰 New on bestaietsy: ${TITLE}",
+            "body": "<h2>${TITLE}</h2><p>${DESCRIPTION}</p><p><a href='https://bestaietsy.com/blog/${SLUG}'>Read the full article →</a></p>",
+            "status": "draft",
+            "email_type": "broadcast"
+          }
+          EOF
+          )
+
+            echo "📧 Drafting broadcast for: ${TITLE}"
+
+            # POST to Buttondown API
+            curl -X POST "https://api.buttondown.email/v1/emails/" \
+              -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
+              -H "Content-Type: application/json" \
+              -d "${EMAIL_BODY}"
+          done
+
+          echo "✅ Broadcast drafts created. Review in Buttondown dashboard, then send."
