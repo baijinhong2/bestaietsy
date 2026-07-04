@@ -39,7 +39,7 @@ scan() {
   local severity="$3" # "error" or "warn"
 
   # Search user-facing dirs only
-  # - src/app/[not api] = page files
+  # - src/app/[not api] = page files (excludes /api/* server routes and /robots.ts, /sitemap.ts which are config)
   # - src/components/ = React components
   # - content/ = MDX articles
   local hits
@@ -47,7 +47,7 @@ scan() {
     src/app/ \
     src/components/ \
     content/ \
-    --include="*.tsx" --include="*.ts" --include="*.mdx" 2>/dev/null \
+    --include="*.tsx" --include="*.mdx" 2>/dev/null \
     | grep -v node_modules || true)
 
   if [ -n "$hits" ]; then

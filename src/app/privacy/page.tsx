@@ -5,6 +5,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How bestaietsy collects, uses, and protects your information. GDPR and CCPA compliant.",
+  alternates: { canonical: "https://bestaietsy.com/privacy" },
+  robots: { index: true, follow: true },
 };
 
 export default function PrivacyPage() {

@@ -3,6 +3,11 @@ import path from "node:path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
 
+export interface FAQItem {
+  q: string;
+  a: string;
+}
+
 export interface Article {
   slug: string;
   type: "T1" | "T2" | "T3" | "T4" | "T5" | "T6" | "T7";
@@ -13,6 +18,8 @@ export interface Article {
   heroImage?: string;
   category: "policy" | "tool" | "tutorial" | "best-for" | "faq" | "guide";
   affiliate?: string[];
+  /** Optional FAQ items — enables FAQPage JSON-LD schema when present. */
+  faq?: FAQItem[];
   readingTime: number;
   content: string;
 }
@@ -42,6 +49,7 @@ function readArticleFile(filename: string): Article | null {
     heroImage: data.heroImage,
     category: (data.category ?? "tutorial") as Article["category"],
     affiliate: data.affiliate,
+    faq: data.faq,
     readingTime: Math.max(1, Math.round(rt.minutes)),
     content,
   };

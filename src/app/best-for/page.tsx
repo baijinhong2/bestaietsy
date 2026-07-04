@@ -8,6 +8,14 @@ import { getArticlesByCategory } from "@/lib/articles";
 export const metadata: Metadata = {
   title: "Best AI Tools for Your Etsy Shop",
   description: "AI tools picked for your specific Etsy shop type. Vintage, POD, jewelry, digital downloads — find what works for you.",
+  alternates: { canonical: "https://bestaietsy.com/best-for" },
+  openGraph: {
+    title: "Best AI Tools for Your Etsy Shop",
+    description: "AI tools picked for your specific Etsy shop type.",
+    url: "https://bestaietsy.com/best-for",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "bestaietsy best-for" }],
+  },
 };
 
 const AUDIENCES = [

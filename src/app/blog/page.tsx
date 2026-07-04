@@ -9,6 +9,14 @@ import { BookOpen } from "lucide-react";
 export const metadata: Metadata = {
   title: "All Articles",
   description: "Browse all articles from bestaietsy — Etsy policy updates, AI tool reviews, and guides for Etsy sellers.",
+  alternates: { canonical: "https://bestaietsy.com/blog" },
+  openGraph: {
+    title: "All Articles — bestaietsy",
+    description: "Browse all articles from bestaietsy — Etsy policy updates, AI tool reviews, and guides for Etsy sellers.",
+    url: "https://bestaietsy.com/blog",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "bestaietsy articles" }],
+  },
 };
 
 export default function BlogIndexPage() {

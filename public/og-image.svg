@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="ogBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF4ED"/>
+      <stop offset="60%" stop-color="#FFE5D4"/>
+      <stop offset="100%" stop-color="#FFC9A8"/>
+    </linearGradient>
+    <linearGradient id="ogOuter" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#D8500F"/>
+      <stop offset="60%" stop-color="#F1641E"/>
+      <stop offset="100%" stop-color="#FFA171"/>
+    </linearGradient>
+    <linearGradient id="ogInner" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#FFA171"/>
+      <stop offset="100%" stop-color="#FFE5A0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+
+  <!-- Subtle dot pattern (texture) -->
+  <g opacity="0.06">
+    <circle cx="120" cy="120" r="40" fill="#8B5E36"/>
+    <circle cx="280" cy="80" r="30" fill="#8B5E36"/>
+    <circle cx="1080" cy="500" r="50" fill="#8B5E36"/>
+    <circle cx="980" cy="120" r="35" fill="#8B5E36"/>
+    <circle cx="180" cy="540" r="45" fill="#8B5E36"/>
+    <circle cx="1080" cy="80" r="30" fill="#8B5E36"/>
+    <circle cx="380" cy="540" r="40" fill="#8B5E36"/>
+  </g>
+
+  <!-- Flame mark (large, centered-left) -->
+  <g transform="translate(150, 95)">
+    <path d="M 220 4
+             C 200 60 170 100 160 150
+             C 150 180 110 200 110 250
+             C 110 320 160 380 220 380
+             C 280 380 330 320 330 250
+             C 330 200 290 180 280 150
+             C 270 100 240 60 220 4 Z"
+          fill="url(#ogOuter)"/>
+    <path d="M 220 130
+             C 210 160 190 180 190 220
+             C 190 270 210 300 220 300
+             C 230 300 250 270 250 220
+             C 250 180 230 160 220 130 Z"
+          fill="url(#ogInner)" opacity="0.9"/>
+    <path d="M 290 80 L 297 100 L 318 107 L 297 114 L 290 134 L 283 114 L 262 107 L 283 100 Z"
+          fill="#FFFCF7"/>
+    <circle cx="160" cy="125" r="6" fill="#FFFCF7"/>
+  </g>
+
+  <!-- Text content (right side) -->
+  <g transform="translate(580, 180)">
+    <text x="0" y="0" font-family="'Inter', -apple-system, sans-serif"
+          font-size="20" font-weight="700" fill="#B23E0C" letter-spacing="3">
+      ETSY 2026 · AI TOOLKIT
+    </text>
+
+    <text x="0" y="80" font-family="'Playfair Display', Georgia, serif"
+          font-size="80" font-weight="900" fill="#3E2815">
+      bestaietsy
+    </text>
+
+    <text x="0" y="160" font-family="'Playfair Display', Georgia, serif"
+          font-size="32" font-style="italic" fill="#F1641E">
+      The AI toolkit for smart
+    </text>
+    <text x="0" y="200" font-family="'Playfair Display', Georgia, serif"
+          font-size="32" font-style="italic" fill="#F1641E">
+      Etsy sellers.
+    </text>
+
+    <!-- Bottom tag -->
+    <line x1="0" y1="240" x2="500" y2="240" stroke="#D2AE89" stroke-width="2"/>
+    <text x="0" y="275" font-family="'Inter', sans-serif"
+          font-size="16" font-weight="600" fill="#8B5E36">
+      Policy updates · Tool reviews · Weekly guides
+    </text>
+  </g>
+</svg>

@@ -33,17 +33,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = getArticleBySlug(slug);
   if (!article) return { title: "Not found" };
 
+  const canonicalUrl = `https://bestaietsy.com/blog/${article.slug}`;
+
   return {
     title: article.title,
     description: article.description,
     keywords: article.keywords,
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       title: article.title,
       description: article.description,
       type: "article",
+      url: canonicalUrl,
       publishedTime: article.date,
       authors: ["bestaietsy team"],
-      images: article.heroImage ? [article.heroImage] : undefined,
+      images: article.heroImage
+        ? [{ url: article.heroImage, width: 1200, height: 630, alt: article.title }]
+        : [{ url: "/og-image.png", width: 1200, height: 630, alt: article.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description,
+      images: article.heroImage ? [article.heroImage] : ["/og-image.png"],
     },
   };
 }
@@ -63,11 +75,13 @@ export default async function ArticlePage({ params }: PageProps) {
     day: "numeric",
     year: "numeric",
   });
+  const canonicalUrl = `https://bestaietsy.com/blog/${article.slug}`;
 
-  // JSON-LD Article schema
-  const jsonLd = {
+  // JSON-LD: Article + BreadcrumbList (+ FAQPage if applicable)
+  const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${canonicalUrl}#article`,
     headline: article.title,
     description: article.description,
     datePublished: article.date,
@@ -88,10 +102,56 @@ export default async function ArticlePage({ params }: PageProps) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://bestaietsy.com/blog/${article.slug}`,
+      "@id": canonicalUrl,
     },
+    image: article.heroImage || "https://bestaietsy.com/og-image.png",
     keywords: article.keywords.join(", "),
+    inLanguage: "en-US",
+    isPartOf: { "@id": "https://bestaietsy.com/#website" },
   };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://bestaietsy.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Articles",
+        item: "https://bestaietsy.com/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: canonicalUrl,
+      },
+    ],
+  };
+
+  // FAQPage schema if article has FAQ section (T1 always does)
+  const faqJsonLd =
+    article.faq && article.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": `${canonicalUrl}#faq`,
+          mainEntity: article.faq.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.a,
+            },
+          })),
+        }
+      : null;
 
   return (
     <>
@@ -100,8 +160,18 @@ export default async function ArticlePage({ params }: PageProps) {
       <main>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+        {faqJsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          />
+        )}
 
         {/* Breadcrumb */}
         <div className="bg-cream-100 border-b border-cream-300">

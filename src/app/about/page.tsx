@@ -6,6 +6,14 @@ import { Mail, Heart, Target } from "lucide-react";
 export const metadata: Metadata = {
   title: "About bestaietsy",
   description: "bestaietsy is a publication for Etsy sellers who want to grow with AI tools. Honest reviews, policy updates, weekly guides.",
+  alternates: { canonical: "https://bestaietsy.com/about" },
+  openGraph: {
+    title: "About bestaietsy",
+    description: "bestaietsy is a publication for Etsy sellers who want to grow with AI tools.",
+    url: "https://bestaietsy.com/about",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "about bestaietsy" }],
+  },
 };
 
 export default function AboutPage() {

@@ -8,6 +8,14 @@ import { getAllTools } from "@/lib/tools";
 export const metadata: Metadata = {
   title: "AI Tools for Etsy Sellers — Honest Reviews",
   description: "Browse AI tools tested for Etsy sellers. Roketfy, eRank, Midjourney, EtsyHunt, Alura — with pros, cons, pricing, and affiliate commissions.",
+  alternates: { canonical: "https://bestaietsy.com/tools" },
+  openGraph: {
+    title: "AI Tools for Etsy Sellers — Honest Reviews",
+    description: "Browse AI tools tested for Etsy sellers.",
+    url: "https://bestaietsy.com/tools",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "bestaietsy tools" }],
+  },
 };
 
 const CATEGORIES = [

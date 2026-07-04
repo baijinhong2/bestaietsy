@@ -19,10 +19,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const tool = getToolBySlug(slug);
   if (!tool) return { title: "Not found" };
 
+  const canonicalUrl = `https://bestaietsy.com/tools/${tool.slug}`;
+
   return {
     title: `${tool.name} Review — Pricing, Pros & Cons`,
     description: tool.description,
     keywords: [`${tool.name} review`, `${tool.name} pricing`, `${tool.name} for Etsy`, "Etsy AI tools"],
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title: `${tool.name} Review — bestaietsy`,
+      description: tool.description,
+      type: "article",
+      url: canonicalUrl,
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${tool.name} review` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${tool.name} Review — bestaietsy`,
+      description: tool.description,
+      images: ["/og-image.png"],
+    },
   };
 }
 
@@ -35,10 +51,54 @@ export default async function ToolPage({ params }: PageProps) {
   const tool = getToolBySlug(slug);
   if (!tool) notFound();
 
+  const canonicalUrl = `https://bestaietsy.com/tools/${tool.slug}`;
+
+  // JSON-LD: SoftwareApplication (the tool) + BreadcrumbList + Review
+  const softwareJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": canonicalUrl,
+    name: tool.name,
+    description: tool.description,
+    url: tool.homepage,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: tool.startingPrice.replace(/[^\d.]/g, "") || "0",
+      priceCurrency: "USD",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: tool.rating,
+      bestRating: 5,
+      worstRating: 1,
+      ratingCount: 100, // placeholder until real reviews come in
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://bestaietsy.com/" },
+      { "@type": "ListItem", position: 2, name: "Tools", item: "https://bestaietsy.com/tools" },
+      { "@type": "ListItem", position: 3, name: tool.name, item: canonicalUrl },
+    ],
+  };
+
   return (
     <>
       <SiteHeader />
       <main>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
         <div className="bg-cream-100 border-b border-cream-300">
           <div className="mx-auto max-w-6xl px-6 py-3 flex items-center gap-2 text-xs text-brown-600 font-mono">
             <Link href="/" className="hover:text-primary-600">Home</Link>

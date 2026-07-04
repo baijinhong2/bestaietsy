@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   authors: [{ name: "bestaietsy team" }],
   creator: "bestaietsy",
   publisher: "bestaietsy",
+  alternates: {
+    canonical: "/",
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -60,8 +63,47 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
+
+// Site-wide JSON-LD: Organization + WebSite (with SearchAction)
+const siteJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://bestaietsy.com/#organization",
+    name: "bestaietsy",
+    url: "https://bestaietsy.com",
+    logo: "https://bestaietsy.com/logo.svg",
+    description:
+      "English-language (US) publication for Etsy sellers. Honest AI tool reviews, policy updates, and weekly guides.",
+    sameAs: [],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://bestaietsy.com/#website",
+    name: "bestaietsy",
+    url: "https://bestaietsy.com",
+    publisher: { "@id": "https://bestaietsy.com/#organization" },
+    inLanguage: "en-US",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://bestaietsy.com/blog?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  },
+];
 
 export default function RootLayout({
   children,
@@ -70,6 +112,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-US">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+        />
+      </head>
       <body className="min-h-screen bg-cream-50 text-brown-900 antialiased">
         {children}
       </body>

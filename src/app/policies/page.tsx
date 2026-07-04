@@ -9,6 +9,14 @@ import { getArticlesByCategory } from "@/lib/articles";
 export const metadata: Metadata = {
   title: "Etsy 2026 Policy Updates",
   description: "Etsy's 2026 policy changes explained for sellers. 8/11 animal fur policy, 6/2 children policy, Q1 seller cleanup. Action plans included.",
+  alternates: { canonical: "https://bestaietsy.com/policies" },
+  openGraph: {
+    title: "Etsy 2026 Policy Updates",
+    description: "Etsy's 2026 policy changes explained for sellers.",
+    url: "https://bestaietsy.com/policies",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Etsy policy updates" }],
+  },
 };
 
 export default function PoliciesPage() {
