@@ -1,0 +1,311 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ========================================================================
+ * Brand tokens — bestaietsy.com
+ * Warm internet publication aesthetic · no pure black/white
+ * Primary: Etsy Orange (#F1641E)
+ * Accent: Forest Green (#3D7052)
+ * ======================================================================== */
+
+:root {
+  /* Primary · Etsy Orange */
+  --primary-50: #FFF4ED;
+  --primary-100: #FFE5D4;
+  --primary-200: #FFC9A8;
+  --primary-300: #FFA171;
+  --primary-400: #F18C4A;
+  --primary-500: #F1641E;
+  --primary-600: #D8500F;
+  --primary-700: #B23E0C;
+  --primary-800: #8C310A;
+  --primary-900: #662407;
+
+  /* Text · Brown (replaces black) */
+  --brown-50: #FAF5F0;
+  --brown-100: #F2E7DA;
+  --brown-200: #E4CDB4;
+  --brown-300: #D2AE89;
+  --brown-400: #BC8F5E;
+  --brown-500: #A37545;
+  --brown-600: #8B5E36;
+  --brown-700: #6F4827;
+  --brown-800: #55371E;
+  --brown-900: #3E2815;
+
+  /* Background · Cream (replaces white) */
+  --cream-50: #FFFCF7;
+  --cream-100: #FFF8EC;
+  --cream-200: #FFF1D9;
+  --cream-300: #FFE4B5;
+  --cream-400: #FCD9A0;
+  --cream-500: #F4C97D;
+
+  /* Accent · Forest Green (trust) */
+  --accent-50: #EDF4EE;
+  --accent-100: #D4E5D8;
+  --accent-200: #A9CBB1;
+  --accent-300: #7DAB89;
+  --accent-400: #5A8D68;
+  --accent-500: #3D7052;
+  --accent-600: #2F5A41;
+  --accent-700: #234431;
+  --accent-800: #173021;
+  --accent-900: #0B1C12;
+
+  /* Alert · Coral (replaces red) */
+  --coral-50: #FFF1F0;
+  --coral-100: #FFDAD4;
+  --coral-200: #FFB5A8;
+  --coral-300: #FF8B7B;
+  --coral-400: #F26A57;
+  --coral-500: #D8500F;
+  --coral-600: #B23E0C;
+
+  /* Highlight · Mustard */
+  --mustard-50: #FCF6E5;
+  --mustard-100: #F8EBC2;
+  --mustard-200: #F0D580;
+  --mustard-300: #E8C04D;
+  --mustard-400: #D9A52E;
+  --mustard-500: #B88A1F;
+}
+
+/* ========================================================================
+ * Tailwind v4 theme (CSS variables mapped to Tailwind utilities)
+ * ======================================================================== */
+
+@theme inline {
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+
+  --color-brown-50: var(--brown-50);
+  --color-brown-100: var(--brown-100);
+  --color-brown-200: var(--brown-200);
+  --color-brown-300: var(--brown-300);
+  --color-brown-400: var(--brown-400);
+  --color-brown-500: var(--brown-500);
+  --color-brown-600: var(--brown-600);
+  --color-brown-700: var(--brown-700);
+  --color-brown-800: var(--brown-800);
+  --color-brown-900: var(--brown-900);
+
+  --color-cream-50: var(--cream-50);
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+  --color-cream-300: var(--cream-300);
+  --color-cream-400: var(--cream-400);
+  --color-cream-500: var(--cream-500);
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+
+  --color-coral-50: var(--coral-50);
+  --color-coral-100: var(--coral-100);
+  --color-coral-200: var(--coral-200);
+  --color-coral-300: var(--coral-300);
+  --color-coral-400: var(--coral-400);
+  --color-coral-500: var(--coral-500);
+  --color-coral-600: var(--coral-600);
+
+  --color-mustard-50: var(--mustard-50);
+  --color-mustard-100: var(--mustard-100);
+  --color-mustard-200: var(--mustard-200);
+  --color-mustard-300: var(--mustard-300);
+  --color-mustard-400: var(--mustard-400);
+  --color-mustard-500: var(--mustard-500);
+
+  /* Fonts */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  /* Shadows (warm-tinted, not gray) */
+  --shadow-warm-sm: 0 1px 2px 0 rgba(139, 94, 54, 0.06);
+  --shadow-warm: 0 4px 6px -1px rgba(139, 94, 54, 0.08), 0 2px 4px -2px rgba(139, 94, 54, 0.06);
+  --shadow-warm-lg: 0 10px 15px -3px rgba(139, 94, 54, 0.10), 0 4px 6px -4px rgba(139, 94, 54, 0.08);
+}
+
+/* ========================================================================
+ * Base styles
+ * ======================================================================== */
+
+html {
+  font-family: var(--font-sans);
+  background: var(--cream-50);
+  color: var(--brown-900);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream-50);
+  color: var(--brown-900);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings use display font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Selection */
+::selection {
+  background: var(--primary-200);
+  color: var(--primary-900);
+}
+
+/* Focus ring (accessibility) */
+*:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth image rendering */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prose adjustments for MDX content */
+.prose-content {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--brown-800);
+}
+
+.prose-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--brown-900);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--brown-900);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-content p {
+  margin-bottom: 1.25rem;
+}
+
+.prose-content a {
+  color: var(--primary-600);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-300);
+  text-underline-offset: 3px;
+}
+
+.prose-content a:hover {
+  text-decoration-color: var(--primary-600);
+}
+
+.prose-content ul, .prose-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose-content li {
+  margin-bottom: 0.5rem;
+  list-style: disc;
+}
+
+.prose-content ol li {
+  list-style: decimal;
+}
+
+.prose-content blockquote {
+  border-left: 4px solid var(--primary-400);
+  background: var(--primary-50);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--brown-700);
+}
+
+.prose-content code {
+  background: var(--cream-200);
+  color: var(--brown-800);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.prose-content pre {
+  background: var(--brown-900);
+  color: var(--cream-100);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.prose-content table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.prose-content th {
+  background: var(--cream-100);
+  color: var(--brown-900);
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 2px solid var(--brown-300);
+}
+
+.prose-content td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--cream-300);
+  color: var(--brown-700);
+}
+
+.prose-content tr:hover td {
+  background: var(--cream-50);
+}
+
+.prose-content hr {
+  border: 0;
+  border-top: 1px solid var(--cream-300);
+  margin: 2.5rem 0;
+}
+
+.prose-content strong {
+  color: var(--brown-900);
+  font-weight: 700;
+}

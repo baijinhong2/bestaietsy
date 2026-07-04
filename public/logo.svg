@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="markOuter" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#D8500F"/>
+      <stop offset="60%" stop-color="#F1641E"/>
+      <stop offset="100%" stop-color="#FFA171"/>
+    </linearGradient>
+    <linearGradient id="markInner" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#FFA171"/>
+      <stop offset="100%" stop-color="#FFE5A0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- OUTER FLAME -->
+  <path d="M 32 4
+           C 28 12 22 18 20 26
+           C 18 32 12 34 12 42
+           C 12 52 20 60 32 60
+           C 44 60 52 52 52 42
+           C 52 34 46 32 44 26
+           C 42 18 36 12 32 4 Z"
+        fill="url(#markOuter)"/>
+
+  <!-- INNER FLAME -->
+  <path d="M 32 22
+           C 30 28 26 32 26 38
+           C 26 46 30 52 32 52
+           C 34 52 38 46 38 38
+           C 38 32 34 28 32 22 Z"
+        fill="url(#markInner)" opacity="0.9"/>
+
+  <!-- AI SPARKLE (top-right, primary) -->
+  <path d="M 44 14
+           L 45.5 17.5
+           L 49 19
+           L 45.5 20.5
+           L 44 24
+           L 42.5 20.5
+           L 39 19
+           L 42.5 17.5 Z"
+        fill="#FFFCF7"/>
+
+  <!-- AI SPARKLE (left, secondary dot) -->
+  <circle cx="20" cy="22" r="1.5" fill="#FFFCF7"/>
+</svg>
