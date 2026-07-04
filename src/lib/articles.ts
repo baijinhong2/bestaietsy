@@ -8,6 +8,15 @@ export interface FAQItem {
   a: string;
 }
 
+export interface Source {
+  /** Category for grouping in the rendered list. */
+  category: "official" | "research" | "review" | "policy" | "community" | "data";
+  /** Display label. */
+  label: string;
+  /** Outbound URL. */
+  url: string;
+}
+
 export interface Article {
   slug: string;
   type: "T1" | "T2" | "T3" | "T4" | "T5" | "T6" | "T7";
@@ -20,6 +29,8 @@ export interface Article {
   affiliate?: string[];
   /** Optional FAQ items — enables FAQPage JSON-LD schema when present. */
   faq?: FAQItem[];
+  /** Optional sources — renders "Sources" section at article end. */
+  sources?: Source[];
   readingTime: number;
   content: string;
 }
@@ -50,6 +61,7 @@ function readArticleFile(filename: string): Article | null {
     category: (data.category ?? "tutorial") as Article["category"],
     affiliate: data.affiliate,
     faq: data.faq,
+    sources: data.sources,
     readingTime: Math.max(1, Math.round(rt.minutes)),
     content,
   };

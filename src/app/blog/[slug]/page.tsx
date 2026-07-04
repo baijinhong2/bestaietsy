@@ -9,6 +9,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailForm } from "@/components/EmailForm";
 import { ArticleCard } from "@/components/ArticleCard";
+import { Sources } from "@/components/Sources";
 import { getArticleBySlug, getAllArticles, getRelatedArticles } from "@/lib/articles";
 
 const TOOL_DISPLAY_NAMES: Record<string, string> = {
@@ -268,6 +269,11 @@ export default async function ArticlePage({ params }: PageProps) {
                   </Link>.
                 </p>
               </div>
+            )}
+
+            {/* Sources (E-E-A-T: trust + citation transparency) */}
+            {article.sources && article.sources.length > 0 && (
+              <Sources sources={article.sources} />
             )}
 
             {/* Inline email CTA */}
