@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
-import { Star, ExternalLink, BarChart3, DollarSign, Gift, Users, Percent, ThumbsUp, ThumbsDown, Mail } from "lucide-react";
+import { Star, ExternalLink, BarChart3, DollarSign, Gift, Users, Percent, ThumbsUp, ThumbsDown, Hourglass, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailForm } from "@/components/EmailForm";
+import { AffiliateCTA } from "@/components/AffiliateCTA";
 import { getAllTools, getToolBySlug } from "@/lib/tools";
 
 interface PageProps {
@@ -177,21 +178,28 @@ export default async function ToolPage({ params }: PageProps) {
                       </div>
                     </div>
                   </div>
-                  <a
-                    href={tool.affiliateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer sponsored"
-                    className="mt-5 block text-center bg-primary-500 hover:bg-primary-600 text-cream-50 font-bold py-3 rounded-xl transition shadow-warm"
-                  >
-                    Try {tool.name} {tool.commission.includes("30") ? "(30% off)" : "Free"} →
-                  </a>
-                  <p className="text-xs text-brown-500 text-center mt-2">
-                    Affiliate link · We may earn a commission
-                  </p>
+
+                  <div className="mt-5">
+                    <AffiliateCTA
+                      href={tool.affiliateUrl}
+                      tool={tool.name}
+                      commissionNote={tool.commission}
+                      showDisclosure
+                      variant="primary"
+                    />
+                  </div>
+
+                  {tool.hasOffer && tool.commission.includes("30") && (
+                    <div className="mt-3 flex items-center gap-2 px-3 py-2 bg-mustard-50 border border-mustard-200 rounded-lg text-xs text-mustard-500">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span><strong>30% off</strong> for bestaietsy readers (once link is live)</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="bg-cream-100 border border-cream-300 rounded-2xl p-5">
-                  <p className="text-sm font-bold text-brown-700 mb-3">
+                  <p className="text-sm font-bold text-brown-700 mb-3 flex items-center gap-1.5">
+                    <ExternalLink className="w-4 h-4" />
                     Visit official site
                   </p>
                   <a
@@ -203,6 +211,9 @@ export default async function ToolPage({ params }: PageProps) {
                     {tool.homepage.replace(/^https?:\/\//, "")}
                     <ExternalLink className="w-3 h-3" />
                   </a>
+                  <p className="text-xs text-brown-500 mt-2">
+                    Direct link, no affiliate tracking
+                  </p>
                 </div>
               </aside>
             </div>

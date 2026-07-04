@@ -12,17 +12,40 @@ export interface Tool {
   bestFor: string[];
   pros: string[];
   cons: string[];
-  affiliateUrl: string;
+  /**
+   * Affiliate link to the tool's site.
+   *
+   * - string: live affiliate URL with `?ref=bestaietsy` (or vendor's param)
+   * - null: affiliate not yet configured. CTA will show "Read our review" or
+   *         "Coming soon" instead of linking out.
+   *
+   * To add an affiliate link later: replace `null` with the live URL.
+   */
+  affiliateUrl: string | null;
+  /**
+   * Whether the affiliate URL is a `rel="sponsored"` outbound (for FTC compliance).
+   * Always true for live affiliate links; ignored when affiliateUrl is null.
+   */
+  affiliateActive: boolean;
   commission: string;
   affiliateType: "lifetime" | "recurring" | "first-year";
   homepage: string;
   logoColor: string;
   logoInitial: string;
+  /**
+   * Marketing tag shown next to commission, e.g. "30% OFF via us"
+   * Set when commission is configured (even if affiliateUrl is null,
+   * to signal that an offer exists).
+   */
+  hasOffer?: boolean;
 }
 
 /**
- * Tools data — sourced from daily-content-agent/data/affiliate-links.md
- * Used for /tools index and /tools/[slug] pages
+ * Tools data — affiliate links to be configured by site owner.
+ * When user adds a real affiliate URL, change `affiliateUrl: null`
+ * to the live URL and set `affiliateActive: true`.
+ *
+ * Source for commission rates: daily-content-agent/data/affiliate-links.md
  */
 export const TOOLS: Tool[] = [
   {
@@ -47,9 +70,11 @@ export const TOOLS: Tool[] = [
       "Cheaper plans limit monthly AI credits",
       "UI can feel overwhelming at first",
     ],
-    affiliateUrl: "https://roketfy.com/?ref=bestaietsy",
+    affiliateUrl: null,
+    affiliateActive: false,
     commission: "30% lifetime",
     affiliateType: "lifetime",
+    hasOffer: true,
     homepage: "https://roketfy.com",
     logoColor: "#7C3AED",
     logoInitial: "R",
@@ -76,9 +101,11 @@ export const TOOLS: Tool[] = [
       "Premium features require paid plan",
       "Less AI assistance than Roketfy",
     ],
-    affiliateUrl: "https://erank.com/?ref=bestaietsy",
+    affiliateUrl: null,
+    affiliateActive: false,
     commission: "25% recurring",
     affiliateType: "recurring",
+    hasOffer: true,
     homepage: "https://erank.com",
     logoColor: "#0EA5E9",
     logoInitial: "e",
@@ -105,9 +132,11 @@ export const TOOLS: Tool[] = [
       "No free tier (Discord-only access)",
       "Steeper learning curve than Canva AI",
     ],
-    affiliateUrl: "https://midjourney.com/?ref=bestaietsy",
+    affiliateUrl: null,
+    affiliateActive: false,
     commission: "10-20% tiered",
     affiliateType: "recurring",
+    hasOffer: true,
     homepage: "https://midjourney.com",
     logoColor: "#1F2937",
     logoInitial: "M",
@@ -134,9 +163,11 @@ export const TOOLS: Tool[] = [
       "Sales data is estimated, not exact",
       "Free trial is limited",
     ],
-    affiliateUrl: "https://etsyhunt.com/?ref=bestaietsy",
+    affiliateUrl: null,
+    affiliateActive: false,
     commission: "30% recurring",
     affiliateType: "recurring",
+    hasOffer: true,
     homepage: "https://etsyhunt.com",
     logoColor: "#F97316",
     logoInitial: "E",
@@ -163,9 +194,11 @@ export const TOOLS: Tool[] = [
       "Less specialized than dedicated SEO tools",
       "Smaller keyword database than eRank",
     ],
-    affiliateUrl: "https://alura.com/?ref=bestaietsy",
+    affiliateUrl: null,
+    affiliateActive: false,
     commission: "30% recurring",
     affiliateType: "recurring",
+    hasOffer: true,
     homepage: "https://alura.com",
     logoColor: "#10B981",
     logoInitial: "A",
@@ -182,4 +215,12 @@ export function getToolBySlug(slug: string): Tool | null {
 
 export function getToolsByCategory(category: Tool["category"]): Tool[] {
   return TOOLS.filter((t) => t.category === category);
+}
+
+/**
+ * Get live (configured) affiliate URLs.
+ * Used by analytics / affiliate disclosure / where-we-link-out audit.
+ */
+export function getLiveAffiliateTools(): Tool[] {
+  return TOOLS.filter((t) => t.affiliateActive && t.affiliateUrl);
 }

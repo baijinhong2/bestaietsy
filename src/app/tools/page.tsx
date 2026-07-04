@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Star, ArrowRight, Wrench } from "lucide-react";
+import { Star, ArrowRight, Wrench, Hourglass } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getAllTools } from "@/lib/tools";
@@ -54,8 +54,14 @@ export default function ToolsIndexPage() {
                     <Link
                       key={tool.slug}
                       href={`/tools/${tool.slug}`}
-                      className="group bg-cream-50 border-2 border-cream-300 hover:border-primary-300 rounded-2xl p-6 transition shadow-warm-sm hover:shadow-warm"
+                      className="group bg-cream-50 border-2 border-cream-300 hover:border-primary-300 rounded-2xl p-6 transition shadow-warm-sm hover:shadow-warm relative"
                     >
+                      {!tool.affiliateActive && (
+                        <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-mustard-50 border border-mustard-300 text-mustard-500 text-[10px] font-bold uppercase tracking-wider">
+                          <Hourglass className="w-2.5 h-2.5" />
+                          Link pending
+                        </span>
+                      )}
                       <div className="flex items-start gap-3 mb-4">
                         <div
                           className="w-14 h-14 rounded-2xl flex items-center justify-center text-cream-50 font-bold text-2xl shrink-0 shadow-warm"

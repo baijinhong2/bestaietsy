@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AlertTriangle, ArrowRight, FileText, Wrench, ScrollText, Users, CheckCircle } from "lucide-react";
+import { AlertTriangle, ArrowRight, FileText, Wrench, ScrollText, Users, CheckCircle, Hourglass } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailForm } from "@/components/EmailForm";
@@ -205,8 +205,14 @@ export default function HomePage() {
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
-                  className="group bg-cream-50 border-2 border-cream-300 hover:border-primary-300 rounded-2xl p-5 transition shadow-warm-sm hover:shadow-warm"
+                  className="group bg-cream-50 border-2 border-cream-300 hover:border-primary-300 rounded-2xl p-5 transition shadow-warm-sm hover:shadow-warm relative"
                 >
+                  {!tool.affiliateActive && (
+                    <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-mustard-50 border border-mustard-300 text-mustard-500 text-[10px] font-bold uppercase tracking-wider">
+                      <Hourglass className="w-2.5 h-2.5" />
+                      Link pending
+                    </span>
+                  )}
                   <div className="flex items-start gap-3 mb-3">
                     <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center text-cream-50 font-bold text-lg shrink-0"
@@ -223,7 +229,11 @@ export default function HomePage() {
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-mono text-brown-600">{tool.startingPrice}</span>
-                    <span className="text-primary-600 font-semibold">{tool.commission}</span>
+                    {tool.hasOffer ? (
+                      <span className="text-primary-600 font-semibold">{tool.commission}</span>
+                    ) : (
+                      <span className="text-brown-400">—</span>
+                    )}
                   </div>
                 </Link>
               ))}

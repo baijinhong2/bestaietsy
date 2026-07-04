@@ -11,6 +11,19 @@ import { EmailForm } from "@/components/EmailForm";
 import { ArticleCard } from "@/components/ArticleCard";
 import { getArticleBySlug, getAllArticles, getRelatedArticles } from "@/lib/articles";
 
+const TOOL_DISPLAY_NAMES: Record<string, string> = {
+  roketfy: "Roketfy",
+  erank: "eRank",
+  midjourney: "Midjourney",
+  etsyhunt: "EtsyHunt",
+  alura: "Alura",
+  simplified: "Simplified",
+};
+
+function slugDisplayName(slug: string): string {
+  return TOOL_DISPLAY_NAMES[slug] ?? slug;
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -160,10 +173,29 @@ export default async function ArticlePage({ params }: PageProps) {
 
             {/* Affiliate disclosure */}
             {article.affiliate && article.affiliate.length > 0 && (
-              <div className="mt-12 p-4 bg-accent-50 border border-accent-200 rounded-xl text-sm text-accent-700">
-                <p>
-                  <strong>Disclosure:</strong> This article contains affiliate links to {article.affiliate.join(", ")}.
-                  Purchases through these links may earn the site a commission at no extra cost to you.
+              <div className="mt-12 p-5 bg-accent-50 border border-accent-200 rounded-xl">
+                <p className="text-sm text-accent-700 leading-relaxed">
+                  <strong className="flex items-center gap-1.5">
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    Affiliate disclosure
+                  </strong>
+                  <br />
+                  This article recommends:{" "}
+                  {article.affiliate.map((slug, i) => (
+                    <span key={slug}>
+                      <Link
+                        href={`/tools/${slug}`}
+                        className="font-semibold text-accent-700 underline decoration-accent-300 underline-offset-2 hover:decoration-accent-500"
+                      >
+                        {slugDisplayName(slug)}
+                      </Link>
+                      {i < article.affiliate!.length - 2 ? ", " : i === article.affiliate!.length - 2 ? " and " : ""}
+                    </span>
+                  ))}
+                  . Once affiliate links go live, purchases through them may earn the site a commission at no extra cost to you. See our{" "}
+                  <Link href="/affiliate-disclosure" className="font-semibold underline">
+                    full disclosure
+                  </Link>.
                 </p>
               </div>
             )}
