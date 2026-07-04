@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ExternalLink, Hourglass, Lock } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 interface AffiliateCTAProps {
   /** Live affiliate URL (e.g. "https://roketfy.com/?ref=bestaietsy"). Null = not yet configured. */
   href: string | null;
-  /** Tool name (used in CTA label + aria). */
+  /** Tool name (used in CTA label). */
   tool: string;
   /** CTA variant. */
   variant?: "primary" | "secondary" | "compact";
@@ -20,9 +20,9 @@ interface AffiliateCTAProps {
  * Unified affiliate CTA component.
  *
  * - When `href` is set: external link with `rel="sponsored noopener"`
- * - When `href` is null: "Coming soon" placeholder with subtle disabled state
+ * - When `href` is null: internal link to /tools/[slug] (review page)
  *
- * Used in: tool pages, article inline mentions, homepage cards, sidebar.
+ * No "pending" / "coming soon" labels — those are internal state, not user-facing copy.
  */
 export function AffiliateCTA({
   href,
@@ -79,7 +79,7 @@ export function AffiliateCTA({
     );
   }
 
-  // Not yet configured → fallback to internal review page
+  // Not yet configured → fallback to internal review page (clean copy, no dev labels)
   return (
     <div>
       <Link
@@ -94,10 +94,6 @@ export function AffiliateCTA({
       >
         {defaultLabel}
       </Link>
-      <div className="mt-2 flex items-center gap-1.5 text-xs text-brown-500">
-        <Hourglass className="w-3 h-3" />
-        <span>Affiliate link coming soon</span>
-      </div>
       {(commissionNote || showDisclosure) && (
         <AffiliateNote commissionNote={commissionNote} showDisclosure={showDisclosure} />
       )}
@@ -121,7 +117,6 @@ function AffiliateNote({
       )}
       {showDisclosure && (
         <p className="flex items-start gap-1">
-          <Lock className="w-3 h-3 mt-0.5 shrink-0" />
           <span>Affiliate link · We may earn a commission at no extra cost to you.</span>
         </p>
       )}
@@ -138,7 +133,8 @@ function slugify(s: string): string {
 
 /**
  * Inline affiliate mention — used inside article MDX text.
- * Renders as a text link to /tools/[slug] with subtle affiliate marker.
+ * Renders as a link (external if href set, otherwise internal /tools/[slug]).
+ * No dev state visible — clean text link.
  */
 export function AffiliateMention({
   href,
@@ -159,13 +155,10 @@ export function AffiliateMention({
       href={target}
       target={isLive ? "_blank" : undefined}
       rel={isLive ? "noopener noreferrer sponsored" : undefined}
-      className="inline-flex items-center gap-1 text-primary-700 font-semibold underline decoration-primary-300 underline-offset-2 hover:decoration-primary-600"
+      className="text-primary-700 font-semibold underline decoration-primary-300 underline-offset-2 hover:decoration-primary-600"
     >
       {children ?? tool}
-      {!isLive && (
-        <span className="inline-block w-1.5 h-1.5 rounded-full bg-mustard-400" aria-label="affiliate link pending" />
-      )}
-      {isLive && <ExternalLink className="w-3 h-3 inline" />}
+      {isLive && <ExternalLink className="w-3 h-3 inline ml-0.5" />}
     </a>
   );
 }
