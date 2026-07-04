@@ -5,7 +5,6 @@ on:
     branches: [main]
     paths:
       - 'content/articles/**.mdx'
-      - '.github/workflows/notify-subscribers.yml'
 
 jobs:
   notify:
@@ -16,51 +15,86 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Detect newly added/modified articles
+      - name: Detect newly added articles
         id: detect
         run: |
-          # Get the list of changed MDX files in this push
+          # Get the list of MDX files added or modified in this push
           CHANGED=$(git diff --name-only HEAD~1 HEAD | grep '^content/articles/.*\.mdx$' || true)
 
           if [ -z "$CHANGED" ]; then
-            echo "No new articles in this push."
-            echo "changed=" >> $GITHUB_OUTPUT
+            echo "No new articles in this push. Skipping broadcast."
+            echo "should_send=false" >> $GITHUB_OUTPUT
             exit 0
           fi
 
-          echo "changed=$CHANGED" >> $GITHUB_OUTPUT
+          echo "New articles detected:"
+          echo "$CHANGED"
+          echo "should_send=true" >> $GITHUB_OUTPUT
 
-      - name: Send to Buttondown subscribers
-        if: steps.detect.outputs.changed != ''
-        env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          # Save first changed article for broadcast (one article per push usually)
+          FIRST_ARTICLE=$(echo "$CHANGED" | head -1)
+          echo "article_path=$FIRST_ARTICLE" >> $GITHUB_OUTPUT
+
+      - name: Extract frontmatter
+        if: steps.detect.outputs.should_send == 'true'
+        id: fm
         run: |
-          ARTICLES=$(echo "${{ steps.detect.outputs.changed }}")
+          FILE="${{ steps.detect.outputs.article_path }}"
 
-          for article in $ARTICLES; do
-            # Extract frontmatter: title, slug, description
-            TITLE=$(grep -m1 '^title:' "$article" | sed 's/^title: *//; s/^["'\'']//; s/["'\'']$//')
-            SLUG=$(grep -m1 '^slug:' "$article" | sed 's/^slug: *//; s/^["'\'']//; s/["'\'']$//')
-            DESCRIPTION=$(grep -m1 '^description:' "$article" | sed 's/^description: *//; s/^["'\'']//; s/["'\'']$//')
+          # Extract frontmatter between --- markers (basic YAML parsing)
+          FRONTMATTER=$(awk '/^---$/{c++; next} c==1{print}' "$FILE")
 
-            # Build email body
-            EMAIL_BODY=$(cat <<EOF
+          TITLE=$(echo "$FRONTMATTER" | grep -E '^title:' | sed 's/^title:[[:space:]]*//; s/^["'\'']//; s/["'\'']$//')
+          SLUG=$(echo "$FRONTMATTER" | grep -E '^slug:' | sed 's/^slug:[[:space:]]*//; s/^["'\'']//; s/["'\'']$//')
+          DESCRIPTION=$(echo "$FRONTMATTER" | grep -E '^description:' | sed 's/^description:[[:space:]]*//; s/^["'\'']//; s/["'\'']$//')
+          TYPE=$(echo "$FRONTMATTER" | grep -E '^type:' | sed 's/^type:[[:space:]]*//; s/^["'\'']//; s/["'\'']$//')
+
+          # Fallbacks
+          [ -z "$SLUG" ] && SLUG=$(basename "$FILE" .mdx)
+          [ -z "$TYPE" ] && TYPE="article"
+
+          echo "title=$TITLE"
+          echo "slug=$SLUG"
+          echo "description=$DESCRIPTION"
+          echo "type=$TYPE"
+
+          # Save to step output (multiline safe via heredoc)
           {
-            "subject": "📰 New on bestaietsy: ${TITLE}",
-            "body": "<h2>${TITLE}</h2><p>${DESCRIPTION}</p><p><a href='https://bestaietsy.com/blog/${SLUG}'>Read the full article →</a></p>",
-            "status": "draft",
-            "email_type": "broadcast"
+            echo "title<<EOF"
+            echo "$TITLE"
+            echo "EOF"
+            echo "slug<<EOF"
+            echo "$SLUG"
+            echo "EOF"
+            echo "description<<EOF"
+            echo "$DESCRIPTION"
+            echo "EOF"
+            echo "type=$TYPE"
+          } >> $GITHUB_OUTPUT
+
+      - name: Trigger broadcast via Vercel API
+        if: steps.detect.outputs.should_send == 'true'
+        env:
+          BROADCAST_URL: ${{ secrets.BROADCAST_API_URL }}
+          BROADCAST_TOKEN: ${{ secrets.BROADCAST_API_SECRET }}
+        run: |
+          echo "📧 Triggering broadcast for: ${{ steps.fm.outputs.title }}"
+
+          PAYLOAD=$(cat <<EOF
+          {
+            "slug": "${{ steps.fm.outputs.slug }}",
+            "title": $(jq -Rs . <<< "${{ steps.fm.outputs.title }}"),
+            "description": $(jq -Rs . <<< "${{ steps.fm.outputs.description }}"),
+            "type": "${{ steps.fm.outputs.type }}"
           }
           EOF
           )
 
-            echo "📧 Drafting broadcast for: ${TITLE}"
+          curl -X POST "$BROADCAST_URL/api/broadcast" \
+            -H "Authorization: Bearer $BROADCAST_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD" \
+            --fail-with-body \
+            --show-error
 
-            # POST to Buttondown API
-            curl -X POST "https://api.buttondown.email/v1/emails/" \
-              -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
-              -H "Content-Type: application/json" \
-              -d "${EMAIL_BODY}"
-          done
-
-          echo "✅ Broadcast drafts created. Review in Buttondown dashboard, then send."
+          echo "✅ Broadcast triggered. Check Resend dashboard for delivery status."
