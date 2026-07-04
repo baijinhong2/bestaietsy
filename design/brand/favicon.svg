@@ -1,24 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF8A4A"/>
+    <linearGradient id="fOuter" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#D8500F"/>
       <stop offset="100%" stop-color="#F1641E"/>
     </linearGradient>
   </defs>
-  <!-- Background: rounded square with Etsy orange gradient -->
-  <rect x="0" y="0" width="64" height="64" rx="14" fill="url(#bg)"/>
-
-  <!-- "b" letter (bestaietsy brand) - serif, bold -->
-  <text x="32" y="44" text-anchor="middle"
-        font-family="Georgia, 'Playfair Display', serif"
-        font-size="42" font-weight="900" fill="#FFFFFF"
-        font-style="italic">b</text>
-
-  <!-- AI sparkle (top-right, white) -->
-  <g transform="translate(50, 14)" fill="#FFFFFF">
-    <path d="M 0 -6 L 1.5 -1.5 L 6 0 L 1.5 1.5 L 0 6 L -1.5 1.5 L -6 0 L -1.5 -1.5 Z"/>
-  </g>
-  <g transform="translate(42, 22)" fill="#FFF8EC">
-    <path d="M 0 -3 L 0.7 -0.7 L 3 0 L 0.7 0.7 L 0 3 L -0.7 0.7 L -3 0 L -0.7 -0.7 Z"/>
-  </g>
+  <rect width="32" height="32" rx="7" fill="#FFF1D9"/>
+  <path d="M 16 3
+           C 14 7 11 9 10 13
+           C 9 16 6 17 6 21
+           C 6 26 10 30 16 30
+           C 22 30 26 26 26 21
+           C 26 17 23 16 22 13
+           C 21 9 18 7 16 3 Z"
+        fill="url(#fOuter)"/>
+  <path d="M 22 7 L 22.8 9 L 24.8 9.8 L 22.8 10.6 L 22 12.6 L 21.2 10.6 L 19.2 9.8 L 21.2 9 Z"
+        fill="#FFFCF7"/>
 </svg>
