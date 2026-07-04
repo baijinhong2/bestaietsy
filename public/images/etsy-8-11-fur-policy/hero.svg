@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3E2723;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redX" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D32F2F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B71C1C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Vintage shop pattern overlay (subtle) -->
+  <g opacity="0.08">
+    <circle cx="200" cy="100" r="40" fill="#FFF"/>
+    <circle cx="400" cy="150" r="30" fill="#FFF"/>
+    <circle cx="600" cy="80" r="50" fill="#FFF"/>
+    <circle cx="800" cy="120" r="35" fill="#FFF"/>
+    <circle cx="1000" cy="100" r="45" fill="#FFF"/>
+    <circle cx="150" cy="500" r="50" fill="#FFF"/>
+    <circle cx="350" cy="550" r="40" fill="#FFF"/>
+    <circle cx="950" cy="520" r="55" fill="#FFF"/>
+  </g>
+
+  <!-- Vintage coat silhouette (faded) -->
+  <g opacity="0.25" transform="translate(150, 150)">
+    <path d="M 0 0 L 100 0 L 120 50 L 130 350 L 100 380 L 0 380 L -30 350 L -20 50 Z" fill="#D4A574"/>
+    <circle cx="50" cy="-20" r="30" fill="#D4A574"/>
+    <ellipse cx="50" cy="-25" rx="35" ry="20" fill="#8B6F47"/>
+  </g>
+
+  <!-- Red X overlay -->
+  <g transform="translate(150, 150)">
+    <line x1="0" y1="0" x2="130" y2="380" stroke="url(#redX)" stroke-width="35" stroke-linecap="round"/>
+    <line x1="130" y1="0" x2="0" y2="380" stroke="url(#redX)" stroke-width="35" stroke-linecap="round"/>
+  </g>
+
+  <!-- Main text block (right side) -->
+  <g transform="translate(500, 130)">
+    <text x="0" y="0" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#FFF8DC">ETSY 8/11</text>
+    <text x="0" y="65" font-family="Georgia, serif" font-size="52" font-weight="900" fill="#D32F2F">ANIMAL FUR POLICY</text>
+    <text x="0" y="110" font-family="Georgia, serif" font-size="24" fill="#FFE4B5" font-style="italic">(full ban effective date)</text>
+    <text x="0" y="155" font-family="-apple-system, sans-serif" font-size="24" fill="#FFE4B5">Vintage Sellers: What's at Risk</text>
+    <text x="0" y="185" font-family="-apple-system, sans-serif" font-size="20" fill="#FFE4B5">+ 5 AI-Powered Alternatives</text>
+
+    <!-- Divider line -->
+    <line x1="0" y1="210" x2="600" y2="210" stroke="#D4A574" stroke-width="2"/>
+
+    <text x="0" y="250" font-family="-apple-system, sans-serif" font-size="18" fill="#FFF8DC" opacity="0.9">Effective August 11, 2026</text>
+    <text x="0" y="275" font-family="-apple-system, sans-serif" font-size="18" fill="#FFF8DC" opacity="0.9">Even vintage animal fur is no longer exempt</text>
+  </g>
+
+  <!-- Brand badge -->
+  <g transform="translate(40, 570)">
+    <rect x="0" y="-20" width="200" height="30" rx="15" fill="#000" opacity="0.7"/>
+    <text x="100" y="0" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold" fill="#FFF8DC">bestaietsy.com</text>
+  </g>
+</svg>
