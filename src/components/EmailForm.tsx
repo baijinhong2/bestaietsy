@@ -131,8 +131,8 @@ export function EmailForm({ variant = "primary" }: { variant?: "primary" | "comp
         </p>
       )}
 
-      <p className="text-xs text-brown-500 mt-3 flex items-center gap-1">
-        🔒 1-click unsubscribe · Powered by Resend
+      <p className="text-xs text-brown-500 mt-3">
+        🔒 1-click unsubscribe · We respect your privacy
       </p>
     </div>
   );
