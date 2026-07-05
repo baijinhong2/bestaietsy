@@ -3,15 +3,18 @@ import type { Metadata } from "next";
 import { Users } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SeoSections } from "@/components/seo/SeoSections";
 import { getArticlesByCategory } from "@/lib/articles";
+import { bestForSeoContent } from "@/lib/seo/content/best-for";
+import { tdkToMetadata, faqJsonLd, jsonLdScript } from "@/lib/seo/metadata";
 
+const tdkMeta = tdkToMetadata(bestForSeoContent) ?? {};
 export const metadata: Metadata = {
-  title: "Best AI Tools for Your Etsy Shop",
-  description: "AI tools picked for your specific Etsy shop type. Vintage, POD, jewelry, digital downloads — find what works for you.",
+  ...tdkMeta,
   alternates: { canonical: "https://bestaietsy.com/best-for" },
   openGraph: {
-    title: "Best AI Tools for Your Etsy Shop",
-    description: "AI tools picked for your specific Etsy shop type.",
+    title: tdkMeta.title as string,
+    description: tdkMeta.description as string,
     url: "https://bestaietsy.com/best-for",
     type: "website",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "bestaietsy best-for" }],
@@ -88,6 +91,19 @@ export default function BestForPage() {
             </section>
           )}
         </div>
+
+        {/* SEO content sections */}
+        <section className="mt-20 pt-16 border-t-4 border-cream-200">
+          <div className="mx-auto max-w-6xl px-6">
+            <SeoSections content={bestForSeoContent} />
+          </div>
+        </section>
+
+        {/* FAQ structured data for GEO (AI search engines) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(faqJsonLd(bestForSeoContent) ?? {}) }}
+        />
       </main>
       <SiteFooter />
     </>

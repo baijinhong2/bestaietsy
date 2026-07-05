@@ -1,0 +1,54 @@
+flowchart TD
+    Start([Start: Which AI tool<br/>do you need?]) --> Q1{What is your<br/>biggest pain?}
+
+    Q1 -->|Writing 100+ listings| Listing[Category 1: AI Listing Tools]
+    Q1 -->|Low search ranking| SEO[Category 2: AI SEO Tools]
+    Q1 -->|Ugly product photos| Photo[Category 3: AI Photo Tools]
+    Q1 -->|Need POD designs| POD[Category 4: AI POD Tools]
+    Q1 -->|No time for social media| Mkt[Category 5: AI Marketing Tools]
+
+    Listing --> Q2{Single tool<br/>or bundle?}
+    Q2 -->|All-in-one| Rok[Roketfy Hobby<br/>$6.99/mo annual]
+    Q2 -->|Free only| AluraF[Alura Free +<br/>ChatGPT Free]
+
+    SEO --> Q3{Need keyword<br/>data only?}
+    Q3 -->|Yes| ER[eRank Free<br/>or Pro $4.99/mo]
+    Q3 -->|Full audit| Sale[Sale Samurai<br/>$9.99/mo]
+
+    Photo --> Q4{Budget<br/>level?}
+    Q4 -->|Free| Mock[Mockey Free]
+    Q4 -->|<$20/mo| Pebb[Pebblely Hobby<br/>$12/mo]
+    Q4 -->|Pro quality| Photo2[PhotoRoom Pro<br/>$9.99/mo]
+
+    POD --> Q5{Vector<br/>or raster?}
+    Q5 -->|Raster art| MJ[Midjourney<br/>$10/mo]
+    Q5 -->|Vector design| CF[Creative Fabrica<br/>$9.99/mo]
+    Q5 -->|T-shirt mockup| Kitt[Kittl Free<br/>or $9/mo]
+
+    Mkt --> Q6{Channels?}
+    Q6 -->|Pinterest + IG| Sim[Simplified<br/>$12/mo]
+    Q6 -->|Pinterest only| Canva[Canva Free<br/>or Pro $13/mo]
+    Q6 -->|Multi-platform| Or[Originality.ai<br/>for captions]
+
+    Rok --> Result([Pick your top pick<br/>and start with free trial])
+    AluraF --> Result
+    ER --> Result
+    Sale --> Result
+    Mock --> Result
+    Pebb --> Result
+    Photo2 --> Result
+    MJ --> Result
+    CF --> Result
+    Kitt --> Result
+    Sim --> Result
+    Canva --> Result
+    Or --> Result
+
+    style Start fill:#FF6B35,color:#FFFFFF,stroke:#FF6B35
+    style Result fill:#FF6B35,color:#FFFFFF,stroke:#FF6B35
+    style Q1 fill:#FFE5D9,stroke:#FF6B35
+    style Q2 fill:#FFE5D9,stroke:#FF6B35
+    style Q3 fill:#FFE5D9,stroke:#FF6B35
+    style Q4 fill:#FFE5D9,stroke:#FF6B35
+    style Q5 fill:#FFE5D9,stroke:#FF6B35
+    style Q6 fill:#FFE5D9,stroke:#FF6B35

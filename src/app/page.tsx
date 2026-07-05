@@ -1,15 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
+import type { Metadata } from "next";
 import { AlertTriangle, ArrowRight, FileText, Wrench, ScrollText, Users, CheckCircle, Hourglass } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailForm } from "@/components/EmailForm";
 import { ArticleCard } from "@/components/ArticleCard";
+import { SeoSections } from "@/components/seo/SeoSections";
 import { getRecentArticles } from "@/lib/articles";
 import { getAllTools } from "@/lib/tools";
+import { homeSeoContent } from "@/lib/seo/content/home";
+import { tdkToMetadata, faqJsonLd, jsonLdScript } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = tdkToMetadata(homeSeoContent) ?? {};
 
 export default function HomePage() {
   const articles = getRecentArticles(6);
-  const tools = getAllTools().slice(0, 5);
+  const tools = getAllTools().slice(0, 7);
 
   return (
     <>
@@ -124,7 +131,7 @@ export default function HomePage() {
               </Link>
 
               <Link
-                href="/policies"
+                href="/etsy-policies"
                 className="group bg-cream-50 border-2 border-mustard-300 hover:border-mustard-400 rounded-2xl p-6 transition shadow-warm-sm hover:shadow-warm"
               >
                 <div className="w-12 h-12 rounded-xl bg-mustard-100 flex items-center justify-center mb-4 group-hover:bg-mustard-200 transition">
@@ -201,7 +208,7 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {tools.slice(0, 6).map((tool) => (
+              {tools.map((tool) => (
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
@@ -209,10 +216,20 @@ export default function HomePage() {
                 >
                   <div className="flex items-start gap-3 mb-3">
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center text-cream-50 font-bold text-lg shrink-0"
-                      style={{ backgroundColor: tool.logoColor }}
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 overflow-hidden bg-cream-100"
+                      style={{ backgroundColor: tool.logo ? `${tool.logoColor}1A` : tool.logoColor }}
                     >
-                      {tool.logoInitial}
+                      {tool.logo ? (
+                        <Image
+                          src={tool.logo}
+                          alt={`${tool.name} logo`}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 object-contain p-1.5"
+                        />
+                      ) : (
+                        <span className="text-cream-50 font-bold text-lg">{tool.logoInitial}</span>
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-display text-lg font-bold text-brown-900 group-hover:text-primary-700 transition">
@@ -229,11 +246,29 @@ export default function HomePage() {
                       <span className="text-brown-400">—</span>
                     )}
                   </div>
+                  {tool.hasOffer && (
+                    <p className="mt-1.5 text-[10px] text-brown-500 leading-tight">
+                      Same price for you — vendor pays bestaietsy the commission.
+                    </p>
+                  )}
                 </Link>
               ))}
             </div>
           </div>
         </section>
+
+        {/* SEO content sections */}
+        <section className="py-16 bg-cream-50">
+          <div className="mx-auto max-w-6xl px-6">
+            <SeoSections content={homeSeoContent} />
+          </div>
+        </section>
+
+        {/* FAQ structured data for GEO (AI search engines) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(faqJsonLd(homeSeoContent) ?? {}) }}
+        />
 
         {/* CTA strip */}
         <section className="py-16 bg-gradient-to-br from-primary-500 to-primary-700 text-cream-50">

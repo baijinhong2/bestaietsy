@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createBroadcast, sendBroadcast, getSiteUrl } from "@/lib/resend";
+import {
+  getActiveSubscribers,
+  type SubscriptionType,
+} from "@/lib/supabase";
+import { sendEmail, sendEmailBatch, buildListUnsubscribeHeader } from "@/lib/aliyun-dm";
+import { resolveSender, buildUnsubscribeUrl } from "@/lib/email-config";
 import { renderBroadcastEmail } from "@/emails/broadcast";
 
 /**
@@ -12,12 +17,15 @@ import { renderBroadcastEmail } from "@/emails/broadcast";
  *
  * Flow:
  * 1. Verify auth token
- * 2. Create Resend Broadcast targeting audience
- * 3. Send broadcast to all subscribers
+ * 2. Parse + validate body
+ * 3. Fetch active BREAKING subscribers from Supabase
+ *    (weekly subscribers get the digest instead, not broadcasts)
+ * 4. Render per-recipient HTML (each gets a personalized unsubscribe URL)
+ * 5. Send batch via Aliyun DirectMail
  *
- * Called by:
- * - GitHub Action on git push of new MDX
- * - Manual curl from author for testing / re-send
+ * Caller convention: GitHub Action `.github/workflows/notify-subscribers.yml`
+ * extracts `important: true/false` from MDX frontmatter and only POSTs here
+ * when an article is marked important. Default `important: false`.
  */
 
 export async function POST(request: NextRequest) {
@@ -63,36 +71,60 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 3. Build email HTML
-    const siteUrl = getSiteUrl();
-    const html = renderBroadcastEmail({
-      siteUrl,
-      slug,
-      title,
-      description,
-      type: type || "article",
-    });
+    // 3. Fetch active BREAKING subscribers from Supabase
+    const subscribers = await getActiveSubscribers("breaking");
 
-    const subject = `📰 New on bestaietsy: ${title}`;
-
-    // 4. Create broadcast
-    const broadcast = await createBroadcast({
-      subject,
-      html,
-      name: `auto-${slug}`,
-    });
-
-    if (!broadcast?.id) {
-      throw new Error("Broadcast created but no ID returned");
+    if (subscribers.length === 0) {
+      return NextResponse.json({
+        success: true,
+        skipped: true,
+        reason: "No active breaking-news subscribers in Supabase.",
+        slug,
+      });
     }
 
-    // 5. Send broadcast immediately
-    await sendBroadcast(broadcast.id);
+    // 4. Build per-recipient broadcast payload
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bestaietsy.com";
+    const subject = `🚨 ${title}`;
+    const sender = resolveSender("breaking");
+
+    const emails = subscribers.map((sub) => {
+      const html = renderBroadcastEmail({
+        siteUrl,
+        email: sub.email,
+        slug,
+        title,
+        description,
+        type: type || "article",
+      });
+      const unsubscribeUrl = buildUnsubscribeUrl(siteUrl, sub.email, "breaking");
+      const headers = buildListUnsubscribeHeader(
+        unsubscribeUrl,
+        `${sender.replyToEmail}?subject=unsubscribe`,
+      );
+      return {
+        to: sub.email,
+        fromEmail: sender.fromEmail,
+        fromName: sender.fromName,
+        replyToEmail: sender.replyToEmail,
+        subject,
+        html,
+        tagName: "breaking-news" as const,
+        headers,
+      };
+    });
+
+    // 5. Send batch
+    const { okCount, failCount } = await sendEmailBatch(emails, {
+      concurrency: 8,
+    });
 
     return NextResponse.json({
       success: true,
-      broadcastId: broadcast.id,
       slug,
+      recipientCount: subscribers.length,
+      okCount,
+      failCount,
     });
   } catch (error) {
     console.error("POST /api/broadcast error:", error);

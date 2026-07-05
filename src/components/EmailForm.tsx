@@ -1,11 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Check, AlertCircle, Loader2 } from "lucide-react";
+import { Mail, Check, AlertCircle, Loader2, Bell } from "lucide-react";
+
+type Status = "idle" | "loading" | "success" | "error";
 
 export function EmailForm({ variant = "primary" }: { variant?: "primary" | "compact" }) {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  // GDPR-friendly: opt-in for the breaking list. Default = weekly only.
+  const [breakingOptIn, setBreakingOptIn] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -20,11 +24,13 @@ export function EmailForm({ variant = "primary" }: { variant?: "primary" | "comp
       return;
     }
 
+    const types = ["weekly", ...(breakingOptIn ? ["breaking"] : [])];
+
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, types }),
       });
 
       const data = await res.json();
@@ -41,9 +47,17 @@ export function EmailForm({ variant = "primary" }: { variant?: "primary" | "comp
         return;
       }
 
+      const gotBreaking = Array.isArray(data.welcomeSent)
+        ? data.welcomeSent.includes("breaking")
+        : false;
+      setMessage(
+        gotBreaking
+          ? "You're in! Check both inboxes for confirmation."
+          : "You're in! Check your inbox for confirmation.",
+      );
       setStatus("success");
-      setMessage("You're in! Check your inbox.");
       (e.target as HTMLFormElement).reset();
+      setBreakingOptIn(false);
     } catch {
       setStatus("error");
       setMessage("Network error. Please try again.");
@@ -99,6 +113,22 @@ export function EmailForm({ variant = "primary" }: { variant?: "primary" | "comp
           placeholder="your@email.com"
           className="w-full px-4 py-3 bg-cream-50 border-2 border-brown-200 rounded-lg text-base focus:border-primary-500 focus:outline-none"
         />
+
+        {/* Breaking-news opt-in (unchecked by default for GDPR) */}
+        <label className="flex items-start gap-2.5 cursor-pointer group">
+          <input
+            type="checkbox"
+            checked={breakingOptIn}
+            onChange={(e) => setBreakingOptIn(e.target.checked)}
+            className="mt-0.5 w-4 h-4 shrink-0 accent-coral-600 cursor-pointer"
+          />
+          <span className="text-xs text-brown-700 leading-snug">
+            <Bell className="inline w-3 h-3 -mt-0.5 mr-0.5 text-coral-600" />
+            <strong className="text-brown-900">Also send me breaking Etsy news.</strong>{" "}
+            Policy changes, platform outages, major AI tool updates. ~1&ndash;3 emails/month, only when it matters. Unsubscribe anytime.
+          </span>
+        </label>
+
         <button
           type="submit"
           disabled={status === "loading"}
@@ -132,7 +162,7 @@ export function EmailForm({ variant = "primary" }: { variant?: "primary" | "comp
       )}
 
       <p className="text-xs text-brown-500 mt-3">
-        🔒 1-click unsubscribe · We respect your privacy
+        🔒 1-click unsubscribe per list · We respect your privacy
       </p>
     </div>
   );

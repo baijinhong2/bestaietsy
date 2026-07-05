@@ -5,7 +5,14 @@ import { Mail, Heart, Target } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About bestaietsy",
-  description: "bestaietsy is a publication for Etsy sellers who want to grow with AI tools. Honest reviews, policy updates, weekly guides.",
+  description: "bestaietsy is an independent publication for Etsy sellers who want to grow with AI tools. Honest reviews, policy updates, weekly guides.",
+  keywords: [
+    "about bestaietsy",
+    "bestaietsy editorial standards",
+    "Etsy seller publication",
+    "honest AI tool reviews",
+    "Etsy policy coverage",
+  ],
   alternates: { canonical: "https://bestaietsy.com/about" },
   openGraph: {
     title: "About bestaietsy",

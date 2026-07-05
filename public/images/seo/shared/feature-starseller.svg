@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="30" fill="#FFE5D4"/>
+  <!-- Outer star points -->
+  <path d="M 32 10 L 37 22 L 50 23 L 40 32 L 43 45 L 32 38 L 21 45 L 24 32 L 14 23 L 27 22 Z" fill="#E8C04D" stroke="#B88A1F" stroke-width="1.5"/>
+  <!-- Inner star -->
+  <path d="M 32 18 L 35 26 L 43 27 L 37 32 L 39 39 L 32 35 L 25 39 L 27 32 L 21 27 L 29 26 Z" fill="#F1641E"/>
+
+</svg>

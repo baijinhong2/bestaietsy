@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="32" fill="#F1641E"/>
+  <!-- Shoulders / shirt -->
+  <path d="M 12 64 C 12 50 20 44 32 44 C 44 44 52 50 52 64 Z" fill="#FFFCF7"/>
+  <!-- Head -->
+  <circle cx="32" cy="28" r="11" fill="#FFFCF7"/>
+  <!-- Hair -->
+  <path d="M 21 26 C 21 18 26 14 32 14 C 38 14 43 18 43 26 C 43 24 41 22 38 22 C 36 21 33 21 31 22 C 29 21 27 22 25 23 C 23 23 21 24 21 26 Z" fill="#3E2815"/>
+
+</svg>

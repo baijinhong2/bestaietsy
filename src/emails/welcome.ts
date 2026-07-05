@@ -1,6 +1,10 @@
 /**
- * Welcome email template — sent when user subscribes
- * Plain HTML string (Resend accepts HTML directly)
+ * Welcome email template — sent when user subscribes to the WEEKLY digest
+ *
+ * Sender: newsletter@bestaietsy.com (Reply-To support@bestaietsy.com)
+ * Triggered by: POST /api/subscribe with types: ["weekly"]
+ *
+ * Plain HTML string (Aliyun DirectMail accepts HTML directly)
  *
  * Brand: bestaietsy.com
  * Colors: orange #F1641E, brown #3E2815 (text), cream #FFF8EC (bg), green #3D7052 (trust)
@@ -8,9 +12,10 @@
 
 interface WelcomeEmailProps {
   siteUrl: string;
+  email: string;
 }
 
-export function renderWelcomeEmail({ siteUrl }: WelcomeEmailProps): string {
+export function renderWelcomeEmail({ siteUrl, email }: WelcomeEmailProps): string {
   return `
 <!DOCTYPE html>
 <html>
@@ -107,9 +112,9 @@ export function renderWelcomeEmail({ siteUrl }: WelcomeEmailProps): string {
           <!-- Footer -->
           <tr>
             <td style="background:#FAF5F0;padding:18px 24px;text-align:center;font-size:12px;color:#8B5E36;border-top:1px solid #E4CDB4;">
-              <a href="${siteUrl}/privacy" style="color:#F1641E;text-decoration:none;">Privacy</a> · <a href="${siteUrl}/affiliate-disclosure" style="color:#F1641E;text-decoration:none;">Affiliate Disclosure</a><br />
+              <a href="${siteUrl}/privacy-policy" style="color:#F1641E;text-decoration:none;">Privacy</a> · <a href="${siteUrl}/affiliate-disclosure" style="color:#F1641E;text-decoration:none;">Affiliate Disclosure</a><br />
               <span style="color:#A37545;margin-top:6px;display:inline-block;">You're getting this because you subscribed at bestaietsy.com.</span><br />
-              <a href="${siteUrl}/api/unsubscribe?email={email}" style="color:#8B5E36;text-decoration:underline;font-size:11px;">Unsubscribe</a>
+              <a href="${siteUrl}/api/unsubscribe?email=${encodeURIComponent(email)}&list=weekly" style="color:#8B5E36;text-decoration:underline;font-size:11px;">Unsubscribe from weekly</a>
             </td>
           </tr>
 

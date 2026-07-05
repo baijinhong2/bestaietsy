@@ -4,7 +4,7 @@ import { Flame, FileText, Wrench, ScrollText, Users } from "lucide-react";
 const navItems = [
   { href: "/blog", label: "Articles", icon: FileText },
   { href: "/tools", label: "Tools", icon: Wrench },
-  { href: "/policies", label: "Policies", icon: ScrollText },
+  { href: "/etsy-policies", label: "Policies", icon: ScrollText },
   { href: "/best-for", label: "Best For", icon: Users },
 ];
 

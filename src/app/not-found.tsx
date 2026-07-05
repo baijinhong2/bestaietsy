@@ -60,7 +60,7 @@ export default function NotFound() {
                 </Link>
               </li>
               <li>
-                <Link href="/policies" className="text-primary-700 hover:text-primary-800">
+                <Link href="/etsy-policies" className="text-primary-700 hover:text-primary-800">
                   See Etsy policy updates
                 </Link>
               </li>

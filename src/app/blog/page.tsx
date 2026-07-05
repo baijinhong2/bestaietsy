@@ -7,8 +7,15 @@ import { getAllArticles } from "@/lib/articles";
 import { BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "All Articles",
+  title: "All Articles — bestaietsy",
   description: "Browse all articles from bestaietsy — Etsy policy updates, AI tool reviews, and guides for Etsy sellers.",
+  keywords: [
+    "bestaietsy blog",
+    "Etsy seller articles",
+    "Etsy policy articles",
+    "AI tool reviews",
+    "Etsy seller guides",
+  ],
   alternates: { canonical: "https://bestaietsy.com/blog" },
   openGraph: {
     title: "All Articles — bestaietsy",

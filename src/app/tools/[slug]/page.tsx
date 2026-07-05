@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
-import { Star, ExternalLink, BarChart3, DollarSign, Gift, Users, Percent, ThumbsUp, ThumbsDown, Hourglass, Sparkles } from "lucide-react";
+import { Star, ExternalLink, BarChart3, DollarSign, Gift, Users, Percent, ThumbsUp, ThumbsDown, Hourglass } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailForm } from "@/components/EmailForm";
@@ -116,10 +117,20 @@ export default async function ToolPage({ params }: PageProps) {
               <div className="lg:col-span-2">
                 <div className="flex items-start gap-4 mb-6">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-cream-50 font-bold text-4xl shrink-0 shadow-warm"
-                    style={{ backgroundColor: tool.logoColor }}
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 shadow-warm overflow-hidden bg-cream-100"
+                    style={{ backgroundColor: tool.logo ? `${tool.logoColor}1A` : tool.logoColor }}
                   >
-                    {tool.logoInitial}
+                    {tool.logo ? (
+                      <Image
+                        src={tool.logo}
+                        alt={`${tool.name} logo`}
+                        width={80}
+                        height={80}
+                        className="w-20 h-20 object-contain p-2.5"
+                      />
+                    ) : (
+                      <span className="text-cream-50 font-bold text-4xl">{tool.logoInitial}</span>
+                    )}
                   </div>
                   <div>
                     <h1 className="font-display text-4xl font-black text-brown-900 mb-2">
@@ -249,11 +260,12 @@ export default async function ToolPage({ params }: PageProps) {
                     />
                   </div>
 
-                  {tool.hasOffer && tool.commission.includes("30") && (
-                    <div className="mt-3 flex items-center gap-2 px-3 py-2 bg-mustard-50 border border-mustard-200 rounded-lg text-xs text-mustard-500">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span><strong>30% off</strong> for bestaietsy readers (once link is live)</span>
-                    </div>
+                  {tool.hasOffer && (
+                    <p className="mt-3 text-xs text-brown-600">
+                      <strong className="text-brown-900">No extra cost to you</strong> — bestaietsy earns a
+                      small commission from the vendor when you sign up through our link.
+                      You pay the same price as going directly.
+                    </p>
                   )}
                 </div>
 

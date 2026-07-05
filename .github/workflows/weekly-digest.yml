@@ -1,0 +1,29 @@
+name: Weekly digest — send past 7 days articles to subscribers
+
+on:
+  schedule:
+    # Every Tuesday at 13:00 UTC = 9am EDT / 6am PDT
+    - cron: "0 13 * * 2"
+
+  workflow_dispatch:
+    # Allows manual trigger for testing
+
+jobs:
+  send-weekly-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger weekly digest via API
+        env:
+          BROADCAST_URL: ${{ secrets.BROADCAST_API_URL }}
+          BROADCAST_TOKEN: ${{ secrets.BROADCAST_API_SECRET }}
+        run: |
+          echo "📅 Sending weekly digest for past 7 days..."
+
+          curl -X POST "$BROADCAST_URL/api/weekly-digest" \
+            -H "Authorization: Bearer $BROADCAST_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{}' \
+            --fail-with-body \
+            --show-error
+
+          echo "✅ Weekly digest trigger complete."

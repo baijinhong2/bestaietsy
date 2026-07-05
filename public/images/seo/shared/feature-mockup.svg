@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="30" fill="#EDF4EE"/>
+  <!-- Canvas -->
+  <rect x="12" y="16" width="40" height="32" rx="3" fill="#FFFCF7" stroke="#3E2815" stroke-width="1.5"/>
+  <!-- Image inside canvas (abstract mountain) -->
+  <path d="M 16 40 L 26 28 L 32 34 L 40 22 L 48 40 Z" fill="#F1641E" opacity="0.7"/>
+  <circle cx="42" cy="22" r="3" fill="#E8C04D"/>
+  <!-- Color palette dots -->
+  <circle cx="14" cy="50" r="2.5" fill="#F1641E"/>
+  <circle cx="22" cy="50" r="2.5" fill="#E8C04D"/>
+  <circle cx="30" cy="50" r="2.5" fill="#3D7052"/>
+  <circle cx="38" cy="50" r="2.5" fill="#C9280C"/>
+
+</svg>

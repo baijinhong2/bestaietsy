@@ -48,15 +48,18 @@ jobs:
           SLUG=$(echo "$FRONTMATTER" | grep -E '^slug:' | sed 's/^slug:[[:space:]]*//; s/^["'\'']//; s/["'\'']$//')
           DESCRIPTION=$(echo "$FRONTMATTER" | grep -E '^description:' | sed 's/^description:[[:space:]]*//; s/^["'\'']//; s/["'\'']$//')
           TYPE=$(echo "$FRONTMATTER" | grep -E '^type:' | sed 's/^type:[[:space:]]*//; s/^["'\'']//; s/["'\'']$//')
+          IMPORTANT=$(echo "$FRONTMATTER" | grep -E '^important:' | sed 's/^important:[[:space:]]*//; s/^["'\'']//; s/["'\'']$//')
 
           # Fallbacks
           [ -z "$SLUG" ] && SLUG=$(basename "$FILE" .mdx)
           [ -z "$TYPE" ] && TYPE="article"
+          [ -z "$IMPORTANT" ] && IMPORTANT="false"
 
           echo "title=$TITLE"
           echo "slug=$SLUG"
           echo "description=$DESCRIPTION"
           echo "type=$TYPE"
+          echo "important=$IMPORTANT"
 
           # Save to step output (multiline safe via heredoc)
           {
@@ -70,15 +73,17 @@ jobs:
             echo "$DESCRIPTION"
             echo "EOF"
             echo "type=$TYPE"
+            echo "important=$IMPORTANT"
           } >> $GITHUB_OUTPUT
 
-      - name: Trigger broadcast via Vercel API
-        if: steps.detect.outputs.should_send == 'true'
+      - name: Trigger breaking-news broadcast (only if important: true)
+        if: steps.detect.outputs.should_send == 'true' && steps.fm.outputs.important == 'true'
         env:
           BROADCAST_URL: ${{ secrets.BROADCAST_API_URL }}
           BROADCAST_TOKEN: ${{ secrets.BROADCAST_API_SECRET }}
         run: |
-          echo "📧 Triggering broadcast for: ${{ steps.fm.outputs.title }}"
+          echo "🚨 Article is marked important — sending breaking-news broadcast."
+          echo "Article: ${{ steps.fm.outputs.title }}"
 
           PAYLOAD=$(cat <<EOF
           {
@@ -97,4 +102,10 @@ jobs:
             --fail-with-body \
             --show-error
 
-          echo "✅ Broadcast triggered. Check Resend dashboard for delivery status."
+          echo "✅ Breaking-news broadcast triggered. Check Resend dashboard."
+
+      - name: Skip broadcast (article not marked important)
+        if: steps.detect.outputs.should_send == 'true' && steps.fm.outputs.important != 'true'
+        run: |
+          echo "ℹ️  Article not marked important: ${{ steps.fm.outputs.title }}"
+          echo "Will appear in next weekly digest instead of an immediate broadcast."

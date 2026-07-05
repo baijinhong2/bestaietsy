@@ -27,6 +27,14 @@ export interface Article {
   heroImage?: string;
   category: "policy" | "tool" | "tutorial" | "best-for" | "faq" | "guide";
   affiliate?: string[];
+  /**
+   * If true, this article triggers an immediate breaking-news broadcast
+   * (in addition to appearing in the next weekly digest).
+   *
+   * Importance is decided at content-planning time — not auto-detected.
+   * Default: false. Most articles are NOT important.
+   */
+  important?: boolean;
   /** Optional FAQ items — enables FAQPage JSON-LD schema when present. */
   faq?: FAQItem[];
   /** Optional sources — renders "Sources" section at article end. */
@@ -60,6 +68,7 @@ function readArticleFile(filename: string): Article | null {
     heroImage: data.heroImage,
     category: (data.category ?? "tutorial") as Article["category"],
     affiliate: data.affiliate,
+    important: data.important === true,
     faq: data.faq,
     sources: data.sources,
     readingTime: Math.max(1, Math.round(rt.minutes)),

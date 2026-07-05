@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FAFAFA"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="600" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="36" font-weight="800" fill="#1A1A1A" text-anchor="middle">Our 5-Dimension Testing Methodology</text>
+  <text x="600" y="95" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" fill="#777" text-anchor="middle">Every tool scored on the same weighted rubric, then converted to X/5</text>
+
+  <!-- 5 dimension bars -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <!-- Dimension 1 -->
+    <text x="80" y="180" font-size="22" font-weight="700" fill="#1A1A1A">Functionality</text>
+    <text x="80" y="205" font-size="14" fill="#777">Does the tool deliver its core promise?</text>
+    <rect x="80" y="225" width="900" height="40" rx="20" fill="#F0F0F0"/>
+    <rect x="80" y="225" width="900" height="40" rx="20" fill="#FF6B35"/>
+    <text x="950" y="252" font-size="22" font-weight="800" fill="#FF6B35">30%</text>
+
+    <!-- Dimension 2 -->
+    <text x="80" y="320" font-size="22" font-weight="700" fill="#1A1A1A">Pricing value</text>
+    <text x="80" y="345" font-size="14" fill="#777">Cost vs. hours saved per month</text>
+    <rect x="80" y="365" width="900" height="40" rx="20" fill="#F0F0F0"/>
+    <rect x="80" y="365" width="600" height="40" rx="20" fill="#F7931E"/>
+    <text x="950" y="392" font-size="22" font-weight="800" fill="#F7931E">20%</text>
+
+    <!-- Dimension 3 -->
+    <text x="80" y="460" font-size="22" font-weight="700" fill="#1A1A1A">Etsy fit</text>
+    <text x="80" y="485" font-size="14" fill="#777">Etsy-specific vs. generic platform</text>
+    <rect x="80" y="505" width="900" height="40" rx="20" fill="#F0F0F0"/>
+    <rect x="80" y="505" width="600" height="40" rx="20" fill="#FF6B35"/>
+    <text x="950" y="532" font-size="22" font-weight="800" fill="#FF6B35">20%</text>
+
+    <!-- Dimension 4 -->
+    <text x="80" y="600" font-size="22" font-weight="700" fill="#1A1A1A">Ease of use</text>
+    <text x="80" y="625" font-size="14" fill="#777">Time to first useful output</text>
+    <text x="1100" y="600" font-size="14" font-weight="700" fill="#777" text-anchor="end">20%</text>
+  </g>
+</svg>

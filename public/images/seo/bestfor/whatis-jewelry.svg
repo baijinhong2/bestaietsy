@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160">
+  <rect width="200" height="160" rx="16" fill="#FFFCF7" stroke="#E4CDB4" stroke-width="2"/>
+
+  <text x="100" y="22" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#3E2815" font-weight="bold">Jewelry AI tools</text>
+
+  <!-- Gem (top) -->
+  <g transform="translate(85, 30)">
+    <path d="M 15 2 L 28 10 L 23 26 L 7 26 L 2 10 Z" fill="#E8C04D" stroke="#B88A1F" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M 2 10 L 28 10 L 23 26 L 7 26 Z" fill="#F1641E" opacity="0.4"/>
+    <path d="M 15 2 L 15 26" stroke="#B88A1F" stroke-width="1" opacity="0.5"/>
+    <path d="M 2 10 L 15 2 L 28 10" fill="none" stroke="#FFFCF7" stroke-width="0.5" opacity="0.7"/>
+  </g>
+
+  <path d="M 100 65 L 100 73" stroke="#F1641E" stroke-width="2" stroke-dasharray="3 2"/>
+
+  <!-- Roketfy -->
+  <g transform="translate(20, 80)">
+    <rect x="0" y="0" width="40" height="40" rx="8" fill="#F1641E"/>
+    <path d="M 20 12 L 26 22 L 20 18 L 14 22 Z" fill="#FFFCF7"/>
+    <circle cx="20" cy="14" r="2" fill="#FFFCF7"/>
+    <text x="20" y="58" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#3E2815" font-weight="bold">Roketfy</text>
+  </g>
+
+  <!-- Alura (green A) -->
+  <g transform="translate(80, 80)">
+    <rect x="0" y="0" width="40" height="40" rx="8" fill="#10B981"/>
+    <path d="M 12 30 L 20 12 L 28 30 L 24 30 L 22 26 L 18 26 L 16 30 Z" fill="#FFFCF7"/>
+    <text x="20" y="58" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#3E2815" font-weight="bold">Alura</text>
+  </g>
+
+  <!-- Simplified -->
+  <g transform="translate(140, 80)">
+    <rect x="0" y="0" width="40" height="40" rx="8" fill="#7C3AED"/>
+    <path d="M 10 14 L 16 10 L 22 14 L 26 12 L 30 16 L 26 24 L 20 28 L 14 22 Z" fill="none" stroke="#FFFCF7" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="20" cy="18" r="3" fill="#FFFCF7"/>
+    <text x="20" y="58" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#3E2815" font-weight="bold">Simplified</text>
+  </g>
+
+  <text x="100" y="155" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#8B5E36" font-style="italic">SEO + tags + photo retouch</text>
+</svg>

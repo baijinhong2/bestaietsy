@@ -1,7 +1,10 @@
 /**
- * Broadcast email template — sent on every new article publish
+ * Broadcast email template — sent when an article is marked `important: true`
  *
- * Triggered by: GitHub Action POST /api/broadcast
+ * Triggered by: GitHub Action POST /api/broadcast (only when frontmatter important=true)
+ *
+ * Sender: important@bestaietsy.com (Reply-To support@bestaietsy.com)
+ * Audience: only subscribers with breaking_enabled = true (NOT weekly digest)
  *
  * Variants:
  * - T1 Policy Interpretation → coral alert header
@@ -11,6 +14,8 @@
 
 interface BroadcastEmailProps {
   siteUrl: string;
+  /** Per-recipient email — used for the personalized unsubscribe URL. */
+  email: string;
   slug: string;
   title: string;
   description: string;
@@ -29,6 +34,7 @@ const TYPE_BADGE: Record<string, { label: string; color: string; bg: string; bor
 
 export function renderBroadcastEmail({
   siteUrl,
+  email,
   slug,
   title,
   description,
@@ -36,6 +42,7 @@ export function renderBroadcastEmail({
 }: BroadcastEmailProps): string {
   const badge = TYPE_BADGE[type] ?? TYPE_BADGE.T1;
   const articleUrl = `${siteUrl}/blog/${slug}`;
+  const unsubscribeUrl = `${siteUrl}/api/unsubscribe?email=${encodeURIComponent(email)}&list=breaking`;
 
   return `
 <!DOCTYPE html>
@@ -53,9 +60,29 @@ export function renderBroadcastEmail({
 
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width:600px;background:#FFFCF7;border:1px solid #E4CDB4;border-radius:14px;overflow:hidden;">
 
-          <!-- Header: type-specific colored bar -->
+          <!-- Header: type-specific colored bar + unified flame logo -->
           <tr>
             <td style="background:linear-gradient(135deg,${badge.bg} 0%,#FFFCF7 100%);padding:24px;border-bottom:3px solid ${badge.border};">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:0 0 10px;">
+                <tr>
+                  <td style="vertical-align:middle;padding-right:8px;">
+                    <!-- Unified flame logo (identical to welcome.ts + weekly-digest.ts) -->
+                    <svg width="28" height="28" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="bcFlame" x1="50%" y1="100%" x2="50%" y2="0%">
+                          <stop offset="0%" stop-color="#FFE5D4"/><stop offset="100%" stop-color="#FFFCF7"/>
+                        </linearGradient>
+                      </defs>
+                      <path d="M 32 4 C 28 12 22 18 20 26 C 18 32 12 34 12 42 C 12 52 20 60 32 60 C 44 60 52 52 52 42 C 52 34 46 32 44 26 C 42 18 36 12 32 4 Z" fill="url(#bcFlame)"/>
+                      <path d="M 32 22 C 30 28 26 32 26 38 C 26 46 30 52 32 52 C 34 52 38 46 38 38 C 38 32 34 28 32 22 Z" fill="#FFE5A0" opacity="0.9"/>
+                      <path d="M 44 14 L 45.5 17.5 L 49 19 L 45.5 20.5 L 44 24 L 42.5 20.5 L 39 19 L 42.5 17.5 Z" fill="#F1641E"/>
+                    </svg>
+                  </td>
+                  <td style="vertical-align:middle;">
+                    <span style="font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:900;color:#3E2815;">bestaietsy</span>
+                  </td>
+                </tr>
+              </table>
               <p style="font-family:'JetBrains Mono','Courier New',monospace;font-size:11px;color:${badge.color};letter-spacing:1.5px;margin:0 0 6px;font-weight:600;">
                 ${badge.icon} ${badge.label}
               </p>
@@ -109,7 +136,7 @@ export function renderBroadcastEmail({
               <a href="${siteUrl}/blog" style="color:#F1641E;text-decoration:none;">All articles</a> ·
               <a href="${siteUrl}/privacy" style="color:#F1641E;text-decoration:none;">Privacy</a> ·
               <a href="${siteUrl}/affiliate-disclosure" style="color:#F1641E;text-decoration:none;">Affiliate Disclosure</a><br />
-              <a href="${siteUrl}/api/unsubscribe?email={email}" style="color:#8B5E36;text-decoration:underline;font-size:11px;display:inline-block;margin-top:6px;">Unsubscribe</a>
+              <a href="${unsubscribeUrl}" style="color:#8B5E36;text-decoration:underline;font-size:11px;display:inline-block;margin-top:6px;">Unsubscribe from breaking news</a>
             </td>
           </tr>
 

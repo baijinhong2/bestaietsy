@@ -54,17 +54,83 @@ bestaietsy/
 - **Accent**: Red `#D32F2F` (alerts, CTAs)
 - **Fonts**: Playfair Display (display) + Inter (body) + JetBrains Mono (code)
 
-## 📧 Email auto-send
+## 📧 Email pipeline (current)
 
-**How it works**:
-1. Author commits MDX file to `content/articles/`
-2. GitHub Action detects new file in `.github/workflows/notify-subscribers.yml`
-3. Action extracts title + slug from frontmatter
-4. POSTs to Buttondown API → creates email broadcast draft
-5. Author reviews draft in Buttondown dashboard → clicks "Send"
-6. All subscribers receive the email in <60s
+Two modes, two triggers — **importance is decided at content-planning time, not auto-detected**.
 
-**Why draft, not auto-send**: Always let author do a 30-second final eye-check before broadcasting.
+### Sender addresses
+
+| List | From | Reply-To |
+|------|------|----------|
+| Weekly digest | `newsletter@bestaietsy.com` | `support@bestaietsy.com` |
+| Breaking news | `important@bestaietsy.com` | `support@bestaietsy.com` |
+
+Each sender address must be **separately verified** in Alibaba Cloud DirectMail console (发信地址 → 新建发信地址 → 验证回信 mailto).
+
+### Delivery: Alibaba Cloud DirectMail (ap-southeast-1)
+
+- Provider: 阿里云邮件推送 (DirectMail), Singapore region
+- API client: `@alicloud/dm20151123` (official SDK)
+- Wrapper: `src/lib/aliyun-dm.ts` — exposes `sendEmail()`, `sendEmailBatch()`, `buildListUnsubscribeHeader()`
+- Each recipient gets a personalized unsubscribe URL with their own UUID token
+- Batch sends are concurrency-limited to 8 parallel calls (avoids API throttling)
+
+### Subscriber storage: Supabase Postgres
+
+- Source of truth (replaced Resend Audiences)
+- Schema: `supabase/schema.sql` (run once in Supabase SQL Editor)
+- Wrapper: `src/lib/supabase.ts` — exposes `upsertSubscriber()`, `getActiveSubscribers()`, `unsubscribe()`, `getSubscriberByToken()`
+- RLS enabled, anon key blocked — service-role key used by API only
+
+### Mode 1: Weekly digest (cron-scheduled)
+
+- **When**: Every Tuesday at 13:00 UTC = 9am EDT / 6am PDT
+- **Trigger**: `.github/workflows/weekly-digest.yml` (cron schedule)
+- **Endpoint**: `POST /api/weekly-digest`
+- **What**: Queries articles published in past 7 days → fetches active weekly subscribers from Supabase → sends per-recipient via DirectMail (sender: `newsletter@`)
+- **Empty week**: returns `{ skipped: true }`, no email sent
+- **Template**: `src/emails/weekly-digest.ts`
+
+### Mode 2: Breaking news (event-driven, judged important)
+
+- **When**: MDX pushed to `main` with `important: true` frontmatter
+- **Trigger**: `.github/workflows/notify-subscribers.yml` (push event)
+- **Endpoint**: `POST /api/broadcast`
+- **What**: Fetches active breaking subscribers → sends per-recipient (sender: `important@`)
+- **Default**: `important: false`. Most articles are NOT important — they go in the next weekly digest instead.
+- **Template**: `src/emails/broadcast.ts`
+
+### Frontmatter contract
+
+```yaml
+---
+title: "..."
+slug: "..."
+type: T1  # T1-T7 article types
+category: policy  # policy | tool | tutorial | best-for | faq | guide
+date: 2026-07-04
+important: true   # ← only set true for genuinely urgent articles (Etsy policy changes, major platform news, etc.)
+---
+```
+
+### Auth
+
+Both endpoints require `Authorization: Bearer ${BROADCAST_API_SECRET}` header. Set the secret in:
+- Vercel → Project Settings → Environment Variables (`BROADCAST_API_SECRET`)
+- GitHub repo → Settings → Secrets and variables → Actions (`BROADCAST_API_URL`, `BROADCAST_API_SECRET`)
+
+### Subscriber storage
+
+Postgres via Supabase — see `src/lib/supabase.ts`. Schema in `supabase/schema.sql`.
+
+Migrated away from Resend Audiences in 2026-07. The migration was triggered by the user's requirement to use Alibaba Cloud for email delivery (regulatory + cost). All previous subscriber data would need to be re-imported via CSV if any existed.
+
+### Welcome emails (sent on subscribe)
+
+- `src/emails/welcome.ts` — sent when user subscribes to **weekly** (sender: `newsletter@`)
+- `src/emails/welcome-breaking.ts` — sent when user opts into **breaking news** (sender: `important@`)
+- Both use the **same flame logo** (no color variation between templates).
+- The unsubscribe link in each email is per-recipient with the subscriber's own UUID token — clicking it hits `/api/unsubscribe?email=...&list=weekly|breaking` which sets `weekly_enabled = false` / `breaking_enabled = false` in Supabase.
 
 ## 🏗 Tech stack (final)
 
@@ -72,13 +138,12 @@ bestaietsy/
 - **Content**: MDX files in repo (git push = publish)
 - **Search**: Fuse.js client-side
 - **Deploy**: Vercel (auto-deploy from GitHub)
-- **Email**: Buttondown (free 100 subscribers, then $9/mo)
-- **Email templates**: React Email
-- **DNS**: Cloudflare (with Aliyun TXT verification for site ownership)
+- **Email delivery**: Alibaba Cloud DirectMail (`ap-southeast-1` / Singapore region) — SDK `@alicloud/dm20151123`
+- **Subscriber storage**: Supabase Postgres — `@supabase/supabase-js`
+- **Email templates**: Plain HTML strings rendered server-side (no React Email deps)
+- **DNS**: Cloudflare
 - **Analytics**: GA4 + Google Search Console
 - **Comments (optional)**: Giscus (GitHub Discussions)
-
-**No database, no auth, no subscription system.**
 
 ## 💰 Operating cost
 
@@ -86,9 +151,10 @@ bestaietsy/
 |---|---|
 | Domain | $12/year |
 | Vercel | $0 (free tier) |
-| Buttondown | $0 (under 100 subs) |
+| Alibaba Cloud DirectMail | Pay-as-you-go (~$0.0001/email — free tier ~500 emails/day) |
+| Supabase | $0 (free tier — 500MB DB, plenty for subscriber rows) |
 | Cloudflare DNS | $0 |
-| **Total** | **~$1/month** |
+| **Total** | **~$1/month + email volume** |
 
 ## 📅 Launch plan (Week 1)
 

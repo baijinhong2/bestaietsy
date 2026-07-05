@@ -30,7 +30,20 @@ export interface Tool {
   commission: string;
   affiliateType: "lifetime" | "recurring" | "first-year";
   homepage: string;
+  /**
+   * Path under /public for the official tool logo (SVG preferred, PNG fallback).
+   * When set, renderers display this image instead of the colored-letter fallback.
+   * Keep in sync with files under public/images/tools/.
+   */
+  logo: string;
+  /**
+   * Square brand color used as fallback when `logo` is missing or still loading.
+   * Also serves as the visual anchor for the logo background in dark contexts.
+   */
   logoColor: string;
+  /**
+   * Single-letter fallback rendered inside the colored square when `logo` is missing.
+   */
   logoInitial: string;
   /**
    * Marketing tag shown next to commission, e.g. "30% OFF via us"
@@ -76,6 +89,7 @@ export const TOOLS: Tool[] = [
     affiliateType: "lifetime",
     hasOffer: true,
     homepage: "https://roketfy.com",
+    logo: "/images/tools/roketfy-logo.svg",
     logoColor: "#7C3AED",
     logoInitial: "R",
   },
@@ -107,6 +121,7 @@ export const TOOLS: Tool[] = [
     affiliateType: "recurring",
     hasOffer: true,
     homepage: "https://erank.com",
+    logo: "/images/tools/erank-logo.svg",
     logoColor: "#0EA5E9",
     logoInitial: "e",
   },
@@ -134,10 +149,11 @@ export const TOOLS: Tool[] = [
     ],
     affiliateUrl: null,
     affiliateActive: false,
-    commission: "10-20% tiered",
+    commission: "N/A — no public affiliate program (verified 2026-07-05)",
     affiliateType: "recurring",
     hasOffer: true,
     homepage: "https://midjourney.com",
+    logo: "/images/tools/midjourney-logo.svg",
     logoColor: "#1F2937",
     logoInitial: "M",
   },
@@ -169,6 +185,7 @@ export const TOOLS: Tool[] = [
     affiliateType: "recurring",
     hasOffer: true,
     homepage: "https://etsyhunt.com",
+    logo: "/images/tools/etsyhunt-favicon-256.png",
     logoColor: "#F97316",
     logoInitial: "E",
   },
@@ -200,8 +217,73 @@ export const TOOLS: Tool[] = [
     affiliateType: "recurring",
     hasOffer: true,
     homepage: "https://alura.com",
+    logo: "/images/tools/alura-logo.svg",
     logoColor: "#10B981",
     logoInitial: "A",
+  },
+  {
+    slug: "simplified",
+    name: "Simplified",
+    category: "pod",
+    description: "AI design + content platform with Etsy-friendly templates and shop policy generator.",
+    longDescription:
+      "Simplified combines an AI writer, image generator, video editor, and social media scheduler in one app. Etsy sellers use it for branded product photos, shop policy templates, and bulk listing descriptions. Policy generator is the best we've tested for non-legal shop policy drafts.",
+    pricing: "Free - $30 / month",
+    pricingModel: "freemium",
+    startingPrice: "Free",
+    freeTrial: "Free tier",
+    rating: 4.3,
+    bestFor: ["Shop policies", "Bulk descriptions", "Branded images"],
+    pros: [
+      "Best policy-template generator we tested",
+      "Combines 4+ tools in one subscription",
+      "40% recurring commission",
+    ],
+    cons: [
+      "Image generator is weaker than Midjourney",
+      "Free tier has usage caps",
+    ],
+    affiliateUrl: null,
+    affiliateActive: false,
+    commission: "40% recurring",
+    affiliateType: "recurring",
+    hasOffer: true,
+    homepage: "https://simplified.com",
+    logo: "/images/tools/simplified-logo.svg",
+    logoColor: "#7C3AED",
+    logoInitial: "S",
+  },
+  {
+    slug: "originality",
+    name: "Originality.ai",
+    category: "pricing",
+    description: "AI-content detector that verifies your Etsy listings won't be flagged.",
+    longDescription:
+      "Originality.ai is the most accurate AI-content detector on the market. Etsy sellers who use ChatGPT or Simplified to draft descriptions run them through Originality before publishing to make sure Etsy's 2026 quality filters won't flag them. Also useful for verifying that POD designs aren't AI-generated stock.",
+    pricing: "$30 - $100 / month",
+    pricingModel: "subscription",
+    startingPrice: "$30/mo",
+    freeTrial: "10 free credits",
+    rating: 4.2,
+    bestFor: ["AI content check", "Quality assurance", "Bulk verification"],
+    pros: [
+      "Highest accuracy AI detector (~99% in 3rd-party tests)",
+      "10 free credits to start",
+      "25% first-year commission",
+    ],
+    cons: [
+      "Credits-based pricing gets expensive at scale",
+      "False positives on heavily-edited human content",
+    ],
+    affiliateUrl: null,
+    affiliateActive: false,
+    commission: "25% first-year",
+    affiliateType: "first-year",
+    hasOffer: true,
+    homepage: "https://originality.ai",
+    logo: "/images/tools/originality-logo-256.png",
+    logoColor: "#1E40AF",
+    logoInitial: "O",
   },
 ];
 

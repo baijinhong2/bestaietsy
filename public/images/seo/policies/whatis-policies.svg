@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160">
+  <!-- Background card -->
+  <rect width="200" height="160" rx="16" fill="#FFFCF7" stroke="#E4CDB4" stroke-width="2"/>
+
+  <!-- Document/policy paper (left-center) -->
+  <g transform="translate(35, 30)">
+    <!-- Paper shadow -->
+    <rect x="4" y="4" width="80" height="100" rx="3" fill="#E4CDB4"/>
+    <!-- Paper -->
+    <rect x="0" y="0" width="80" height="100" rx="3" fill="#FFF8EC" stroke="#3E2815" stroke-width="2"/>
+    <!-- Header bar -->
+    <rect x="0" y="0" width="80" height="14" fill="#F1641E"/>
+    <rect x="6" y="4" width="40" height="3" fill="#FFFCF7"/>
+    <rect x="6" y="9" width="28" height="3" fill="#FFFCF7" opacity="0.7"/>
+    <!-- Document lines -->
+    <rect x="8" y="22" width="50" height="3" fill="#A37545"/>
+    <rect x="8" y="30" width="64" height="3" fill="#E4CDB4"/>
+    <rect x="8" y="36" width="60" height="3" fill="#E4CDB4"/>
+    <rect x="8" y="42" width="64" height="3" fill="#E4CDB4"/>
+    <rect x="8" y="48" width="48" height="3" fill="#E4CDB4"/>
+    <!-- Checkmark + bullet items -->
+    <circle cx="11" cy="62" r="2.5" fill="#3D7052"/>
+    <rect x="17" y="60.5" width="50" height="3" fill="#A37545"/>
+    <circle cx="11" cy="72" r="2.5" fill="#3D7052"/>
+    <rect x="17" y="70.5" width="44" height="3" fill="#A37545"/>
+    <circle cx="11" cy="82" r="2.5" fill="#C9280C"/>
+    <rect x="17" y="80.5" width="40" height="3" fill="#A37545"/>
+    <!-- Stamp/seal at bottom -->
+    <circle cx="62" cy="92" r="8" fill="none" stroke="#F1641E" stroke-width="1.5" opacity="0.7"/>
+    <text x="62" y="95" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#F1641E" opacity="0.7">URGENT</text>
+  </g>
+
+  <!-- Alert bell (top right) -->
+  <g transform="translate(150, 35)">
+    <path d="M 0 16 C 0 6 6 0 14 0 C 22 0 28 6 28 16 L 30 22 L -2 22 Z" fill="#C9280C" stroke="#8B1E0A" stroke-width="1.5"/>
+    <path d="M 10 24 Q 14 28 18 24" fill="#C9280C" stroke="#8B1E0A" stroke-width="1.5"/>
+    <!-- Vibration waves -->
+    <path d="M -8 -4 Q -10 0 -8 4" stroke="#F1641E" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M 36 -4 Q 38 0 36 4" stroke="#F1641E" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Clock (bottom right) -->
+  <g transform="translate(155, 110)">
+    <circle cx="0" cy="0" r="22" fill="#FFFCF7" stroke="#3E2815" stroke-width="2"/>
+    <circle cx="0" cy="0" r="18" fill="#FFF8EC" stroke="#3E2815" stroke-width="0.5"/>
+    <!-- Hour markers -->
+    <circle cx="0" cy="-14" r="1.5" fill="#3E2815"/>
+    <circle cx="14" cy="0" r="1.5" fill="#3E2815"/>
+    <circle cx="0" cy="14" r="1.5" fill="#3E2815"/>
+    <circle cx="-14" cy="0" r="1.5" fill="#3E2815"/>
+    <!-- Hands -->
+    <line x1="0" y1="0" x2="0" y2="-9" stroke="#F1641E" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="6" y2="4" stroke="#3E2815" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="1.5" fill="#F1641E"/>
+  </g>
+</svg>

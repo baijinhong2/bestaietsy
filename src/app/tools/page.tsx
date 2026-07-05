@@ -1,17 +1,21 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { Star, ArrowRight, Wrench, Hourglass } from "lucide-react";
+import { Star, ArrowRight, Wrench, Hourglass, DollarSign } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SeoSections } from "@/components/seo/SeoSections";
 import { getAllTools } from "@/lib/tools";
+import { toolsSeoContent } from "@/lib/seo/content/tools";
+import { tdkToMetadata, faqJsonLd, jsonLdScript } from "@/lib/seo/metadata";
 
+const tdkMeta = tdkToMetadata(toolsSeoContent) ?? {};
 export const metadata: Metadata = {
-  title: "AI Tools for Etsy Sellers — Honest Reviews",
-  description: "Browse AI tools tested for Etsy sellers. Roketfy, eRank, Midjourney, EtsyHunt, Alura — with pros, cons, pricing, and affiliate commissions.",
+  ...tdkMeta,
   alternates: { canonical: "https://bestaietsy.com/tools" },
   openGraph: {
-    title: "AI Tools for Etsy Sellers — Honest Reviews",
-    description: "Browse AI tools tested for Etsy sellers.",
+    title: tdkMeta.title as string,
+    description: tdkMeta.description as string,
     url: "https://bestaietsy.com/tools",
     type: "website",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "bestaietsy tools" }],
@@ -23,6 +27,7 @@ const CATEGORIES = [
   { value: "seo", label: "SEO & Keywords", color: "accent" },
   { value: "pod", label: "POD Design", color: "mustard" },
   { value: "research", label: "Product Research", color: "coral" },
+  { value: "pricing", label: "AI Detection", color: "primary" },
 ];
 
 export default function ToolsIndexPage() {
@@ -66,10 +71,20 @@ export default function ToolsIndexPage() {
                     >
                       <div className="flex items-start gap-3 mb-4">
                         <div
-                          className="w-14 h-14 rounded-2xl flex items-center justify-center text-cream-50 font-bold text-2xl shrink-0 shadow-warm"
-                          style={{ backgroundColor: tool.logoColor }}
+                          className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-warm overflow-hidden bg-cream-100"
+                          style={{ backgroundColor: tool.logo ? `${tool.logoColor}1A` : tool.logoColor }}
                         >
-                          {tool.logoInitial}
+                          {tool.logo ? (
+                            <Image
+                              src={tool.logo}
+                              alt={`${tool.name} logo`}
+                              width={56}
+                              height={56}
+                              className="w-14 h-14 object-contain p-2"
+                            />
+                          ) : (
+                            <span className="text-cream-50 font-bold text-2xl">{tool.logoInitial}</span>
+                          )}
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3 className="font-display text-xl font-bold text-brown-900 group-hover:text-primary-700 transition">
@@ -103,6 +118,9 @@ export default function ToolsIndexPage() {
                           {tool.commission} via us
                         </span>
                       </div>
+                      <p className="mt-2 text-[10px] text-brown-500 leading-tight">
+                        Same price for you — vendor pays bestaietsy the commission.
+                      </p>
                       <div className="mt-3 flex items-center gap-1 text-sm font-semibold text-primary-600">
                         Read review <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
                       </div>
@@ -113,6 +131,75 @@ export default function ToolsIndexPage() {
             );
           })}
         </div>
+
+        {/* How bestaietsy is funded — transparent disclosure */}
+        <section className="mt-16 bg-cream-50 border-2 border-cream-300 rounded-2xl p-8 md:p-10">
+          <div className="flex items-center gap-2 mb-3">
+            <DollarSign className="w-5 h-5 text-accent-600" />
+            <p className="font-mono text-xs text-accent-700 uppercase tracking-widest font-semibold">
+              How bestaietsy is funded
+            </p>
+          </div>
+          <h2 className="font-display text-2xl md:text-3xl font-black text-brown-900 mb-4 max-w-3xl">
+            Free for readers. Vendor-paid. No ads.
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 text-brown-800 leading-relaxed">
+            <div>
+              <p className="mb-3">
+                <strong>bestaietsy doesn't run ads and doesn't sell your data.</strong> Our
+                only revenue is affiliate commissions from the tools we review — the
+                vendor pays us a small percentage when you sign up through our link.
+                You pay the same price either way (we get the kickback, you don't pay
+                more).
+              </p>
+              <p className="text-sm text-brown-700">
+                Commission rates we earn are listed on each tool card. They range from
+                10% (Midjourney) to 40% (Simplified) depending on the vendor's program.
+                Rates shown are based on each vendor's publicly published affiliate
+                program and are subject to change when you sign up for an account.
+              </p>
+            </div>
+            <div className="bg-white border border-cream-300 rounded-xl p-5">
+              <p className="font-bold text-brown-900 mb-2">What your clicks would fund:</p>
+              <ul className="space-y-1.5 text-sm text-brown-700">
+                <li className="flex items-baseline gap-2">
+                  <span className="text-accent-600 font-mono">$5–15/mo</span>
+                  <span>Domain + hosting + Vercel</span>
+                </li>
+                <li className="flex items-baseline gap-2">
+                  <span className="text-accent-600 font-mono">$30/mo</span>
+                  <span>Content research subscriptions</span>
+                </li>
+                <li className="flex items-baseline gap-2">
+                  <span className="text-accent-600 font-mono">$20/mo</span>
+                  <span>Coffee for whoever's writing</span>
+                </li>
+              </ul>
+              <p className="mt-3 text-xs text-brown-600 italic">
+                Current status: affiliate links are pending — we don't earn anything
+                yet. We'll update this when the first commission lands.
+              </p>
+            </div>
+          </div>
+          <p className="mt-5 text-sm text-brown-700">
+            <Link href="/affiliate-disclosure" className="font-semibold text-primary-600 hover:text-primary-700 underline">
+              Read the full FTC-compliant affiliate disclosure →
+            </Link>
+          </p>
+        </section>
+
+        {/* SEO content sections */}
+        <section className="mt-20 pt-16 border-t-4 border-cream-200">
+          <div className="mx-auto max-w-6xl px-6">
+            <SeoSections content={toolsSeoContent} />
+          </div>
+        </section>
+
+        {/* FAQ structured data for GEO (AI search engines) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(faqJsonLd(toolsSeoContent) ?? {}) }}
+        />
       </main>
       <SiteFooter />
     </>
