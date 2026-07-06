@@ -7,9 +7,18 @@ export function SiteFooter() {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <p className="font-display font-bold text-lg mb-3 text-cream-50">
-              bestaietsy
-            </p>
+            <Link href="/" className="inline-flex items-center gap-2 mb-3 group">
+              <img
+                src="/logo.svg"
+                alt="bestaietsy logo"
+                width={36}
+                height={36}
+                className="w-9 h-9"
+              />
+              <span className="font-display font-bold text-lg text-cream-50 group-hover:text-primary-300 transition">
+                bestaietsy
+              </span>
+            </Link>
             <p className="text-sm text-brown-300 leading-relaxed">
               The AI toolkit for smart Etsy sellers. Honest reviews, policy
               updates, weekly guides.
