@@ -109,7 +109,7 @@ export const TOOLS: Tool[] = [
     pros: [
       "Generous free tier covers most sellers' needs",
       "Most accurate Etsy keyword data",
-      "25% recurring commission",
+      "30% commission for 12 months on each referral (50% after 100 referrals)",
     ],
     cons: [
       "Premium features require paid plan",
@@ -117,7 +117,7 @@ export const TOOLS: Tool[] = [
     ],
     affiliateUrl: null,
     affiliateActive: false,
-    commission: "25% recurring",
+    commission: "30%, 12 months",
     affiliateType: "recurring",
     hasOffer: true,
     homepage: "https://erank.com",
@@ -139,19 +139,19 @@ export const TOOLS: Tool[] = [
     rating: 4.9,
     bestFor: ["POD designs", "Digital downloads", "Product mockups"],
     pros: [
-      "Best-in-class image quality",
-      "Image variations generate 100+ designs from one prompt",
-      "Mockup tools apply designs to t-shirts, totes, posters",
+      "No public Etsy affiliate program — independent recommendation only",
+      "Best-in-class image quality for POD mockups",
+      "Commercial-use license covers Etsy sales",
     ],
     cons: [
-      "No free tier (Discord-only access)",
+      "No free trial (Discord-only access)",
       "Steeper learning curve than Canva AI",
     ],
     affiliateUrl: null,
     affiliateActive: false,
-    commission: "N/A — no public affiliate program (verified 2026-07-05)",
+    commission: "N/A — no public affiliate program",
     affiliateType: "recurring",
-    hasOffer: true,
+    hasOffer: false,
     homepage: "https://midjourney.com",
     logo: "/images/tools/midjourney-logo.svg",
     logoColor: "#1F2937",
@@ -173,7 +173,7 @@ export const TOOLS: Tool[] = [
     pros: [
       "Sales estimates reveal which products actually sell",
       "Chrome extension overlays data on Etsy pages",
-      "30% recurring commission",
+      "30% commission for 6 months on each referral",
     ],
     cons: [
       "Sales data is estimated, not exact",
@@ -181,7 +181,7 @@ export const TOOLS: Tool[] = [
     ],
     affiliateUrl: null,
     affiliateActive: false,
-    commission: "30% recurring",
+    commission: "30%, 6 months",
     affiliateType: "recurring",
     hasOffer: true,
     homepage: "https://etsyhunt.com",
@@ -205,7 +205,7 @@ export const TOOLS: Tool[] = [
     pros: [
       "Combines 5+ tools in one subscription",
       "AI description generator",
-      "30% recurring commission",
+      "30% commission for 6 months on each referral",
     ],
     cons: [
       "Less specialized than dedicated SEO tools",
@@ -213,7 +213,7 @@ export const TOOLS: Tool[] = [
     ],
     affiliateUrl: null,
     affiliateActive: false,
-    commission: "30% recurring",
+    commission: "30%, 6 months",
     affiliateType: "recurring",
     hasOffer: true,
     homepage: "https://alura.com",
@@ -269,7 +269,7 @@ export const TOOLS: Tool[] = [
     pros: [
       "Highest accuracy AI detector (~99% in 3rd-party tests)",
       "10 free credits to start",
-      "25% first-year commission",
+      "25% commission for 12 months on each referral",
     ],
     cons: [
       "Credits-based pricing gets expensive at scale",
@@ -280,6 +280,7 @@ export const TOOLS: Tool[] = [
     commission: "25% first-year",
     affiliateType: "first-year",
     hasOffer: true,
+
     homepage: "https://originality.ai",
     logo: "/images/tools/originality-ai-logo-256.png",
     logoColor: "#1E40AF",

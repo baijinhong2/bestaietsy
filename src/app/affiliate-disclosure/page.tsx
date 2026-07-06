@@ -45,12 +45,12 @@ export default function AffiliateDisclosurePage() {
               </thead>
               <tbody>
                 <tr><td>Roketfy</td><td>35%</td><td>12 months</td></tr>
-                <tr><td>eRank</td><td>25%</td><td>Recurring</td></tr>
-                <tr><td>Midjourney</td><td>10-20%</td><td>Recurring</td></tr>
-                <tr><td>EtsyHunt</td><td>30%</td><td>Recurring</td></tr>
-                <tr><td>Alura</td><td>30%</td><td>Recurring</td></tr>
+                <tr><td>eRank</td><td>30%</td><td>12 months (50% after 100 referrals)</td></tr>
+                <tr><td>Midjourney</td><td>—</td><td>No public affiliate program</td></tr>
+                <tr><td>EtsyHunt</td><td>30%</td><td>6 months</td></tr>
+                <tr><td>Alura</td><td>30%</td><td>6 months</td></tr>
                 <tr><td>Simplified</td><td>40%</td><td>Recurring</td></tr>
-                <tr><td>Originality.ai</td><td>25%</td><td>12 months, then 10%</td></tr>
+                <tr><td>Originality.ai</td><td>25%</td><td>12 months</td></tr>
               </tbody>
             </table>
 
