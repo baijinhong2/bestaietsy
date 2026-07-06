@@ -3,17 +3,17 @@ import type { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = "https://bestaietsy.com";
 
-  // Block specific AI scrapers. We split into one rule per User-Agent because
-  // Next.js's MetadataRoute.Robots serialization joins `userAgent: string[]` into
-  // adjacent "User-Agent:" lines without repeating the disallow, producing
-  // malformed output that real bots can't match.
+  // Block AI training crawlers (so your content isn't fed to train the next
+  // model). DO NOT add PerplexityBot / OAI-SearchBot / Claude-User — those are
+  // search-engine bots that cite sources and send referral traffic. They inherit
+  // the default `User-Agent: *` Allow rule above.
   //
-  // To unblock AI training later: remove this `aiBlockers` array entirely.
-  const aiBlockers = [
-    "CCBot",         // Common Crawl (used to train many AI models)
-    "GPTBot",        // OpenAI
-    "PerplexityBot", // Perplexity AI
-    "ClaudeBot",     // Anthropic
+  // To unblock all AI training: remove this `aiTrainingBlockers` array entirely.
+  const aiTrainingBlockers = [
+    "CCBot",           // Common Crawl (powers many AI training datasets)
+    "GPTBot",          // OpenAI training crawler
+    "ClaudeBot",       // Anthropic training crawler
+    "Google-Extended", // Google Gemini training (separate from Google Search)
   ];
 
   return {
@@ -23,7 +23,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/admin/"],
       },
-      ...aiBlockers.map((bot) => ({
+      ...aiTrainingBlockers.map((bot) => ({
         userAgent: bot,
         disallow: "/" as const,
       })),
