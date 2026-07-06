@@ -254,7 +254,7 @@ export const TOOLS: Tool[] = [
     logoInitial: "S",
   },
   {
-    slug: "originality",
+    slug: "originality-ai",
     name: "Originality.ai",
     category: "pricing",
     description: "Originality.ai is the highest-accuracy AI-content detector (~99% per 3rd-party tests). Etsy sellers use it before publishing to make sure AI-drafted listings pass Etsy's 2026 quality filters. 2026 review covers pricing, accuracy, and whether sellers actually need it.",
@@ -281,7 +281,7 @@ export const TOOLS: Tool[] = [
     affiliateType: "first-year",
     hasOffer: true,
     homepage: "https://originality.ai",
-    logo: "/images/tools/originality-logo-256.png",
+    logo: "/images/tools/originality-ai-logo-256.png",
     logoColor: "#1E40AF",
     logoInitial: "O",
   },

@@ -82,7 +82,7 @@ export const SHOP_TYPES: Record<ShopTypeSlug, ShopTypeMeta> = {
       "Digital downloads (printables, templates, AI art, mockups) face Etsy's 2026 quality filters that flag obviously AI-generated descriptions. AI helps draft, but Originality.ai verifies the output passes — and mockup quality separates the $10/month sellers from the $10k/month sellers.",
     profile:
       "Printables, planners, templates, AI art, digital mockups. Often 100-2000+ listings, prices $3-50. Need to publish volume and pass Etsy's anti-AI-content quality checks.",
-    recommendedTools: ["simplified", "originality", "roketfy", "midjourney"],
+    recommendedTools: ["simplified", "originality-ai", "roketfy", "midjourney"],
     relatedTypes: ["pod-sellers", "stay-at-home-moms"],
   },
   "handmade-sellers": {
