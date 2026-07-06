@@ -251,13 +251,30 @@ export default async function ToolPage({ params }: PageProps) {
                   </div>
 
                   <div className="mt-5">
-                    <AffiliateCTA
-                      href={tool.affiliateUrl}
-                      tool={tool.name}
-                      commissionNote={tool.commission}
-                      showDisclosure
-                      variant="primary"
-                    />
+                    {tool.affiliateUrl ? (
+                      // Live affiliate link → primary CTA goes to vendor with our ref
+                      <AffiliateCTA
+                        href={tool.affiliateUrl}
+                        tool={tool.name}
+                        commissionNote={tool.commission}
+                        showDisclosure
+                        variant="primary"
+                      />
+                    ) : (
+                      // No affiliate yet → primary CTA goes to vendor's homepage (direct, no affiliate).
+                      // The sidebar "Visit official site" link is the same target, so we keep this
+                      // button functional (was previously linking to this same review page = no-op).
+                      <a
+                        href={tool.homepage}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${tool.name} (direct link, opens in new tab)`}
+                        className="inline-flex items-center justify-center gap-2 font-bold rounded-xl transition shadow-warm px-6 py-3 text-base w-full bg-primary-500 hover:bg-primary-600 text-cream-50"
+                      >
+                        Visit {tool.name} →
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
                   </div>
 
                   {tool.hasOffer && (
