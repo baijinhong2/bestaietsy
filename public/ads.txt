@@ -1,0 +1,12 @@
+# bestaietsy.com — Authorized Digital Sellers (ads.txt)
+# https://iabtechlab.com/ads-txt/
+#
+# Once AdSense account is approved, replace pub-XXXXXXXXXXXXXXXX
+# with your real AdSense publisher ID. Format:
+#   google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# AdSense crawler visits this file to verify the publisher authorization.
+# Until your AdSense account is approved, this line is a placeholder and
+# AdSense will not show ads on the site.
+
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
+import { CookieConsent } from "@/components/CookieConsent";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GSC_TOKEN = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bestaietsy.com"),
@@ -71,6 +76,8 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  // Google Search Console verification — paste token from GSC dashboard
+  ...(GSC_TOKEN ? { verification: { google: GSC_TOKEN } } : {}),
 };
 
 // Site-wide JSON-LD: Organization + WebSite (with SearchAction)
@@ -105,6 +112,25 @@ const siteJsonLd = [
   },
 ];
 
+// Google Consent Mode v2 — default denied until user grants.
+// CookieConsent component fires gtag('consent','update',...) on accept.
+const consentDefaultScript = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+  functionality_storage: 'granted',
+  personalization_storage: 'denied',
+  security_storage: 'granted',
+  wait_for_update: 500
+});
+gtag('js', new Date());
+${GA_ID ? `gtag('config', '${GA_ID}', { anonymize_ip: true });` : ""}
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -119,7 +145,27 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-cream-50 text-brown-900 antialiased">
+        {/* Google Consent Mode v2 — must run BEFORE gtag loads */}
+        {GA_ID && (
+          <Script id="gtag-consent-default" strategy="beforeInteractive">
+            {consentDefaultScript}
+          </Script>
+        )}
+
+        {/* Google Analytics 4 — loaded afterInteractive. Consent mode gates it. */}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+          </>
+        )}
+
         {children}
+
+        {/* Cookie consent UI — listens for first-visit, fires consent updates */}
+        <CookieConsent />
       </body>
     </html>
   );

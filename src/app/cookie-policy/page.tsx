@@ -21,7 +21,7 @@ export default function CookiesPage() {
           </h1>
           <div className="prose-content">
             <p>
-              <strong>Last updated:</strong> July 4, 2026
+              <strong>Last updated:</strong> July 6, 2026
             </p>
             <p>
               This page explains what cookies are, which ones bestaietsy uses,
@@ -39,12 +39,13 @@ export default function CookiesPage() {
 
             <h2>2. Cookies we use</h2>
             <p>
-              bestaietsy aims to use the minimum cookies necessary. We do
-              <strong> not</strong> run advertising or cross-site tracking
-              cookies.
+              bestaietsy aims to use the minimum cookies necessary. We use
+              cookies for the categories below. Each is only set after you give
+              consent via the cookie banner (except &ldquo;Necessary&rdquo;,
+              which is always on).
             </p>
 
-            <h3>2.1 Analytics — Google Analytics</h3>
+            <h3>2.1 Analytics — Google Analytics (only with consent)</h3>
             <p>
               We use Google Analytics to count visits and understand which
               articles are read. Google Analytics sets first-party cookies
@@ -83,9 +84,56 @@ export default function CookiesPage() {
               third party&rsquo;s cookies apply.
             </p>
 
+            <h3>2.4 Advertising — Google AdSense (only with consent)</h3>
+            <p>
+              When you accept the &ldquo;Marketing&rdquo; category in our cookie
+              banner, bestaietsy displays ads served by Google AdSense. AdSense
+              uses cookies (commonly named <code>__gads</code>,{" "}
+              <code>IDE</code>, <code>id</code>, <code>ANID</code>) and similar
+              identifiers to:
+            </p>
+            <ul>
+              <li>Show relevant ads and limit how often you see a given ad.</li>
+              <li>
+                Measure ad performance (impressions, clicks, conversions) so
+                we can earn revenue to keep bestaietsy free.
+              </li>
+              <li>
+                Build a profile of your interests across sites that use AdSense
+                (<em>only if you accept personalization</em>).
+              </li>
+            </ul>
+            <p>
+              Google acts as the data processor for AdSense. See{" "}
+              <a
+                href="https://policies.google.com/technologies/ads"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Google&rsquo;s advertising policies
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://policies.google.com/privacy"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Privacy Policy
+              </a>{" "}
+              for details. You can opt out of personalized ads at any time by
+              visiting{" "}
+              <a
+                href="https://adssettings.google.com/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Google Ads Settings
+              </a>
+              .
+            </p>
+
             <h2>3. Cookies we do not use</h2>
             <ul>
-              <li>Advertising or retargeting cookies.</li>
               <li>Cross-site tracking pixels (Facebook, TikTok, etc.).</li>
               <li>Affiliate-network tracking beyond the standard first-party
                 click ID.</li>
