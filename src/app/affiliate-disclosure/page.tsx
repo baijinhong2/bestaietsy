@@ -44,7 +44,7 @@ export default function AffiliateDisclosurePage() {
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Roketfy</td><td>30%</td><td>Lifetime</td></tr>
+                <tr><td>Roketfy</td><td>35%</td><td>12 months</td></tr>
                 <tr><td>eRank</td><td>25%</td><td>Recurring</td></tr>
                 <tr><td>Midjourney</td><td>10-20%</td><td>Recurring</td></tr>
                 <tr><td>EtsyHunt</td><td>30%</td><td>Recurring</td></tr>
