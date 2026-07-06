@@ -53,6 +53,9 @@ export default function BestForPage() {
             </p>
           </div>
 
+          <h2 className="font-display text-2xl font-bold text-brown-900 mb-5">
+            Pick your shop type
+          </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {AUDIENCES.map((audience) => (
               <Link

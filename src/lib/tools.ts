@@ -65,7 +65,7 @@ export const TOOLS: Tool[] = [
     slug: "roketfy",
     name: "Roketfy",
     category: "listing",
-    description: "AI-powered Etsy listing optimizer with built-in policy compliance checker.",
+    description: "AI-powered Etsy listing optimizer with built-in policy compliance checker. Honest 2026 review covers pricing, AI Writer quality, and how it compares to eRank and EtsyHunt for high-volume sellers.",
     longDescription:
       "Roketfy is the most comprehensive AI listing tool for Etsy sellers. Its AI Writer can rewrite 100+ vintage fur listings into faux fur, leather, or wool alternatives in 2-3 hours. Built-in Listing Checker scans your entire shop for policy-violating keywords (perfect for Etsy's 8/11 fur policy compliance). Best for shops with 50+ listings.",
     pricing: "$4.99 - $49 / month",
@@ -97,7 +97,7 @@ export const TOOLS: Tool[] = [
     slug: "erank",
     name: "eRank",
     category: "seo",
-    description: "Etsy SEO and keyword research tool. Free tier available.",
+    description: "eRank is the gold-standard free Etsy SEO and keyword research tool. 2026 review covers Listing Audit, Keyword Explorer, competitor analysis, free-tier limits, and how it stacks up vs Roketfy and Alura.",
     longDescription:
       "eRank is the OG Etsy SEO tool. Keyword Explorer finds what shoppers actually search for (e.g. 'faux fur vintage coat' search volume). Listing Audit identifies which existing listings can be quickly optimized for new keywords. Competitor Analysis shows how successful sellers position their products. Free tier is generous.",
     pricing: "Free - $19.99 / month",
@@ -129,7 +129,7 @@ export const TOOLS: Tool[] = [
     slug: "midjourney",
     name: "Midjourney",
     category: "pod",
-    description: "AI image generation for POD designs and product mockups.",
+    description: "Midjourney is the leading AI image generator used by Etsy POD and digital-download sellers for product designs. 2026 review covers v7 pricing, commercial-license terms, prompt tips, and mockup workflow for Etsy listings.",
     longDescription:
       "Midjourney is the gold standard for AI image generation. Etsy sellers use it for POD t-shirt designs, poster art, digital downloads, and product mockups. With /imagine prompts, you can create vintage-style designs (without animal imagery) for hundreds of products in an afternoon. v7 introduced better text rendering and consistency.",
     pricing: "$10 - $120 / month",
@@ -161,7 +161,7 @@ export const TOOLS: Tool[] = [
     slug: "etsyhunt",
     name: "EtsyHunt",
     category: "research",
-    description: "Etsy product research and competitor analysis tool.",
+    description: "EtsyHunt is an Etsy product research and competitor analysis tool with sales estimates, trend tracking, and a Chrome extension. 2026 review covers pricing tiers, data accuracy, niche-discovery workflow, and how it compares to eRank and Roketfy.",
     longDescription:
       "EtsyHunt helps you find winning products by analyzing top sellers, revenue estimates, and trends. Chrome extension shows sales data on Etsy listing pages. Database of 30M+ Etsy listings. Best for sellers doing product research before launching new listings.",
     pricing: "$9.99 - $49.99 / month",
@@ -193,7 +193,7 @@ export const TOOLS: Tool[] = [
     slug: "alura",
     name: "Alura",
     category: "seo",
-    description: "All-in-one Etsy seller toolkit with AI helpers.",
+    description: "Alura is an all-in-one Etsy seller toolkit combining AI helpers, keyword research, profit calculator, and a Chrome extension. 2026 review covers pricing tiers, AI description quality, profit-tracking features, and how it compares to eRank and Roketfy.",
     longDescription:
       "Alura combines keyword research, listing helper, profit calculator, and Chrome extension in one tool. AI description generator writes SEO-optimized listings in 30 seconds. Profit calculator factors in Etsy fees, shipping, and materials. Good Roketfy alternative at lower price point.",
     pricing: "$9.99 - $39.99 / month",
@@ -257,7 +257,7 @@ export const TOOLS: Tool[] = [
     slug: "originality",
     name: "Originality.ai",
     category: "pricing",
-    description: "AI-content detector that verifies your Etsy listings won't be flagged.",
+    description: "Originality.ai is the highest-accuracy AI-content detector (~99% per 3rd-party tests). Etsy sellers use it before publishing to make sure AI-drafted listings pass Etsy's 2026 quality filters. 2026 review covers pricing, accuracy, and whether sellers actually need it.",
     longDescription:
       "Originality.ai is the most accurate AI-content detector on the market. Etsy sellers who use ChatGPT or Simplified to draft descriptions run them through Originality before publishing to make sure Etsy's 2026 quality filters won't flag them. Also useful for verifying that POD designs aren't AI-generated stock.",
     pricing: "$30 - $100 / month",

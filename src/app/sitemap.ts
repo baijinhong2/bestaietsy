@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/articles";
 import { getAllTools } from "@/lib/tools";
+import { getAllShopTypes } from "@/lib/shop-types";
 
 const BASE_URL = "https://bestaietsy.com";
 
@@ -99,5 +100,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...articleRoutes, ...toolRoutes];
+  // Dynamic shop-type (best-for) routes
+  const shopTypeRoutes: MetadataRoute.Sitemap = getAllShopTypes().map((st) => ({
+    url: `${BASE_URL}/best-for/${st.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...articleRoutes, ...toolRoutes, ...shopTypeRoutes];
 }

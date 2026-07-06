@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Affiliate Disclosure",
-  description: "How bestaietsy uses affiliate links. FTC-compliant disclosure.",
+  description: "bestaietsy uses affiliate links to fund independent testing of AI tools for Etsy sellers. Full FTC-compliant disclosure: how commissions work, which vendors we partner with, and what we never recommend regardless of payout.",
   alternates: { canonical: "https://bestaietsy.com/affiliate-disclosure" },
   robots: { index: true, follow: true },
 };

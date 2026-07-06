@@ -98,9 +98,9 @@ export function EmailForm({ variant = "primary" }: { variant?: "primary" | "comp
           free weekly newsletter
         </p>
       </div>
-      <h3 className="font-display text-2xl font-bold text-brown-900 mb-2">
+      <h2 className="font-display text-2xl font-bold text-brown-900 mb-2">
         Get the weekly Etsy AI digest
-      </h3>
+      </h2>
       <p className="text-sm text-brown-700 mb-4">
         1 curated article + 1 actionable tip + 1 policy alert every Tuesday. Free, no spam.
       </p>
