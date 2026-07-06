@@ -173,25 +173,27 @@ export function CookieConsent() {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-2 mt-4">
-                <button
-                  onClick={handleAcceptAll}
-                  className="inline-flex items-center justify-center font-bold rounded-xl px-5 py-2.5 text-sm bg-primary-500 hover:bg-primary-600 text-cream-50 transition shadow-warm"
-                >
-                  Accept all
-                </button>
+              <div className="flex flex-col gap-2 mt-4 sm:flex-row sm:flex-wrap sm:items-center">
+                {/* Mobile: Accept all on top (primary CTA, full-width), Reject + Customize below as full-width.
+                    Desktop (sm+): single row, Reject left → Customize middle → Accept right. */}
                 <button
                   onClick={handleRejectAll}
-                  className="inline-flex items-center justify-center font-semibold rounded-xl px-5 py-2.5 text-sm border-2 border-brown-300 text-brown-900 hover:bg-cream-100 transition"
+                  className="order-3 sm:order-1 inline-flex items-center justify-center font-semibold rounded-xl px-5 py-2.5 text-sm border-2 border-brown-300 text-brown-900 hover:bg-cream-100 transition w-full sm:w-auto"
                 >
                   Reject non-essential
                 </button>
                 <button
                   onClick={() => setCustomizeOpen(true)}
-                  className="inline-flex items-center justify-center font-semibold rounded-xl px-5 py-2.5 text-sm border-2 border-brown-300 text-brown-900 hover:bg-cream-100 transition ml-auto"
+                  className="order-2 sm:order-2 inline-flex items-center justify-center font-semibold rounded-xl px-5 py-2.5 text-sm border-2 border-brown-300 text-brown-900 hover:bg-cream-100 transition w-full sm:w-auto"
                 >
                   <Settings className="w-4 h-4 mr-1.5" />
                   Customize
+                </button>
+                <button
+                  onClick={handleAcceptAll}
+                  className="order-1 sm:order-3 sm:ml-auto inline-flex items-center justify-center font-bold rounded-xl px-5 py-2.5 text-sm bg-primary-500 hover:bg-primary-600 text-cream-50 transition shadow-warm w-full sm:w-auto"
+                >
+                  Accept all
                 </button>
               </div>
             </>
@@ -240,18 +242,20 @@ export function CookieConsent() {
                 />
               </div>
 
-              <div className="flex flex-wrap gap-2 mt-5">
-                <button
-                  onClick={handleSaveCustom}
-                  className="inline-flex items-center justify-center font-bold rounded-xl px-5 py-2.5 text-sm bg-primary-500 hover:bg-primary-600 text-cream-50 transition shadow-warm"
-                >
-                  Save preferences
-                </button>
+              <div className="flex flex-col gap-2 mt-5 sm:flex-row sm:flex-wrap sm:items-center">
+                {/* Mobile: Cancel on top (secondary), Save preferences full-width below (primary).
+                    Desktop (sm+): Cancel left, Save preferences right via ml-auto. */}
                 <button
                   onClick={() => setCustomizeOpen(false)}
-                  className="inline-flex items-center justify-center font-semibold rounded-xl px-5 py-2.5 text-sm border-2 border-brown-300 text-brown-900 hover:bg-cream-100 transition"
+                  className="order-2 sm:order-1 inline-flex items-center justify-center font-semibold rounded-xl px-5 py-2.5 text-sm border-2 border-brown-300 text-brown-900 hover:bg-cream-100 transition w-full sm:w-auto"
                 >
                   Cancel
+                </button>
+                <button
+                  onClick={handleSaveCustom}
+                  className="order-1 sm:order-2 sm:ml-auto inline-flex items-center justify-center font-bold rounded-xl px-5 py-2.5 text-sm bg-primary-500 hover:bg-primary-600 text-cream-50 transition shadow-warm w-full sm:w-auto"
+                >
+                  Save preferences
                 </button>
               </div>
             </>
