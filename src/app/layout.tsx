@@ -60,11 +60,20 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   icons: {
+    // Google SERP favicon: Google specifically crawls /favicon.ico at the root.
+    // Declared FIRST so browsers / Googlebot pick the canonical format.
     icon: [
+      { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
+  manifest: "/site.webmanifest",
   robots: {
     index: true,
     follow: true,
