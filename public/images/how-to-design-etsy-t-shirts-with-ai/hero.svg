@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F0FBFA"/>
+      <stop offset="1" stop-color="#FFF3EF"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="coral" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FB7185"/>
+      <stop offset="1" stop-color="#F43F5E"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- decorative dots -->
+  <circle cx="120" cy="90" r="6" fill="#2DD4BF" opacity="0.35"/>
+  <circle cx="1080" cy="540" r="8" fill="#FB7185" opacity="0.35"/>
+  <circle cx="1120" cy="120" r="5" fill="#14B8A6" opacity="0.3"/>
+  <circle cx="90" cy="530" r="7" fill="#F43F5E" opacity="0.3"/>
+
+  <!-- LEFT: laptop with AI design app -->
+  <g filter="url(#soft)" transform="translate(150 210)">
+    <rect x="0" y="0" width="300" height="200" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+    <rect x="0" y="0" width="300" height="40" rx="16" fill="#0F172A"/>
+    <rect x="0" y="24" width="300" height="16" fill="#0F172A"/>
+    <circle cx="24" cy="20" r="5" fill="#FB7185"/>
+    <circle cx="44" cy="20" r="5" fill="#FBBF24"/>
+    <circle cx="64" cy="20" r="5" fill="#34D399"/>
+    <!-- prompt bar -->
+    <rect x="24" y="60" width="200" height="18" rx="9" fill="#F1F5F9"/>
+    <rect x="24" y="60" width="90" height="18" rx="9" fill="#CCFBF1"/>
+    <text x="34" y="73" font-family="Arial, sans-serif" font-size="11" fill="#0D9488" font-weight="700">AI prompt</text>
+    <!-- generated art blocks -->
+    <rect x="24" y="92" width="80" height="80" rx="10" fill="url(#teal)" opacity="0.9"/>
+    <rect x="112" y="92" width="80" height="80" rx="10" fill="url(#coral)" opacity="0.85"/>
+    <rect x="200" y="92" width="76" height="80" rx="10" fill="#E2E8F0"/>
+    <circle cx="64" cy="132" r="20" fill="#FFFFFF" opacity="0.6"/>
+    <path d="M140 150 l16 -28 l16 28 z" fill="#FFFFFF" opacity="0.7"/>
+  </g>
+  <rect x="180" y="440" width="240" height="14" rx="7" fill="#CBD5E1"/>
+
+  <!-- ARROW -->
+  <g transform="translate(500 300)">
+    <path d="M0 10 H70" stroke="#0F172A" stroke-width="7" stroke-linecap="round"/>
+    <path d="M62 -6 L84 10 L62 26 Z" fill="#0F172A"/>
+  </g>
+
+  <!-- RIGHT: printed folded t-shirt -->
+  <g filter="url(#soft)" transform="translate(640 190)">
+    <!-- shirt body -->
+    <path d="M70 40 L120 10 Q150 30 180 10 L230 40 L210 90 L185 78 L185 240 Q150 252 70 240 L70 78 L45 92 Z"
+          fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+    <!-- collar -->
+    <path d="M120 10 Q150 42 180 10" fill="none" stroke="#CBD5E1" stroke-width="3"/>
+    <!-- original graphic on chest -->
+    <circle cx="128" cy="130" r="42" fill="url(#teal)" opacity="0.92"/>
+    <path d="M104 150 q24 -46 48 0 z" fill="#FFFFFF" opacity="0.85"/>
+    <circle cx="128" cy="112" r="12" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="150" y="150" width="34" height="34" rx="8" fill="url(#coral)" opacity="0.9"/>
+  </g>
+
+  <!-- badges -->
+  <g transform="translate(150 500)">
+    <rect x="0" y="0" width="180" height="40" rx="20" fill="#FFFFFF" stroke="#99F6E4" stroke-width="2"/>
+    <circle cx="26" cy="20" r="8" fill="url(#teal)"/>
+    <text x="44" y="26" font-family="Arial, sans-serif" font-size="15" fill="#0F172A" font-weight="700">Print-ready</text>
+  </g>
+  <g transform="translate(870 500)">
+    <rect x="0" y="0" width="180" height="40" rx="20" fill="#FFFFFF" stroke="#FECDD3" stroke-width="2"/>
+    <circle cx="26" cy="20" r="8" fill="url(#coral)"/>
+    <text x="44" y="26" font-family="Arial, sans-serif" font-size="15" fill="#0F172A" font-weight="700">Compliant</text>
+  </g>
+</svg>
