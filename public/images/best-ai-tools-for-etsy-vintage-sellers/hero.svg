@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Best AI tools for Etsy vintage sellers 2026 hero">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#3a2f4a"/>
+      <stop offset="100%" stop-color="#5a3e4d"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF7A5C"/>
+      <stop offset="100%" stop-color="#E63946"/>
+    </linearGradient>
+    <linearGradient id="vintage" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4D58D"/>
+      <stop offset="100%" stop-color="#C9A86A"/>
+    </linearGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- decorative grid (subtle) -->
+  <g opacity="0.06" stroke="#F4D58D" strokeWidth="0.5">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- decorative vintage frame -->
+  <g transform="translate(80, 80)">
+    <rect width="180" height="240" fill="none" stroke="url(#vintage)" strokeWidth="3" rx="6" opacity="0.85"/>
+    <rect x="10" y="10" width="160" height="220" fill="none" stroke="#F4D58D" strokeWidth="1" opacity="0.5"/>
+    <!-- camera icon stylized -->
+    <g transform="translate(50, 70)" fill="#F4D58D" opacity="0.8">
+      <rect x="0" y="10" width="80" height="50" rx="4" fill="none" stroke="#F4D58D" strokeWidth="2"/>
+      <circle cx="40" cy="35" r="14" fill="none" stroke="#F4D58D" strokeWidth="2"/>
+      <circle cx="40" cy="35" r="6" fill="#F4D58D"/>
+      <rect x="60" y="0" width="20" height="14" rx="2"/>
+    </g>
+    <text x="90" y="170" fontFamily="Georgia, serif" fontSize="14" fill="#F4D58D" textAnchor="middle" opacity="0.7">EST. 1952</text>
+    <text x="90" y="195" fontFamily="Georgia, serif" fontSize="11" fill="#F4D58D" textAnchor="middle" opacity="0.6">vintage</text>
+  </g>
+
+  <!-- AI brain circuit -->
+  <g transform="translate(960, 130)">
+    <circle cx="60" cy="60" r="55" fill="none" stroke="url(#flame)" strokeWidth="2.5" opacity="0.9"/>
+    <circle cx="60" cy="60" r="35" fill="none" stroke="#FF7A5C" strokeWidth="1.5" opacity="0.6"/>
+    <circle cx="60" cy="60" r="6" fill="url(#flame)"/>
+    <g stroke="#FF7A5C" strokeWidth="1.5" fill="none" opacity="0.7">
+      <line x1="60" y1="5" x2="60" y2="25"/>
+      <line x1="60" y1="95" x2="60" y2="115"/>
+      <line x1="5" y1="60" x2="25" y2="60"/>
+      <line x1="95" y1="60" x2="115" y2="60"/>
+      <line x1="20" y1="20" x2="35" y2="35"/>
+      <line x1="80" y1="80" x2="100" y2="100"/>
+      <line x1="100" y1="20" x2="85" y2="35"/>
+      <line x1="40" y1="80" x2="20" y2="100"/>
+    </g>
+    <circle cx="60" cy="5" r="3" fill="#FF7A5C"/>
+    <circle cx="60" cy="115" r="3" fill="#FF7A5C"/>
+    <circle cx="5" cy="60" r="3" fill="#FF7A5C"/>
+    <circle cx="115" cy="60" r="3" fill="#FF7A5C"/>
+  </g>
+
+  <!-- brand mark -->
+  <g transform="translate(60, 60)">
+    <path d="M0 18 Q5 0 16 8 Q22 14 18 22 Q14 28 6 24 Z" fill="url(#flame)"/>
+    <text x="32" y="20" fontFamily="Georgia, serif" fontSize="22" fontWeight="bold" fill="#F4D58D">bestaietsy</text>
+  </g>
+
+  <!-- main headline -->
+  <g transform="translate(80, 350)">
+    <text fontFamily="Georgia, serif" fontWeight="bold" fill="#F4D58D">
+      <tspan x="0" y="0" fontSize="56">Best AI Tools for Etsy</tspan>
+      <tspan x="0" y="68" fontSize="56">Vintage Sellers (2026)</tspan>
+    </text>
+  </g>
+
+  <!-- subhead -->
+  <text x="80" y="510" fontFamily="Georgia, serif" fontSize="22" fill="#F4D58D" opacity="0.9">
+    5 tested picks + 33-day action plan before the 8/11 fur ban
+  </text>
+
+  <!-- badges row -->
+  <g transform="translate(80, 550)">
+    <rect x="0" y="0" width="155" height="34" rx="17" fill="none" stroke="#FF7A5C" strokeWidth="1.5"/>
+    <text x="77.5" y="22" fontFamily="Inter, system-ui, sans-serif" fontSize="13" fill="#FF7A5C" textAnchor="middle">8/11 FUR BAN READY</text>
+
+    <rect x="170" y="0" width="155" height="34" rx="17" fill="none" stroke="#F4D58D" strokeWidth="1.5"/>
+    <text x="247.5" y="22" fontFamily="Inter, system-ui, sans-serif" fontSize="13" fill="#F4D58D" textAnchor="middle">AI DISCLOSURE 2026</text>
+
+    <rect x="340" y="0" width="130" height="34" rx="17" fill="none" stroke="#F4D58D" strokeWidth="1.5"/>
+    <text x="405" y="22" fontFamily="Inter, system-ui, sans-serif" fontSize="13" fill="#F4D58D" textAnchor="middle">5 TOOLS RANKED</text>
+  </g>
+</svg>
