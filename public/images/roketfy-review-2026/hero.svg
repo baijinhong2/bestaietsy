@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Roketfy Review 2026 hero — 30-day test, 5-dimension scorecard, 8.9/10 rating">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1033"/>
+      <stop offset="50%" stop-color="#2d1b4e"/>
+      <stop offset="100%" stop-color="#0d0820"/>
+    </linearGradient>
+    <linearGradient id="rocketBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff8a3d"/>
+      <stop offset="50%" stop-color="#ff6b1a"/>
+      <stop offset="100%" stop-color="#d94a08"/>
+    </linearGradient>
+    <linearGradient id="aiGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e0b8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#00b894" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff3a0"/>
+      <stop offset="40%" stop-color="#ffb84d"/>
+      <stop offset="100%" stop-color="#ff4d00" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.08" stroke="#ff8a3d" stroke-width="0.5">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- AI circuit background -->
+  <g opacity="0.18" stroke="#00e0b8" fill="none" stroke-width="1.2">
+    <path d="M 60 200 L 140 200 L 140 260 L 220 260 L 220 200 L 280 200"/>
+    <path d="M 920 100 L 1000 100 L 1000 160 L 1080 160 L 1080 220 L 1140 220"/>
+    <path d="M 100 480 L 180 480 L 180 540 L 280 540"/>
+    <path d="M 920 480 L 1000 480 L 1000 420 L 1080 420"/>
+    <circle cx="140" cy="200" r="3" fill="#00e0b8"/>
+    <circle cx="220" cy="260" r="3" fill="#00e0b8"/>
+    <circle cx="1000" cy="100" r="3" fill="#00e0b8"/>
+    <circle cx="1080" cy="160" r="3" fill="#00e0b8"/>
+    <circle cx="180" cy="480" r="3" fill="#00e0b8"/>
+    <circle cx="1000" cy="480" r="3" fill="#00e0b8"/>
+  </g>
+
+  <!-- Left: Rocket illustration -->
+  <g transform="translate(180 280)">
+    <!-- Rocket flame -->
+    <g filter="url(#glow)">
+      <path d="M -28 130 Q -20 175 0 200 Q 20 175 28 130 Z" fill="url(#flame)"/>
+      <path d="M -18 130 Q -12 165 0 180 Q 12 165 18 130 Z" fill="#fff3a0" opacity="0.8"/>
+    </g>
+    <!-- Rocket body -->
+    <path d="M 0 -120 Q 30 -80 30 0 L 30 130 L -30 130 L -30 0 Q -30 -80 0 -120 Z" fill="url(#rocketBody)" stroke="#fff3a0" stroke-width="1.5"/>
+    <!-- Window -->
+    <circle cx="0" cy="-30" r="22" fill="#1a1033" stroke="#00e0b8" stroke-width="3"/>
+    <circle cx="0" cy="-30" r="14" fill="#00e0b8" opacity="0.4"/>
+    <circle cx="-4" cy="-34" r="5" fill="#fff" opacity="0.6"/>
+    <!-- Body lines -->
+    <line x1="-30" y1="20" x2="30" y2="20" stroke="#a8330a" stroke-width="1.5" opacity="0.6"/>
+    <line x1="-30" y1="80" x2="30" y2="80" stroke="#a8330a" stroke-width="1.5" opacity="0.6"/>
+    <!-- Side fins -->
+    <path d="M -30 70 L -65 130 L -30 130 Z" fill="#d94a08" stroke="#fff3a0" stroke-width="1.2"/>
+    <path d="M 30 70 L 65 130 L 30 130 Z" fill="#d94a08" stroke="#fff3a0" stroke-width="1.2"/>
+    <!-- "R" logo on body -->
+    <text x="0" y="60" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="36" font-weight="900" fill="#fff" opacity="0.95">R</text>
+  </g>
+
+  <!-- Top-left: rating badge -->
+  <g transform="translate(360 80)">
+    <rect x="0" y="0" width="200" height="60" rx="30" fill="#1a1033" stroke="#ff8a3d" stroke-width="2"/>
+    <text x="100" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#ffb84d">8.9/10 rating</text>
+    <text x="100" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="500" fill="#00e0b8" letter-spacing="2">30,000+ SELLERS</text>
+  </g>
+
+  <!-- Main title -->
+  <g transform="translate(420 180)">
+    <text x="0" y="0" font-family="Arial Black, sans-serif" font-size="56" font-weight="900" fill="#ffffff">Roketfy</text>
+    <text x="0" y="50" font-family="Arial Black, sans-serif" font-size="44" font-weight="900" fill="#ff8a3d">Review 2026</text>
+    <text x="0" y="98" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#00e0b8">Honest 30-Day Test · 60+ Hours</text>
+  </g>
+
+  <!-- Center: 5-dimension scorecard -->
+  <g transform="translate(420 320)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ff8a3d" letter-spacing="2">5-DIMENSION SCORECARD</text>
+
+    <g transform="translate(0 18)">
+      <!-- Dimension 1: AI Writer -->
+      <g transform="translate(0 0)">
+        <rect x="0" y="0" width="660" height="28" rx="14" fill="#1a1033" stroke="#ff8a3d" stroke-width="1" opacity="0.9"/>
+        <rect x="2" y="2" width="528" height="24" rx="12" fill="url(#aiGlow)"/>
+        <text x="14" y="19" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ffffff">AI Listing Writer</text>
+        <text x="640" y="19" text-anchor="end" font-family="Arial Black, sans-serif" font-size="14" font-weight="900" fill="#00e0b8">8.0/10</text>
+      </g>
+      <!-- Dimension 2: Keyword Research -->
+      <g transform="translate(0 36)">
+        <rect x="0" y="0" width="660" height="28" rx="14" fill="#1a1033" stroke="#ff8a3d" stroke-width="1" opacity="0.9"/>
+        <rect x="2" y="2" width="495" height="24" rx="12" fill="url(#aiGlow)"/>
+        <text x="14" y="19" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ffffff">Keyword Research</text>
+        <text x="640" y="19" text-anchor="end" font-family="Arial Black, sans-serif" font-size="14" font-weight="900" fill="#00e0b8">7.5/10</text>
+      </g>
+      <!-- Dimension 3: Competitor Analysis -->
+      <g transform="translate(0 72)">
+        <rect x="0" y="0" width="660" height="28" rx="14" fill="#1a1033" stroke="#ff8a3d" stroke-width="1" opacity="0.9"/>
+        <rect x="2" y="2" width="495" height="24" rx="12" fill="url(#aiGlow)"/>
+        <text x="14" y="19" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ffffff">Competitor Analysis</text>
+        <text x="640" y="19" text-anchor="end" font-family="Arial Black, sans-serif" font-size="14" font-weight="900" fill="#00e0b8">7.5/10</text>
+      </g>
+      <!-- Dimension 4: Listing Checker -->
+      <g transform="translate(0 108)">
+        <rect x="0" y="0" width="660" height="28" rx="14" fill="#1a1033" stroke="#ff8a3d" stroke-width="1" opacity="0.9"/>
+        <rect x="2" y="2" width="561" height="24" rx="12" fill="url(#aiGlow)"/>
+        <text x="14" y="19" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ffffff">Listing Checker (compliance)</text>
+        <text x="640" y="19" text-anchor="end" font-family="Arial Black, sans-serif" font-size="14" font-weight="900" fill="#00e0b8">8.5/10</text>
+      </g>
+      <!-- Dimension 5: POD AI -->
+      <g transform="translate(0 144)">
+        <rect x="0" y="0" width="660" height="28" rx="14" fill="#1a1033" stroke="#ff8a3d" stroke-width="1" opacity="0.9"/>
+        <rect x="2" y="2" width="396" height="24" rx="12" fill="url(#aiGlow)"/>
+        <text x="14" y="19" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#ffffff">Roketfy POD AI</text>
+        <text x="640" y="19" text-anchor="end" font-family="Arial Black, sans-serif" font-size="14" font-weight="900" fill="#00e0b8">6.0/10</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom: pricing + verdict tag -->
+  <g transform="translate(420 540)">
+    <rect x="0" y="0" width="180" height="50" rx="25" fill="#ff8a3d"/>
+    <text x="90" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1a1033">PRO PLAN</text>
+    <text x="90" y="42" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="20" font-weight="900" fill="#1a1033">$24.99/mo</text>
+
+    <rect x="200" y="0" width="180" height="50" rx="25" fill="#1a1033" stroke="#00e0b8" stroke-width="2"/>
+    <text x="290" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#00e0b8">VERDICT</text>
+    <text x="290" y="42" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" fill="#ffffff">Worth it for 50-500</text>
+
+    <rect x="400" y="0" width="200" height="50" rx="25" fill="#1a1033" stroke="#ffb84d" stroke-width="2"/>
+    <text x="500" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#ffb84d">AFFILIATE</text>
+    <text x="500" y="42" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" fill="#ffffff">30% lifetime</text>
+  </g>
+
+  <!-- Bottom-right: brand tag -->
+  <g transform="translate(1100 600)">
+    <text x="0" y="0" text-anchor="end" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#ff8a3d" opacity="0.7">bestaietsy.com · T2 Tool Review</text>
+  </g>
+</svg>
