@@ -1,0 +1,124 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1438;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#2d1f5e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0d0a1f;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F1641E;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#FFA171;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D4A04C;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#F0C674;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative circuit lines -->
+  <g opacity="0.15" stroke="#F1641E" stroke-width="1" fill="none">
+    <path d="M 50 100 L 200 100 L 220 120 L 220 240 L 240 260 L 380 260"/>
+    <path d="M 50 200 L 150 200 L 170 220 L 170 320"/>
+    <path d="M 820 80 L 970 80 L 990 100 L 990 200"/>
+    <path d="M 1000 100 L 1000 200 L 1020 220 L 1150 220"/>
+    <path d="M 100 500 L 200 500 L 220 480 L 220 400 L 240 380 L 380 380"/>
+    <path d="M 820 550 L 970 550 L 990 530 L 990 420"/>
+  </g>
+  <g opacity="0.4" fill="#F1641E">
+    <circle cx="200" cy="100" r="3"/>
+    <circle cx="380" cy="260" r="3"/>
+    <circle cx="170" cy="320" r="3"/>
+    <circle cx="990" cy="200" r="3"/>
+    <circle cx="1150" cy="220" r="3"/>
+    <circle cx="220" cy="400" r="3"/>
+  </g>
+
+  <!-- Top label badge: 2026 POLICY + AI COMPLIANCE -->
+  <rect x="60" y="60" width="280" height="40" rx="20" fill="url(#amber)"/>
+  <text x="200" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="white" letter-spacing="1.5">2026 POLICY + AI COMPLIANCE</text>
+
+  <!-- Top right: Pillar #5 indicator -->
+  <rect x="960" y="60" width="180" height="40" rx="20" fill="none" stroke="#D4A04C" stroke-width="2"/>
+  <text x="1050" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#D4A04C" letter-spacing="1">PILLAR #5 OF 5</text>
+
+  <!-- Main title -->
+  <text x="60" y="200" font-family="Inter, sans-serif" font-size="64" font-weight="900" fill="white">Etsy 2026 Policy</text>
+  <text x="60" y="270" font-family="Inter, sans-serif" font-size="64" font-weight="900" fill="url(#gold)">+ AI Compliance</text>
+  <text x="60" y="320" font-family="Inter, sans-serif" font-size="28" font-weight="500" fill="#A8A0D0">The Complete Guide for All Sellers</text>
+
+  <!-- 4 policy timeline dots + dates -->
+  <g transform="translate(60, 380)">
+    <line x1="0" y1="20" x2="1080" y2="20" stroke="#D4A04C" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <!-- 6/2 children -->
+    <circle cx="80" cy="20" r="14" fill="#F1641E"/>
+    <text x="80" y="25" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="white">1</text>
+    <text x="80" y="60" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#F1641E">6/2</text>
+    <text x="80" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#A8A0D0">Children</text>
+    <text x="80" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#7A6FA8">Policy</text>
+
+    <!-- 6/4 China -->
+    <circle cx="320" cy="20" r="14" fill="#F1641E"/>
+    <text x="320" y="25" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="white">2</text>
+    <text x="320" y="60" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#F1641E">6/4</text>
+    <text x="320" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#A8A0D0">China</text>
+    <text x="320" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#7A6FA8">Cleanup</text>
+
+    <!-- 6/22 UK -->
+    <circle cx="560" cy="20" r="14" fill="#F1641E"/>
+    <text x="560" y="25" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="white">3</text>
+    <text x="560" y="60" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#F1641E">6/22</text>
+    <text x="560" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#A8A0D0">UK 0.48%</text>
+    <text x="560" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#7A6FA8">Reg Fee</text>
+
+    <!-- 8/11 fur ban -->
+    <circle cx="800" cy="20" r="14" fill="#D8500F"/>
+    <text x="800" y="25" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="white">4</text>
+    <text x="800" y="60" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#FFA171">8/11</text>
+    <text x="800" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#FFA171">Animal</text>
+    <text x="800" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#FFA171">Fur Ban</text>
+  </g>
+
+  <!-- 4 categories callout (right side) -->
+  <g transform="translate(60, 510)">
+    <!-- Listing -->
+    <rect x="0" y="0" width="160" height="60" rx="8" fill="#2d1f5e" stroke="#F1641E" stroke-width="1.5"/>
+    <text x="80" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="#F1641E">AI LISTING</text>
+    <text x="80" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">Roketfy · Alura</text>
+    <text x="80" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">EtsyHunt</text>
+
+    <!-- SEO -->
+    <rect x="180" y="0" width="160" height="60" rx="8" fill="#2d1f5e" stroke="#D4A04C" stroke-width="1.5"/>
+    <text x="260" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="#D4A04C">AI SEO</text>
+    <text x="260" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">eRank · Marmalead</text>
+    <text x="260" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">Sale Samurai</text>
+
+    <!-- Photo -->
+    <rect x="360" y="0" width="160" height="60" rx="8" fill="#2d1f5e" stroke="#3D7052" stroke-width="1.5"/>
+    <text x="440" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="#7FB68F">AI PHOTO</text>
+    <text x="440" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">Pebblely · Midjourney</text>
+    <text x="440" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">Mockey</text>
+
+    <!-- Compliance scan -->
+    <rect x="540" y="0" width="180" height="60" rx="8" fill="#2d1f5e" stroke="#7B68EE" stroke-width="1.5"/>
+    <text x="630" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="#9D8FFF">AI COMPLIANCE</text>
+    <text x="630" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">Originality.ai · Roketfy</text>
+    <text x="630" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">EtsyHunt Monitor</text>
+  </g>
+
+  <!-- Brand badge bottom right -->
+  <g transform="translate(960, 510)">
+    <rect x="0" y="0" width="180" height="60" rx="8" fill="#1a1438" stroke="#F1641E" stroke-width="1.5"/>
+    <text x="90" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#F1641E">bestaietsy.com</text>
+    <text x="90" y="42" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">5-STEP METHODOLOGY</text>
+    <text x="90" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#A8A0D0">12 TOOLS · 90-DAY PLAN</text>
+  </g>
+
+  <!-- Bottom indicator strip -->
+  <rect x="60" y="595" width="1080" height="2" fill="url(#amber)" opacity="0.5"/>
+  <text x="60" y="615" font-family="Inter, sans-serif" font-size="11" font-weight="500" fill="#7A6FA8" letter-spacing="0.5">Complete guide · Updated 2026-07-15 · All 4 policies · All 12 tools</text>
+  <text x="1140" y="615" text-anchor="end" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#D4A04C">1200×630</text>
+</svg>
