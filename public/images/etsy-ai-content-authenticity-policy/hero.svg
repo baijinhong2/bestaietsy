@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Etsy AI Content Authenticity Policy 2026 hero — 5 things every seller must do, 12,000 listings removed in one quarter, 4-tool compliance stack">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1147"/>
+      <stop offset="0.55" stop-color="#2d1b6e"/>
+      <stop offset="1" stop-color="#3d2a8a"/>
+    </linearGradient>
+    <linearGradient id="policyCard" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fef3c7"/>
+      <stop offset="1" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="aiCircuit" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10b981" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#10b981" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- AI circuit decoration -->
+  <g stroke="#10b981" stroke-width="1" fill="none" opacity="0.18">
+    <path d="M 60 60 L 60 140 L 180 140 L 180 60"/>
+    <path d="M 1140 60 L 1140 200 L 1020 200 L 1020 60"/>
+    <path d="M 60 570 L 60 490 L 180 490 L 180 570"/>
+    <path d="M 1140 570 L 1140 430 L 1020 430 L 1020 570"/>
+  </g>
+  <g fill="#10b981" opacity="0.4">
+    <circle cx="60" cy="60" r="3"/>
+    <circle cx="180" cy="140" r="3"/>
+    <circle cx="1020" cy="60" r="3"/>
+    <circle cx="1140" cy="200" r="3"/>
+    <circle cx="180" cy="490" r="3"/>
+    <circle cx="60" cy="570" r="3"/>
+    <circle cx="1140" cy="430" r="3"/>
+    <circle cx="1020" cy="570" r="3"/>
+  </g>
+
+  <!-- Top brand row -->
+  <g>
+    <text x="80" y="50" font-family="ui-sans-serif, system-ui" font-size="18" font-weight="700" fill="#fbbf24" letter-spacing="2">bestaietsy.com</text>
+    <text x="1120" y="50" text-anchor="end" font-family="ui-sans-serif, system-ui" font-size="16" font-weight="500" fill="#fde68a" letter-spacing="1">T7 FAQ · 7/17</text>
+  </g>
+
+  <!-- 12,000 listings removed warning badge (top right) -->
+  <g transform="translate(880, 80)">
+    <rect x="0" y="0" width="280" height="80" rx="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="2"/>
+    <text x="20" y="32" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#fecaca" letter-spacing="2">⚠ ENFORCEMENT ALERT</text>
+    <text x="20" y="60" font-family="ui-sans-serif, system-ui" font-size="22" font-weight="800" fill="#ffffff">12,000 listings</text>
+    <text x="160" y="60" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="500" fill="#fecaca">removed Q1 2026</text>
+  </g>
+
+  <!-- Main title (left side) -->
+  <g transform="translate(80, 180)">
+    <text x="0" y="0" font-family="ui-sans-serif, system-ui" font-size="32" font-weight="800" fill="#ffffff" letter-spacing="1">ETSY AI CONTENT &amp;</text>
+    <text x="0" y="40" font-family="ui-sans-serif, system-ui" font-size="32" font-weight="800" fill="#fbbf24" letter-spacing="1">AUTHENTICITY POLICY</text>
+    <text x="0" y="86" font-family="ui-sans-serif, system-ui" font-size="42" font-weight="800" fill="#ffffff" letter-spacing="0">5 Things Every Seller Must Do</text>
+    <text x="0" y="116" font-family="ui-sans-serif, system-ui" font-size="20" font-weight="500" fill="#fde68a">The 2026 enforcement reality · 4-tool compliance stack</text>
+  </g>
+
+  <!-- Policy document card (center) -->
+  <g transform="translate(420, 170)">
+    <rect x="0" y="0" width="200" height="260" rx="18" fill="url(#policyCard)" stroke="#f59e0b" stroke-width="2"/>
+    <text x="100" y="40" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#7c2d12" letter-spacing="1.5">AI POLICY</text>
+    <text x="100" y="60" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="11" font-weight="500" fill="#7c2d12">2026 ENFORCEMENT</text>
+    <!-- big checkmark -->
+    <circle cx="100" cy="120" r="42" fill="#10b981" stroke="#047857" stroke-width="3"/>
+    <path d="M 78 120 L 95 138 L 124 105" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="100" y="190" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="700" fill="#7c2d12">5 STEPS</text>
+    <text x="100" y="210" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="11" font-weight="500" fill="#92400e">to compliance</text>
+    <text x="100" y="240" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="400" fill="#92400e">est. 10 min/listing</text>
+  </g>
+
+  <!-- 5 step mini-cards (right column) -->
+  <g transform="translate(680, 170)">
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="240" height="44" rx="10" fill="#1f1645" stroke="#fbbf24" stroke-width="1.5"/>
+      <circle cx="22" cy="22" r="12" fill="#fbbf24"/>
+      <text x="22" y="27" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="800" fill="#1a1147">1</text>
+      <text x="46" y="20" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#fbbf24">DISCLOSE AI USE</text>
+      <text x="46" y="35" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="500" fill="#fde68a">one-line in description</text>
+    </g>
+    <g transform="translate(0, 52)">
+      <rect x="0" y="0" width="240" height="44" rx="10" fill="#1f1645" stroke="#10b981" stroke-width="1.5"/>
+      <circle cx="22" cy="22" r="12" fill="#10b981"/>
+      <text x="22" y="27" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="800" fill="#1a1147">2</text>
+      <text x="46" y="20" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#10b981">AI SCORE &lt; 30%</text>
+      <text x="46" y="35" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="500" fill="#a7f3d0">scan with Originality.ai</text>
+    </g>
+    <g transform="translate(0, 104)">
+      <rect x="0" y="0" width="240" height="44" rx="10" fill="#1f1645" stroke="#06b6d4" stroke-width="1.5"/>
+      <circle cx="22" cy="22" r="12" fill="#06b6d4"/>
+      <text x="22" y="27" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="800" fill="#1a1147">3</text>
+      <text x="46" y="20" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#06b6d4">ROKETFY SCAN</text>
+      <text x="46" y="35" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="500" fill="#a5f3fc">every listing before publish</text>
+    </g>
+    <g transform="translate(0, 156)">
+      <rect x="0" y="0" width="240" height="44" rx="10" fill="#1f1645" stroke="#f59e0b" stroke-width="1.5"/>
+      <circle cx="22" cy="22" r="12" fill="#f59e0b"/>
+      <text x="22" y="27" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="800" fill="#1a1147">4</text>
+      <text x="46" y="20" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#f59e0b">DESIGNED BY</text>
+      <text x="46" y="35" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="500" fill="#fde68a">not handmade for AI work</text>
+    </g>
+    <g transform="translate(0, 208)">
+      <rect x="0" y="0" width="240" height="44" rx="10" fill="#1f1645" stroke="#ef4444" stroke-width="1.5"/>
+      <circle cx="22" cy="22" r="12" fill="#ef4444"/>
+      <text x="22" y="27" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="13" font-weight="800" fill="#1a1147">5</text>
+      <text x="46" y="20" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#ef4444">IMAGE = REAL</text>
+      <text x="46" y="35" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="500" fill="#fecaca">image must show shipped product</text>
+    </g>
+  </g>
+
+  <!-- 4-tool stack ribbon (bottom) -->
+  <g transform="translate(80, 470)">
+    <text x="0" y="0" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#fbbf24" letter-spacing="2">4-TOOL COMPLIANCE STACK</text>
+    <g transform="translate(0, 16)">
+      <rect x="0" y="0" width="240" height="62" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="120" y="22" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="800" fill="#1a1147">eRank</text>
+      <text x="120" y="40" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="500" fill="#7c2d12">Keyword research</text>
+      <text x="120" y="54" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="9" font-weight="500" fill="#92400e">25% affiliate</text>
+    </g>
+    <g transform="translate(255, 16)">
+      <rect x="0" y="0" width="240" height="62" rx="10" fill="#a7f3d0" stroke="#10b981" stroke-width="1.5"/>
+      <text x="120" y="22" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="800" fill="#1a1147">Originality.ai</text>
+      <text x="120" y="40" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="500" fill="#064e3b">AI detection</text>
+      <text x="120" y="54" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="9" font-weight="500" fill="#065f46">25% × 12mo</text>
+    </g>
+    <g transform="translate(510, 16)">
+      <rect x="0" y="0" width="240" height="62" rx="10" fill="#a5f3fc" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="120" y="22" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="800" fill="#1a1147">Roketfy</text>
+      <text x="120" y="40" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="500" fill="#0c4a6e">Compliance scan</text>
+      <text x="120" y="54" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="9" font-weight="500" fill="#075985">30% lifetime</text>
+    </g>
+    <g transform="translate(765, 16)">
+      <rect x="0" y="0" width="240" height="62" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="120" y="22" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="14" font-weight="800" fill="#1a1147">EtsyHunt</text>
+      <text x="120" y="40" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="10" font-weight="500" fill="#7c2d12">Listing optimize</text>
+      <text x="120" y="54" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="9" font-weight="500" fill="#92400e">30% affiliate</text>
+    </g>
+  </g>
+
+  <!-- Bottom corner badges -->
+  <g transform="translate(80, 570)">
+    <text x="0" y="0" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#fbbf24" letter-spacing="2">5-STEP COMPLIANCE</text>
+    <text x="0" y="20" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#10b981" letter-spacing="2">12,000 REMOVED</text>
+    <text x="0" y="40" font-family="ui-sans-serif, system-ui" font-size="12" font-weight="700" fill="#06b6d4" letter-spacing="2">4-TOOL STACK</text>
+  </g>
+  <g transform="translate(1120, 590)">
+    <text x="0" y="0" text-anchor="end" font-family="ui-sans-serif, system-ui" font-size="11" font-weight="500" fill="#a5b4fc" letter-spacing="1">Etsy AI policy · 2026 enforcement · honest 5-step FAQ</text>
+  </g>
+</svg>
